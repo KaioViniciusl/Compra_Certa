@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_17_185218) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_17_191652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expense_payers", force: :cascade do |t|
+    t.float "paid_amount"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_expense_payers_on_group_id"
+    t.index ["receiver_id"], name: "index_expense_payers_on_receiver_id"
+    t.index ["user_id"], name: "index_expense_payers_on_user_id"
+  end
 
   create_table "expense_shares", force: :cascade do |t|
     t.float "share_amount"
@@ -57,13 +69,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_185218) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "password"
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expense_payers", "groups"
+  add_foreign_key "expense_payers", "users"
+  add_foreign_key "expense_payers", "users", column: "receiver_id"
   add_foreign_key "expense_shares", "expenses"
   add_foreign_key "expense_shares", "users"
   add_foreign_key "expenses", "groups"
