@@ -1,6 +1,6 @@
-
-  <div class="flex-container">
-    <div class="login-container">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-4">
       <h2>Fill in the fields below</h2>
       <br>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -25,4 +25,4 @@
       <%= render "devise/shared/links" %>
     </div>
   </div>
-
+</div>
