@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
-      <h2>Fill in the fields below</h2>
+      <h2>Entrar</h2>
       <br>
       <% if alert.present? %>
         <p class="alert alert-danger"><%= alert %></p>
@@ -11,17 +11,17 @@
           <%= f.input :email,
                       required: false,
                       autofocus: true,
-                      label: "Your login email",
+                      label: "Seu email de acesso",
                       input_html: { class: "custom-input", autocomplete: "email" } %>
           <%= f.input :password,
                       required: false,
-                      label: "Enter your password",
+                      label: "Digite sua senha",
                       input_html: { class: "custom-input", autocomplete: "current-password" } %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Log in", class: "btn-login" %>
+          <%= f.button :submit, "Entrar", class: "btn-login" %>
         </div>
       <% end %>
 

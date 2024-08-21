@@ -14,6 +14,13 @@
     vertical-align: middle;
   }
 
+  @media (max-width: 768px) {
+    .btn-login {
+      // Estilo para telas menores (celular)
+      width: 100%; /* Ocupar 100% da largura da tela */
+    }
+  }
+
   .custom-input {
     background-color: #d9d9d9; /* Cor de fundo */
     border: 2px solid #dedede; /* Cor e espessura da borda */
@@ -21,19 +28,26 @@
     border-radius: 5px; /* Bordas arredondadas */
   }
 
-  .login-container {
-    width: 400px;
-    padding: 40px;
-    background-color: #ffffff;
-    // position: center;
-    // top: 20%;
-    // transform: translateY(50%);
-  }
+  .custom-input:focus {
+    background-color: #d9d9d9; /* Cor de fundo */
+    border: 2px solid #dedede; /* Cor e espessura da borda */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+}
 
-  .flex-container {
-    // background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; /* Altura completa da tela */
-  }
+//   .login-container {
+//     width: 400px;
+//     padding: 40px;
+//     background-color: #ffffff;
+//     // position: center;
+//     // top: 20%;
+//     // transform: translateY(50%);
+//   }
+
+//   .flex-container {
+//     // background-color: #ffffff;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 80vh; /* Altura completa da tela */
+//   }
