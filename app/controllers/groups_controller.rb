@@ -9,8 +9,11 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new(params[:group])
-    @group.save
-    redirect_to group_path(@group)
+    if @group.save
+      redirect_to group_path(@group)
+    else
+      render :new
+    end
   end
 
   def edit
