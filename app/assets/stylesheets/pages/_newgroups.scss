@@ -1,0 +1,9 @@
+body.groups.new {
+    background-image: url('<%= asset_path("background-image.png") %>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Garante que o background cubra toda a altura da viewport */
+    margin: 0;
+    padding: 0;
+}
