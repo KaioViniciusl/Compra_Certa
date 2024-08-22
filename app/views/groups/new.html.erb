@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-4">
+     <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
+
+    <%= simple_form_for @group do |f| %>
+      <div class="text-center mb-4">
+        <!-- Placeholder para a foto do grupo -->
+        <div class="group-photo-placeholder">
+          <%= image_tag("placeholder-image.png", class: "img-fluid rounded-circle", id: "group-photo-preview") %>
+        </div>
+        <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*", id: "group-photo-input" } %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.input :name_group, label: "Digite o nome do Grupo", input_html: { placeholder: "Nome do Grupo", class: "form-control" } %>
+      </div>
+  
+      <div class="form-group">
+        <%= f.input :observation, label: "Adicione uma descrição para o Grupo", input_html: { placeholder: "Descrição do Grupo", class: "form-control" } %>
+      </div>
+  
+      <div class="form-group text-center">
+        <%= f.button :submit, "Adicionar membro", class: "btn btn-primary" %>
+        <%#= link_to "Compartilhar link do grupo", share_group_path(@group), class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+     
+    </div>
+  </div>
+</div>
