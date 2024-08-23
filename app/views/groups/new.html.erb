@@ -1,30 +1,45 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
-     <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
-
-    <%= simple_form_for @group do |f| %>
-      <div class="text-center mb-4">
-        <!-- Placeholder para a foto do grupo -->
-        <div class="group-photo-placeholder">
-          <%= image_tag("placeholder-image.png", class: "img-fluid rounded-circle", id: "group-photo-preview") %>
+      <br>
+      <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
+     
+      <%= simple_form_for @group do |f| %>
+        <div class="text-center mb-4">
+          <br>
+          <!-- Placeholder para a foto do grupo -->
+          <div class="group-photo-placeholder" id="group-photo-container">
+            <%= image_tag("placeholder-image.png") %>
+          </div>
+          <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
         </div>
-        <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*", id: "group-photo-input" } %>
-      </div>
+    
+        <div class="form-group position-relative">
+          <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "group-input" } %>
+          <i class="input-icon">✎</i> <!-- Ícone de edição -->
+        </div>
+    
+        <div class="form-group position-relative">
+          <%= f.input :observation, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "group-input" } %>
+          <i class="input-icon">✎</i> <!-- Ícone de edição -->
+        </div>
+    
+        <div class="text-center mt-4">
+          <p>Você é o único aqui</p>
+        </div>
+    
 
-      <div class="form-group">
-        <%= f.input :name_group, label: "Digite o nome do Grupo", input_html: { placeholder: "Nome do Grupo", class: "form-control" } %>
-      </div>
+        <div class="justify-content-center">
+          <button type="button" class="btn btn-addmember">Adicionar membro</button>
+          <button type="button" class="btn btn-addmember">Compartilhar link do grupo</button>
+        </div>
 
-      <div class="form-group">
-        <%= f.input :observation, label: "Adicione uma descrição para o Grupo", input_html: { placeholder: "Descrição do Grupo", class: "form-control" } %>
-      </div>
-
-      <div class="form-group text-center">
-        <%= f.button :submit, "Adicionar membro", class: "btn btn-primary" %>
-        <% #= link_to "Compartilhar link do grupo", share_group_path(@group), class: "btn btn-secondary" %>
-      </div>
-    <% end %>
+        <div class="form-group mt-4">
+          <label for="member-email">Adicionar membro</label>
+          <input type="email" id="member-email" class="form-control group-input" placeholder="Insira o email do usuário" />
+        </div>
+        <%= f.button :submit, "Salvar e Criar", class: "btn btn-secondary w-100" %>
+      <% end %>
 
     </div>
   </div>
