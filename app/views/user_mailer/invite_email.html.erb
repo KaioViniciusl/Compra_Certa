@@ -1,0 +1,11 @@
+<h1 style="font-size: 24px; font-weight: bold;">Convite para o Grupo <%= @group.name_group %></h1>
+<p style="margin: 20px 0;">Olá,</p>
+<p style="margin: 20px 0;">Você foi convidado para participar do grupo <%= @group.name_group %>. Clique no link abaixo para aceitar o convite:</p>
+
+<% if @user %>
+  <p style="margin: 20px 0;"><%= link_to "Já sou cadastrado no Conta Certa - Aceitar Convite", @url, style: "color: #1a0dab; text-decoration: none;" %></p>
+<% else %>
+  <p style="margin: 20px 0;"><%= link_to "Não sou cadastrado no Conta Certa - Criar Conta e Aceitar Convite", @url, style: "color: #1a0dab; text-decoration: none;" %></p>
+<% end %>
+
+<p style="margin: 20px 0;">Obrigado! Conta Certa está à sua disposição!</p>

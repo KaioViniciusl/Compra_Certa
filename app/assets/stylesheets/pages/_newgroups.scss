@@ -10,12 +10,12 @@
     cursor: pointer;
     position: relative;
   }
-  
-  
+
+
   .form-group {
     margin-bottom: 20px;
   }
-  
+
 /* ícone */
   .input-icon {
     position: absolute;
@@ -26,12 +26,12 @@
     color: #353333;
     pointer-events: none;
   }
-  
+
   .group-input {
     padding-right: 35px; /* Espaço para o ícone */
     background-color: #d9d9d9;
   }
-  
+
 
 
   .btn-addmember {
@@ -50,10 +50,13 @@
     vertical-align: middle;
     margin-top: 10px;
   }
-  
+
   .btn-addmember:hover {
     background-color: #1A1C15 !important;
     color: #ffffff !important;
   }
-  
-  
+
+  .check-icon {
+    color: green;
+    margin-left: 5px;
+  }
