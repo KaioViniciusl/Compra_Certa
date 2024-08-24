@@ -88,9 +88,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_023917) do
   end
 
   create_table "user_groups", force: :cascade do |t|
-    t.boolean "invite"
-    t.bigint "user_id", null: false
+    t.boolean "invite_accepted", default: false
+    t.bigint "user_id"
     t.bigint "group_id", null: false
+    t.string "user_mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_user_groups_on_group_id"

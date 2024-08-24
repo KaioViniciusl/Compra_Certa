@@ -1,46 +1,37 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
-      <br>
       <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
-     
-      <%= simple_form_for @group do |f| %>
+
+      <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite" } } do |f| %>
         <div class="text-center mb-4">
-          <br>
-          <!-- Placeholder para a foto do grupo -->
           <div class="group-photo-placeholder" id="group-photo-container">
             <%= image_tag("placeholder-image.png") %>
           </div>
           <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
         </div>
-    
+
         <div class="form-group position-relative">
           <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "group-input" } %>
-          <i class="input-icon">✎</i> <!-- Ícone de edição -->
+          <i class="input-icon">✎</i>
         </div>
-    
+
         <div class="form-group position-relative">
           <%= f.input :observation, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "group-input" } %>
-          <i class="input-icon">✎</i> <!-- Ícone de edição -->
-        </div>
-    
-        <div class="text-center mt-4">
-          <p>Você é o único aqui</p>
-        </div>
-    
-
-        <div class="justify-content-center">
-          <button type="button" class="btn btn-addmember">Adicionar membro</button>
-          <button type="button" class="btn btn-addmember">Compartilhar link do grupo</button>
+          <i class="input-icon">✎</i>
         </div>
 
         <div class="form-group mt-4">
           <label for="member-email">Adicionar membro</label>
-          <input type="email" id="member-email" class="form-control group-input" placeholder="Insira o email do usuário" />
+          <input type="email" id="member-email" class="form-control group-input" placeholder="Insira o email do usuário" data-invite-target="email" />
+          <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-2">Adicionar membro</button>
         </div>
+
+        <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div> <!-- Adiciona data-target aqui -->
+        <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %> <!-- Adiciona data-target aqui -->
+
         <%= f.button :submit, "Salvar e Criar", class: "btn btn-secondary w-100" %>
       <% end %>
-
     </div>
   </div>
 </div>
