@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:send_invite, :accept_invite]
 
   def index
+    @groups = Group.where(user_id: current_user.id)
   end
 
   def all
