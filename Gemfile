@@ -56,7 +56,6 @@ gem "cloudinary"
 
 gem "pundit"
 
-gem "letter_opener", group: :development
 
 group :development, :test do
   gem "dotenv-rails"
@@ -64,6 +63,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem "pry"
   gem "pry-byebug"
+  gem "letter_opener"
 end
 
 group :development do

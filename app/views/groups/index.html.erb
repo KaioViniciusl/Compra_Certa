@@ -2,18 +2,27 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
 
-      <div class="text-center mt-4">
-        <h1>Vamos juntos criar seu primeiro grupo</h1>
-      </div>
+    <% if @groups.any? %>
+    <h2>Seus Grupos</h2>
+    <div class="group-list">
+      <% @groups.each do |group| %>
+        <div class="group-item">
+          <%= link_to group_path(group) do %>
+            <% if group.photo.attached? %>
+              <%= image_tag group.photo, alt: "Imagem do grupo #{group.name_group}", class: "group-image" %>
+            <% else %>
+              <div class="default-image"></div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h2>Toque no botão para criar seu primeiro grupo</h2>
+    <%= link_to 'Criar Grupo', new_group_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
 
-      <div class="text-center mt-4">
-        <p>Caso você já passua ou esteja em algum grupo, basta acessar o aplicativo clicando no botão “acessar meus grupos”.</p>
-      </div>
-
-      <div class="justify-content-center mt-4">
-        <button type="button" class="btn btn-addmember">Adicionar membro</button>
-        <button type="button" class="btn btn-addmember">Compartilhar link do grupo</button>
-      </div>
 
     </div>
   </div>

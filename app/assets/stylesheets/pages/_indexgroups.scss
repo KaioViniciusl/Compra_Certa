@@ -1,0 +1,51 @@
+.group-index-container {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .group-item {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .group-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .default-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-right: 10px;
+  }
+  
+  .group-details h3 {
+    margin: 0;
+  }
+  
+  .no-groups {
+    margin-top: 50px;
+  }
+  
+  .create-group-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
