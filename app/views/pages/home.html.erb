@@ -1,4 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja sair?" } %>
+<div class="container-home">
+  <h1 class="title">CONTA CERTA</h1>
+  <p class="description">
+    Divida suas despesas de um jeito simplificado.<br>Crie um grupo e adicione seus amigos para organizar<br>as contas da viagem à praia em 1 só lugar.
+  </p>
+  <div class="button-group">
+    <%= link_to "ACESSAR", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn btn-outline-primary" %>
+  </div>
+</div>

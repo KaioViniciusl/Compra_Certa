@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+                       sessions: "users/sessions",
+                       registrations: "users/registrations",
+                     }
+
   root to: "pages#home"
 
-  resources :groups do
-    collection do
-      get :all
-    end
-    member do
-      get :accept_invite
-      post :send_invite
-    end
-  end
+  resources :groups
 
   # Outras rotas
   get "up" => "rails/health#show", as: :rails_health_check
