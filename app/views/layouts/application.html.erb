@@ -11,64 +11,64 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <div class="container">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-        <% end %>
-      <% if user_signed_in? %>
-        <!-- Botão para abrir o offcanvas (visível apenas em mobile) -->
-        <button class="navbar-toggler d-sm-none border-0 position-absolute end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+      <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+        <div class="container">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+          <% end %>
+          <% if user_signed_in? %>
+            <!-- Botão para abrir o offcanvas (visível apenas em mobile) -->
+            <button class="navbar-toggler d-sm-none border-0 position-absolute end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <!-- Offcanvas Menu (visível apenas em mobile) -->
-    <div class="offcanvas offcanvas-end d-sm-none" id="offcanvasMenu" tabindex="-1" aria-labelledby="offcanvasMenuLabel">
-      <div class="offcanvas-header">
-        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", width: "60", height: "60" %>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <!-- Avatar e Menu -->
-        <div class="text-center mb-3">
-          <!-- Avatar -->
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="rounded-circle" alt="Avatar" style="width: 100px; height: 100px;">
-          <h5 class="mt-2"><%= current_user.name %></h5>
-        </div>
-        <hr>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-turbo-method="delete" href="/users/sign_out">Log out</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-        <!-- Navbar content (visível na versão desktop) -->
-        <div class="d-none d-sm-block ms-auto">
-            <li class="nav-item dropdown">
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="<%= current_user.name %>" title="<%= current_user.name %>"/>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out">Log out</a>
+            <!-- Offcanvas Menu (visível apenas em mobile) -->
+            <div class="offcanvas offcanvas-end d-sm-none" id="offcanvasMenu" tabindex="-1" aria-labelledby="offcanvasMenuLabel">
+              <div class="offcanvas-header">
+                <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", width: "60", height: "60" %>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-            </li>
-        </div>
-      <% end %>
-      </div>
-    </nav>
+              <div class="offcanvas-body">
+                <!-- Avatar e Menu -->
+                <div class="text-center mb-3">
+                  <!-- Avatar -->
+                  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="rounded-circle" alt="Avatar" style="width: 100px; height: 100px;">
+                  <h5 class="mt-2"><%= current_user.name %></h5>
+                </div>
+                <hr>
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-turbo-method="delete" href="/users/sign_out">Log out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-    <p class="notice"><%= notice %></p>
-    <%= yield %>
-  </body>
+            <!-- Navbar content (visível na versão desktop) -->
+            <div class="d-none d-sm-block ms-auto">
+              <li class="nav-item dropdown">
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="<%= current_user.name %>" title="<%= current_user.name %>"/>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out">Log out</a>
+                </div>
+              </li>
+            </div>
+          <% end %>
+        </div>
+      </nav>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+      <%= yield %>
 </html>

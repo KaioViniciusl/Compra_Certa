@@ -1,21 +1,19 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:send_invite, :accept_invite]
+  before_action :authenticate_user!
+  before_action :authorize_group, only: [:edit, :update, :destroy]
 
   def index
-    @groups = Group.where(user_id: current_user.id)
-  end
-
-  def all
-    @groups = Group.all
-    render :all
+    @groups = policy_scope(Group)
   end
 
   def new
     @group = Group.new
+    authorize @group
   end
 
   def create
     @group = current_user.groups.new(group_params)
+    authorize @group
 
     if @group.save
       @group.user_groups.find_or_create_by(user: current_user, user_mail: current_user.email, invite_accepted: true)
@@ -27,7 +25,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+    # @group já é definido por set_group e authorize @group é chamado por before_action
   end
 
   def update
@@ -40,7 +38,6 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
     authorize @group
 
     @group.destroy
@@ -48,41 +45,6 @@ class GroupsController < ApplicationController
   rescue Pundit::NotAuthorizedError
     flash[:alert] = "Você não tem permissão para deletar este grupo."
     redirect_to groups_path
-  end
-
-  def send_invite
-    user = User.find_by(email: params[:email])
-
-    if user
-      if UserGroup.find_by(user: user, group: @group)
-        render json: { message: "Usuário já está no grupo." }, status: :unprocessable_entity
-      else
-        UserGroup.create(user: user, group: @group, invite: true)
-        UserMailer.invite_email(@group.id, params[:email], nil, user).deliver_now
-        render json: { message: "Convite enviado com sucesso." }
-      end
-    else
-      UserGroup.create(group: @group, invite: true, invite_token: invite_token)
-      UserMailer.invite_email(@group.id, params[:email], invite_token).deliver_now
-      render json: { message: "Convite enviado com sucesso. O usuário deve se registrar para se juntar ao grupo." }
-    end
-  end
-
-  def accept_invite
-    if current_user
-      user_group = UserGroup.find_by(user: current_user, group: @group)
-
-      if user_group && !user_group.invite_accepted
-        user_group.update(invite_accepted: true)
-        flash[:notice] = "Você agora faz parte do grupo #{@group.name_group}!"
-        redirect_to group_path(@group) and return
-      else
-        flash[:alert] = "Convite inválido ou já aceito."
-      end
-    else
-      flash[:alert] = "Você precisa estar logado para aceitar o convite."
-    end
-    redirect_to group_path(@group)
   end
 
   private
@@ -117,5 +79,9 @@ class GroupsController < ApplicationController
   def create_user_group_for_new_email(email)
     UserGroup.create(group: @group, user_mail: email)
     UserMailer.invite_email(@group.id, email).deliver_now
+  end
+
+  def authorize_group
+    authorize @group
   end
 end
