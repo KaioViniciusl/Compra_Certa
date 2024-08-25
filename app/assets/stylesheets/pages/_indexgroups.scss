@@ -1,51 +1,83 @@
-.group-index-container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .group-list {
+body {
+    background-image: url('/assets/background-image.png'); /* Substitua pelo caminho da sua imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir toda a tela */
+    background-position: center; /* Centraliza a imagem */
+    background-attachment: fixed; /* Faz com que a imagem de fundo não se mova com a rolagem da página */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    margin: 0; /* Remove a margem padrão */
+    height: 100vh; /* Garante que o corpo da página cubra a altura total da janela */
+}
+
+.group-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-  
-  .group-item {
+}
+
+.group-item {
     display: flex;
     align-items: center;
-    background: #f5f5f5;
+
+    background: #dde7ff;
     border-radius: 8px;
-    padding: 10px;
-  }
-  
-  .group-image {
+    color: #0B3234;
+}
+
+.group-image {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .default-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #ccc;
-    margin-right: 10px;
-  }
-  
-  .group-details h3 {
+    border-radius: 20%;
+    background-color: #000000;
+    object-fit: cover; /* Garante que a imagem se ajuste ao contêiner sem distorção */
+    margin-right: 20px;
+}
+
+.group-details {
+    flex-grow: 1; /* Permite que o nome do grupo use o espaço restante */
+   
+}
+
+.group-details h3 {
     margin: 0;
-  }
-  
-  .no-groups {
-    margin-top: 50px;
-  }
-  
-  .create-group-button {
-    display: inline-block;
-    padding: 10px 20px;
+    font-size: 1.2em;
+    color:#0B3234;
+}
+
+.without-group h2 {
+    color:#0B3234;
+}
+
+.create-group-button {
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
     color: white;
-    border-radius: 5px;
-    text-decoration: none;
+    border-radius: 20px;
     font-weight: bold;
-  }
+}
+
+.create-group-button:hover {
+    background-color: #858585;
+    color: rgb(0, 0, 0);
+}
+
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.modal-groups {
+    background-color: #ffffff; /* Fundo branco para a caixa */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 8px rgba(105, 100, 100, 0.1); /* Sombra para dar profundidade */
+
+}
+
+.image-logo {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    
+}

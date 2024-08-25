@@ -1,29 +1,47 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
+      <div class="modal-groups">
 
-    <% if @groups.any? %>
-    <h2>Seus Grupos</h2>
-    <div class="group-list">
-      <% @groups.each do |group| %>
-        <div class="group-item">
-          <%= link_to group_path(group) do %>
-            <% if group.photo.attached? %>
-              <%= image_tag group.photo, alt: "Imagem do grupo #{group.name_group}", class: "group-image" %>
-            <% else %>
-              <div class="default-image"></div>
+        <% if @groups.any? %>
+          <h2>Seus Grupos</h2>
+          <hr>
+          <div class="group-list">
+            <% @groups.each do |group| %>
+                <%= link_to group_path(group) do %>
+                  <div class="group-item">
+                    <div class="group-foto">
+                      <% if group.photo.attached? %>
+                        <%= image_tag group.photo, class: "group-image" %>
+                        
+                      <% else %>
+                        <%= image_tag "placeholder-image.png", class: "group-image" %>
+                      <% end %>
+                    </div>
+                    <div class="group-details">
+                      <h3><%= group.name_group %></h3>
+                    </div>
+                  </div>
+                <% end %>
+                
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <h2>Toque no botão para criar seu primeiro grupo</h2>
-    <%= link_to 'Criar Grupo', new_group_path, class: "btn btn-primary" %>
-  <% end %>
-</div>
+            <br>
+            <%= link_to 'Criar Grupo', new_group_path, class: "btn create-group-button" %>
+            
+          </div>
+        <% else %>
+          <div class="without-group">
+            <h2>Toque no botão para criar seu primeiro grupo</h2>
+            <br>
+            <%= link_to 'Criar Grupo', new_group_path, class: "btn create-group-button" %>
+          </div>
+        <% end %>
 
 
+      </div>
+      <div class="image-logo">
+        <%= image_tag("logo.png")%>
+      </div>
     </div>
   </div>
 </div>
