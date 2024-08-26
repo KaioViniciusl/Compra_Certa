@@ -1,11 +1,11 @@
 body {
-    background-image: url('/assets/background-image.png'); /* Substitua pelo caminho da sua imagem de fundo */
-    background-size: cover; /* Faz a imagem cobrir toda a tela */
-    background-position: center; /* Centraliza a imagem */
-    background-attachment: fixed; /* Faz com que a imagem de fundo não se mova com a rolagem da página */
-    background-repeat: no-repeat; /* Evita a repetição da imagem */
-    margin: 0; /* Remove a margem padrão */
-    height: 100vh; /* Garante que o corpo da página cubra a altura total da janela */
+    background-image: url('/assets/background-image.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
 }
 
 a {

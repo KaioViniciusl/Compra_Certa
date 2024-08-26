@@ -34,7 +34,7 @@
                 <div class="text-center mb-3">
                   <!-- Avatar -->
                   <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="rounded-circle" alt="Avatar" style="width: 100px; height: 100px;">
-                  <h5 class="mt-2"><%= current_user.name %></h5>
+                  <h5 class="mt-2"><%= current_user.name.capitalize %></h5>
                 </div>
                 <hr>
                 <ul class="nav flex-column">
@@ -57,7 +57,7 @@
             <!-- Navbar content (visível na versão desktop) -->
             <div class="d-none d-sm-block ms-auto">
               <li class="nav-item dropdown">
-                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="<%= current_user.name %>" title="<%= current_user.name %>"/>
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="<%= current_user.name.capitalize %>" title="<%= current_user.name.capitalize %>"/>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
