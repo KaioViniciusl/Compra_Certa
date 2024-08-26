@@ -82,10 +82,16 @@ h2 .title-group {
 
 }
 
-.image-logo {
-    padding: 20px;
+.image-logo-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adiciona um espaço acima da imagem, ajuste conforme necessário */
+}
 
-
+.image-logo {
+    width: auto; /* Ajusta automaticamente a largura, mantendo as proporções */
+    height: 20px; /* Altura fixa para a imagem */
+    max-width: 100%; /* Garante que a largura máxima não exceda o contêiner */
+    object-fit: contain; /* Mantém as proporções da imagem */
 }
