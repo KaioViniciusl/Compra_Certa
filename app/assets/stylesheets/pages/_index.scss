@@ -4,11 +4,10 @@
 @import "newgroups";
 @import "indexgroups";
 @import "showgroups";
+@import "editgroups";
 
 
-.image-navbar {
-    width: auto; /* Ajusta automaticamente a largura, mantendo as proporções */
-    height: 100px; /* Altura fixa para a imagem */
-    max-width: 100%; /* Garante que a largura máxima não exceda o contêiner */
-    object-fit: contain; /* Mantém as proporções da imagem */
+.image-logo-container {
+    margin-bottom: 50px;
+
 }

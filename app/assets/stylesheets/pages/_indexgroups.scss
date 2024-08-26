@@ -90,8 +90,9 @@ h2 .title-group {
 }
 
 .image-logo {
-    width: auto; /* Ajusta automaticamente a largura, mantendo as proporções */
-    height: 20px; /* Altura fixa para a imagem */
-    max-width: 100%; /* Garante que a largura máxima não exceda o contêiner */
-    object-fit: contain; /* Mantém as proporções da imagem */
+    width: auto; 
+    height: 20px; 
+    max-width: 100%; 
+    object-fit: contain;
+    
 }
