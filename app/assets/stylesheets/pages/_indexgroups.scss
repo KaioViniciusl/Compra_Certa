@@ -8,6 +8,10 @@ body {
     height: 100vh; /* Garante que o corpo da página cubra a altura total da janela */
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .group-list {
     display: flex;
     flex-direction: column;
@@ -17,10 +21,14 @@ body {
 .group-item {
     display: flex;
     align-items: center;
-
     background: #dde7ff;
     border-radius: 8px;
     color: #0B3234;
+}
+
+.group-item a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .group-image {
@@ -34,7 +42,7 @@ body {
 
 .group-details {
     flex-grow: 1; /* Permite que o nome do grupo use o espaço restante */
-   
+
 }
 
 .group-details h3 {
@@ -48,21 +56,21 @@ body {
 }
 
 .create-group-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 20px;
-    font-weight: bold;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s;
 }
 
 .create-group-button:hover {
-    background-color: #858585;
-    color: rgb(0, 0, 0);
+  background-color: rgba(0, 123, 255, 0.8);
+  color: white;
 }
 
-
-h2 {
+h2 .title-group {
     margin-bottom: 20px;
 }
 
@@ -79,5 +87,5 @@ h2 {
     display: flex;
     justify-content: center;
 
-    
+
 }

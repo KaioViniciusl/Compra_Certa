@@ -1,9 +1,13 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_group, only: [:edit, :update, :destroy]
+  before_action :set_group, only: [:edit, :update, :destroy, :show]
+  before_action :authorize_group, only: [:edit, :update, :destroy, :show]
 
   def index
     @groups = policy_scope(Group)
+  end
+
+  def show
   end
 
   def new
