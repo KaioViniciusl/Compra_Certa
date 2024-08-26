@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-4">
+      <div class="edit-group-modal">
+        <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição</h3>
+        <hr>
+
+        <%= simple_form_for @group, url: group_path(@group), method: :patch, html: { data: { controller: "editGroup" } } do |f| %>
+            <div class="text-center mb-4">
+                <div class="edit-group-photo mb-3" id="edit-group-photo-container">
+                    <% if @group.photo.attached? %>
+                        <%= image_tag @group.photo, class: "edit-group-image" %>
+                    <% else %>
+                        <%= image_tag "placeholder-image.png", class: "edit-group-image" %>
+                    <% end %>
+                </div>
+                <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
+            </div>
+
+            <div class="form-group position-relative">
+                <%= f.input :name_group, label: false, input_html: { placeholder: "Nome do Grupo", class: "edit-group-input" } %>
+                <i class="edit-input-icon">✎</i>
+            </div>
+
+            <div class="form-group position-relative">
+                <%= f.input :description_group, label: false, input_html: { placeholder: "Descrição do Grupo", class: "edit-group-input" } %>
+                <i class="edit-input-icon">✎</i>
+            </div>
+            <hr>
+
+            <div class="form-group mt-4">
+                <label for="member-email">Adicionar membro</label>
+                <input type="email" id="member-email" class="form-control group-input-edit" placeholder="Insira o email do usuário" data-invite-target="email" />
+                <button type="button" data-action="click->invite#addMember" class="btn btn-addmember-edit mt-2">Adicionar membro</button>
+            </div>
+
+            <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div>
+                <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
+
+                <%= f.button :submit, "Salvar Alterações", class: "btn btn-edit-save w-100" %>
+            </div>
+
+        <% end %>
+
+        <div class="edit-image-logo-container">
+            <%= image_tag("logo.png", class: "edit-image-logo") %>
+        </div>
+    </div>
+  </div>
+</div>

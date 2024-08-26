@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-4">
-            <div class="group-show-modal mt-5">
+            <div class="group-show-modal">
                 <div class="info-groups">
                     <% if @group.photo.attached? %>
                         <%= image_tag @group.photo, class: "group-image-large" %>
@@ -20,7 +20,7 @@
                                 <% if user.photo.attached? %>
                                 <%= image_tag user.photo, class: "member-photo" %>
                                 <% else %>
-                                <%= image_tag "placeholder-image.png", class: "member-photo" %> <!-- Imagem padrão caso o usuário não tenha foto -->
+                                <%= image_tag "placeholder-image.png", class: "member-photo" %> 
                                 <% end %>
                             </div>
                         <% end %>
