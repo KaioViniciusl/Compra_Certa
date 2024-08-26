@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-4">
+            <div class="group-show-modal mt-5">
+                <div class="info-groups">
+                    <% if @group.photo.attached? %>
+                        <%= image_tag @group.photo, class: "group-image-large" %>
+                    <% else %>
+                        <%= image_tag "placeholder-image.png", class: "group-image-large" %>
+                    <% end %>
+
+                    <h2><%= @group.name_group %></h2>
+                    <p><%= @group.description_group %></p>
+                </div>
+                <div class="group-members">
+                    <h4>Membros do Grupo</h4>
+                    <div class="members-list">
+                        <% @group.users.each do |user| %>
+                            <div class="member">
+                                <% if user.photo.attached? %>
+                                <%= image_tag user.photo, class: "member-photo" %>
+                                <% else %>
+                                <%= image_tag "placeholder-image.png", class: "member-photo" %> <!-- Imagem padrão caso o usuário não tenha foto -->
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+
+                <div class="group-actions">
+                    <%= link_to "Todas as Despesas", new_group_path, class: "btn btn-group-menu" %>
+                    <button id="copy-link-btn" class="btn btn-group-menu">Link do Grupo</button>
+                    <%= button_to "Finalizar Grupo", group_path(@group), method: :delete, data: { confirm: "Você tem certeza que deseja finalizar o grupo?" }, class: "btn btn-group-menu" %>
+                </div>
+                
+                <div class="btns-expenses">
+                    <%= link_to "Add Despesa", new_group_path, class: "btn btn-add-expense" %>
+                    <%= link_to "Add Pagamento", new_group_path, class: "btn btn-add-payment" %>
+                </div>
+
+                <div class="group-expenses">
+                    <% if @group.expenses.any? %> 
+                        <% @group.expenses.group_by(&:date).each do |date, expenses| %>
+                            <h3><%= date.strftime("%B %Y") %></h3> 
+                            <ul>
+                                <% expenses.each do |expense| %>
+                                    <li><%= expense.description %></li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+                    <% else %>
+                        <p>Nenhuma despesa adicionada ainda.</p>
+                    <% end %>
+                </div>
+                
+                <div class="group-observations">
+                    <h3>Observações</h3>
+                    <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |form| %>
+                        <%= form.text_area :observation, placeholder: "Adicione observações", rows: 5, class: "observation-area" %>
+                        <%= form.submit "Salvar Observações", class: "btn submit-btn" %>
+                    <% end %>
+                </div>
+
+            </div>
+
+            <div class="image-logo-container">
+                <%= image_tag("logo.png", class: "image-logo") %>
+            </div>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+

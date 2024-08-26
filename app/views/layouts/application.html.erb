@@ -15,7 +15,7 @@
       <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
         <div class="container">
           <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+            <%= image_tag("logo.png", class: "image-navbar") %>
           <% end %>
           <% if user_signed_in? %>
             <!-- Botão para abrir o offcanvas (visível apenas em mobile) -->
