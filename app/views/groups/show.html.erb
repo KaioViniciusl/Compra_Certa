@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-4">
+
+            <div class="group-show-modal">
+            
+
+                <% if @group.photo.attached? %>
+                    <%= image_tag @group.photo, class: "group-show-image" %>
+                <% else %>
+                    <%= image_tag "placeholder-image.png", class: "group-show-image" %>
+                <% end %>
+
+                <h2><%= @group.name_group %></h2>
+                <p><%= @group.description_group %></p>
+
+                
+
+                
+
+
+
+
+
+            </div>
+                
+
+            <div class="image-logo-container">
+                <%= image_tag("logo.png", class: "image-logo") %>
+            </div>
+
+        </div>
+    </div>
+</div>
