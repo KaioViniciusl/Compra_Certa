@@ -14,7 +14,6 @@
                 <p><%= @group.description_group %></p>
 
 
-                <h4>Membros do Grupo</h4>
                 <div class="group-show-members-list">
                     <% @group.users.each do |user| %>
                         <% if user.photo.attached? %>
