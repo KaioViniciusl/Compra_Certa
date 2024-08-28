@@ -4,7 +4,6 @@
 
             <div class="group-show-modal">
             
-
                 <% if @group.photo.attached? %>
                     <%= image_tag @group.photo, class: "group-show-image" %>
                 <% else %>
@@ -14,20 +13,54 @@
                 <h2><%= @group.name_group %></h2>
                 <p><%= @group.description_group %></p>
 
-                
 
-                
+                <h4>Membros do Grupo</h4>
+                <div class="group-show-members-list">
+                    <% @group.users.each do |user| %>
+                        <% if user.photo.attached? %>
+                            <%= image_tag user.photo, class: "group-show-member-photo" %>
+                        <% else %>
+                            <%= image_tag "placeholder-image.png", class: "group-show-member-photo" %>
+                        <% end %>
+                    <% end %>
+                </div>
 
+                <div class="group-show-actions">
+                    <%= link_to "Todas as Despesas", new_group_path, class: "btn btn-group-show-menu" %>
+                    <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
+                    <%= link_to "Excluir", group_path(@group),
+                            data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
+                            class: "btn btn-group-show-menu" %>
+                </div>
 
+                <div class="btns-group-show-expenses">
+                    <%= link_to "Add Despesa", new_group_path, class: "btn btn-group-show-add-expense" %>
+                    <%= link_to "Add Pagamento", new_group_path, class: "btn btn-group-show-add-payment" %>
+                </div>
 
+            </div>
 
+            <div class="group-show-expenses">
+                    
+                <p>Nenhuma despesa adicionada ainda.</p>
+        
+            </div>
 
+            <div class="group-show-observations">
+                <h3>Observações</h3>
+                <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |form| %>
+                    <%= form.text_area :observation, placeholder: "Adicione observações", rows: 5, class: "group-show-observation-area" %>
+                    <%= form.submit "Salvar Observações", class: "btn btn-group-show-observation" %>
+                <% end %>
             </div>
                 
 
             <div class="image-logo-container">
                 <%= image_tag("logo.png", class: "image-logo") %>
             </div>
+
+
+
 
         </div>
     </div>
