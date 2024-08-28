@@ -43,7 +43,8 @@ class GroupsController < ApplicationController
 
   def destroy
     authorize @group
-
+    
+    @group.user_groups.destroy_all
     @group.destroy
     redirect_to groups_path, notice: "Grupo: #{@group.name_group} foi deletado com sucesso."
   rescue Pundit::NotAuthorizedError
