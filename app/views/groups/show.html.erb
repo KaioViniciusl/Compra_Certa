@@ -3,7 +3,7 @@
         <div class="col-12 col-lg-4">
 
             <div class="group-show-modal">
-            
+
                 <% if @group.photo.attached? %>
                     <%= image_tag @group.photo, class: "group-show-image" %>
                 <% else %>
@@ -28,21 +28,34 @@
                     <%= link_to "Todas as Despesas", new_group_path, class: "btn btn-group-show-menu" %>
                     <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
                     <%= link_to "Excluir", group_path(@group),
-                            data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
-                            class: "btn btn-group-show-menu" %>
+                                data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
+                                class: "btn btn-group-show-menu" %>
                 </div>
 
                 <div class="btns-group-show-expenses">
-                    <%= link_to "Add Despesa", new_group_path, class: "btn btn-group-show-add-expense" %>
-                    <%= link_to "Add Pagamento", new_group_path, class: "btn btn-group-show-add-payment" %>
+                    <%= link_to "Add Despesa", new_group_expense_path(@group), class: "btn btn-group-show-add-expense" %>
+                    <%= link_to "Add Pagamento", new_group_expense_path(@group), class: "btn btn-group-show-add-payment" %>
                 </div>
 
             </div>
 
             <div class="group-show-expenses">
-                    
-                <p>Nenhuma despesa adicionada ainda.</p>
-        
+         <h4>Despesas do Grupo</h4>
+        <% if @expenses.any? %>
+          <ul>
+            <% @expenses.each do |expense| %>
+              <li>
+                <strong><%= expense.name_expense %></strong><br>
+                Descrição: <%= expense.description %><br>
+                Valor Total: <%= number_to_currency(expense.amount) %><br>
+                Data: <%= expense.date.strftime("%d/%m/%Y") %>
+                <%= link_to "Ver Despesa", group_expense_path(@group, expense) %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>Nenhuma despesa adicionada ainda.</p>
+        <% end %>
             </div>
 
             <div class="group-show-observations">
@@ -52,7 +65,7 @@
                     <%= form.submit "Salvar Observações", class: "btn btn-group-show-observation" %>
                 <% end %>
             </div>
-                
+
 
             <div class="image-logo-container">
                 <%= image_tag("logo.png", class: "image-logo") %>
