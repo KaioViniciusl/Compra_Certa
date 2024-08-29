@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Despesa: <%= @expense.name_expense %></h1>
+
+  <p><strong>Descrição:</strong> <%= @expense.description %></p>
+  <p><strong>Data:</strong> <%= @expense.date %></p>
+  <p><strong>Valor Total:</strong> <%= number_to_currency(@expense.amount) %></p>
+
+  <h2>Débitos e Créditos</h2>
+  <% if @debts.any? %>
+    <ul>
+      <% @debts.each do |user, owed_amount| %>
+        <% if owed_amount > 0 %>
+          <li><%= number_to_currency(owed_amount) %> <strong>a receber</strong> de <%= user.name %></li>
+        <% else %>
+          <li><%= number_to_currency(-owed_amount) %> <strong>a pagar</strong> para <%= user.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Todos os usuários estão em equilíbrio.</p>
+  <% end %>
+</div>
