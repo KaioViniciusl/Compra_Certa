@@ -4,7 +4,7 @@
       <div class="modal-groups">
         <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
         <br>
-        
+
         <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite" } } do |f| %>
           <div class="text-center mb-4">
             <div class="group-photo-placeholder" id="group-photo-container">
@@ -29,14 +29,14 @@
             <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-2">Adicionar membro</button>
           </div>
 
-          <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div> <!-- Adiciona data-target aqui -->
+          <div id="added-members" data-invite-target="addedMembers" class="mt-4 mb-3"></div> <!-- Adiciona data-target aqui -->
           <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %> <!-- Adiciona data-target aqui -->
 
           <%= f.button :submit, "Salvar e Criar", class: "btn btn-secondary w-100" %>
         <% end %>
       </div>
       <div class="image-logo">
-          <%= image_tag("logo.png")%>
+          <%= image_tag("logo.png") %>
       </div>
     </div>
   </div>
