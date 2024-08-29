@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_22_023917) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_29_230335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_023917) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "amount", precision: 10, scale: 2
     t.index ["group_id"], name: "index_expenses_on_group_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
@@ -94,6 +95,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_22_023917) do
     t.string "user_mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "credit"
+    t.float "debit"
     t.index ["group_id"], name: "index_user_groups_on_group_id"
     t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
