@@ -1,29 +1,38 @@
 <div class="container">
-  <h1>Nova Despesa</h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-4">
+      <div class="group-show-modal">
 
-  <%= simple_form_for([@group, @expense]) do |form| %>
-    <div class="form-inputs">
-      <%= form.input :name_expense, label: "Nome da Despesa" %>
-      <%= form.input :description, as: :text, label: "Descrição" %>
-      <%= form.input :date, as: :date, label: "Data" %>
-      <%= form.input :amount, step: "0.01", label: "Valor Total" %>
+        <h2 class="text-align: right;">Nova Despesa</h2>
+
+        <%= simple_form_for([@group, @expense]) do |form| %>
+          <div class="form-inputs">
+            <%= form.input :name_expense, label: "Nome da Despesa" %>
+            <%= form.input :description, as: :text, label: "Descrição" %>
+            <%= form.input :date, as: :date, label: "Data" %>
+            <%= form.input :amount, step: "0.01", label: "Valor Total" %>
+          </div>
+
+          <h4>Compartilhamento:</h4>
+          <div class="form-inputs">
+            <% @users.each do |user| %>
+
+              <div class="user-share">
+                <%= check_box_tag "expense_shares[#{user.id}][selected]", 1, false, id: "user_share_#{user.id}", class: "share-checkbox" %>
+                <%= label_tag "user_share_#{user.id}", user.email %>
+                <%= text_field_tag "expense_shares[#{user.id}][amount]", nil, class: "share-amount", placeholder: "Insira um valor, ex: 10" %>
+              </div>
+
+            <% end %>
+          </div>
+
+          <div class="form-actions mt-3">
+            <%= form.submit "Criar Despesa", class: "btn btn-primary" %>
+          </div>
+
+        <% end %>
+
+      </div>
     </div>
-
-    <h4>Compartilhamento:</h4>
-    <div class="form-inputs">
-      <% @users.each do |user| %>
-        <div class="user-share">
-          <%= check_box_tag "expense_shares[#{user.id}][selected]", 1, false, id: "user_share_#{user.id}", class: "share-checkbox" %>
-          <%= label_tag "user_share_#{user.id}", user.email %>
-
-          <%= text_field_tag "expense_shares[#{user.id}][amount]", nil, class: "share-amount", placeholder: "Insira um valor, ex: 10" %>
-
-        </div>
-      <% end %>
-    </div>
-
-    <div class="form-actions">
-      <%= form.submit "Criar Despesa", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>
