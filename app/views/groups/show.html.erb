@@ -41,7 +41,6 @@
 
         <div class="group-show-panel" data-controller="modal">
           <div style="display: flex; align-items: center; width: 100%;">
-            <!-- Botão para abrir o modal -->
             <h4 style="flex-grow: 1;" class="mt-2 ps-2">Painel</h4>
             <button class="btn btn-group-show-menu" data-action="click->modal#toggle">Ver detalhes</button>
           </div>
@@ -54,13 +53,11 @@
             </div>
             <hr>
           </div>
-        <!-- Modal -->
         <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
           <div class="modal-content">
             <span class="close-button" data-action="click->modal#close">&times;</span>
             <h4 class="mb-4">Seu Painel de Saldo</h4>
             <div>
-              <!-- Conteúdo do modal -->
               <h5>SUAS DÍVIDAS</h5>
               <ul>
                 <% @group_balances.each do |user, balance| %>
