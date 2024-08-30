@@ -1,3 +1,11 @@
+.group-show-modal-invisivel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
 .group-show-modal {
     display: flex;
     flex-direction: column;
@@ -129,8 +137,8 @@
 }
 
 .vertical-line {
-  width: 1px; /* Largura da linha */
-  background-color: black; /* Cor da linha */
+  width: 1px;
+  background-color: black;
 }
 
 .hidden {
@@ -157,33 +165,31 @@
 
 .group-show-expense-item {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    width: 100%;
 
-
-
- 
 }
 
+
 .group-show-number-expense {
-    background-color: #F1502C;
-    color: white;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 15px;
-    
-
+    background-color: #ff2f00;
+    color: white;
+    margin-bottom: 8px;
 }
 
 .group-show-name-expense {
-    background-color: #FBDDD6;
-    color: rgb(0, 0, 0);
     padding: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-
+    border-radius: 10px;
+    background-color: #FBDDD6;
+    color: black;
+    width: 280px;
+    margin-bottom: 8px;
 }
+
+
 
 .group-show-observations {
     margin-top: 20px;
