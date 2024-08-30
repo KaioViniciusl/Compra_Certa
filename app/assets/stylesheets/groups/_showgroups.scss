@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 20px;
 }
@@ -99,10 +100,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%; 
     padding: 10px;
     border-radius: 20px;    
+}
+
+.group-show-expense-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+
+
+
+ 
+}
+
+.group-show-number-expense {
+    background-color: #F1502C;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    
+
+}
+
+.group-show-name-expense {
+    background-color: #FBDDD6;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+
 }
 
 .group-show-observations {
