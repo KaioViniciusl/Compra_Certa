@@ -39,6 +39,50 @@
 
             </div>
 
+        <div class="group-show-panel" data-controller="modal">
+          <div style="display: flex; align-items: center; width: 100%;">
+            <!-- Botão para abrir o modal -->
+            <h4 style="flex-grow: 1;" class="mt-2 ps-2">Painel</h4>
+            <button class="btn btn-group-show-menu" data-action="click->modal#toggle">Ver detalhes</button>
+          </div>
+          <div class="container" my-4>
+            <hr>
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 15px; margin-right: 25px;">Suas dívidas<br><%= number_to_currency(@total_debitos) %></span>
+              <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
+              <span style="font-size: 15px; margin-left: 25px;">Devem a você<br><%= number_to_currency(@total_creditos) %></span>
+            </div>
+            <hr>
+          </div>
+        <!-- Modal -->
+        <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
+          <div class="modal-content">
+            <span class="close-button" data-action="click->modal#close">&times;</span>
+            <h4 class="mb-4">Seu Painel de Saldo</h4>
+            <div>
+              <!-- Conteúdo do modal -->
+              <h5>SUAS DÍVIDAS</h5>
+              <ul>
+                <% @group_balances.each do |user, balance| %>
+                  <% if balance[:debit] > 0 %>
+                    <li>Você deve BRL <%= number_to_currency(balance[:debit]) %> para <%= user.name %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+
+              <h5>DEVEM A VOCÊ</h5>
+              <ul>
+                <% @group_balances.each do |user, balance| %>
+                  <% if balance[:credit] > 0 %>
+                    <li><%= user.name %> deve BRL <%= number_to_currency(balance[:credit]) %> para você</li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+
             <div class="group-show-expenses">
          <h4>Despesas do Grupo</h4>
         <% if @expenses.any? %>
