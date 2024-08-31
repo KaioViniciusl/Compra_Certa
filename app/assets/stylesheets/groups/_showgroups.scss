@@ -2,18 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
+
+.group-show-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 16px;
+}
 
 .group-show-modal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 5px;
+    padding: 16px;
 }
 
 .group-show-image {
@@ -104,14 +112,19 @@
 }
 
 .group-show-panel {
-  margin-top: 20px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
   width: 100%;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.text-group-show {
+  font-size: 12px;
+  margin: 0px;
 }
 
 .modal {
@@ -153,51 +166,89 @@
 }
 
 .group-show-expenses {
-    margin-top: 20px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     background-color: white;
-    width: 100%; 
-    padding: 10px;
-    border-radius: 20px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 5px;
 }
 
 .group-show-expense-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #FBDDD6;
+  border-radius: 5px;
+  margin-bottom: 16px;
 }
 
+.group-pattern-lightgreen {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #C9E9E1;
+  color: #104749;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+.group-pattern-darkgreen {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #4FD7B7;
+  color: white;
+  font-size: 24px;
+}
+
+.group-pattern-lightblue {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #DDE7FF;
+  color: #104749;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+.group-pattern-darkblue {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #5487FC;
+  color: white;
+  font-size: 24px;
+}
 
 .group-show-number-expense {
-    padding: 10px;
-    border-radius: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
     background-color: #ff2f00;
     color: white;
-    margin-bottom: 8px;
+    font-size: 24px;
 }
 
 .group-show-name-expense {
     padding: 10px;
-    border-radius: 10px;
-    background-color: #FBDDD6;
+    border-radius: 5px;
     color: black;
-    width: 280px;
-    margin-bottom: 8px;
 }
 
-
+.expense-link {
+  width: 100%;
+}
 
 .group-show-observations {
     margin-top: 20px;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     padding: 15px;
-    border-radius: 20px;
-    margin-top: 30px;
+    border-radius: 5px;
+    margin-top: 16px;
 }
 
 .group-show-observation-area {

@@ -2,7 +2,7 @@
     <div class="row justify-content-center group-show-modal-invisivel">
         <div class="col-12 col-lg-6">
 
-            <div class="group-show-modal">
+            <div class="group-show-modal-header">
 
                 <% if @group.photo.attached? %>
                     <%= image_tag @group.photo, class: "group-show-image" %>
@@ -50,10 +50,16 @@
                 </div>
                 <div class="container" my-4>
                     <hr>
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <span style="font-size: 15px; margin-right: 25px;">Suas dívidas<br><%= number_to_currency(@total_debitos) %></span>
+                    <div style="display: flex; align-items: center; justify-content: space-around;">
+                      <div class="d-flex flex-column align-items-center">
+                        <p class="text-group-show">Suas dívidas</p>
+                        <p><strong><%= number_to_currency(@total_debitos) %></strong></p>
+                      </div>
                         <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
-                        <span style="font-size: 15px; margin-left: 25px;">Devem a você<br><%= number_to_currency(@total_creditos) %></span>
+                      <div class="d-flex flex-column align-items-center">
+                        <p class="text-group-show">Devem a você</p>
+                        <p><strong><%= number_to_currency(@total_creditos) %></strong></p>
+                      </div>
                     </div>
                     <hr>
                 </div>
@@ -86,31 +92,27 @@
 
             <div class="group-show-expenses">
                 <% if @expenses.any? %>
-                    <% counter = 0 %>
                     <% @expenses.group_by { |expense| expense.date.strftime("%B %Y") }.each do |month, expenses| %>
-                        <h5><%= month %></h5> 
+                        <h4><%= month %></h4>
                         <% expenses.each do |expense| %>
-                            
-                            <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
-                                <% counter += 1 %>
-                                <div class="group-show-expense-item">
-                                    <div class="group-show-number-expense">
-                                        <strong><%= "#{counter.to_s.rjust(2, '0')}" %></strong>
-                                    </div>
 
-                                    <div class="group-show-name-expense"
-                                        <strong><%= expense.name_expense %></strong>
-                                    </div>
-                                </div>
-                            <% end %>
-                            
+                          <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
+                            <div class="group-show-expense-item">
+
+                              <div class="group-show-number-expense">
+                                <%= "#{expense.date.strftime("%d").rjust(2, '0')}" %>
+                              </div>
+
+                              <div class="group-show-name-expense">
+                                <%= expense.name_expense %>
+                              </div>
+                            </div>
+                          <% end %>
+
                         <% end %>
-                        
+
                     <% end %>
-            
-                         
-        
-                
+
                 <% else %>
                     <p>Nenhuma despesa adicionada ainda.</p>
                 <% end %>
@@ -120,7 +122,7 @@
                 <h3>Observações</h3>
                 <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |form| %>
                     <%= form.text_area :observation, placeholder: "Adicione observações", rows: 5, class: "group-show-observation-area" %>
-                    <%= form.submit "Salvar Observações", class: "btn btn-group-show-observation" %>
+                    <%= form.submit "ENVIAR", class: "btn btn-group-show-observation" %>
                 <% end %>
             </div>
 

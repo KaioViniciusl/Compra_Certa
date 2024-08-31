@@ -1,15 +1,24 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
-      <div class="group-show-modal">
+      <div class="group-form-modal">
 
-        <h2>Adicionar despesas</h2>
+        <h4 class="text-start">Adicionar despesas</h4>
         <%= simple_form_for([@group, @expense]) do |form| %>
           <div class="form-inputs">
-            <%= form.input :name_expense, label: "Nome da despesa:" %>
+            <%= form.input :name_expense, label: false, placeholder: "Nome da despesa", input_html: {class: "input-new-expense"} %>
             <%= form.input :description, as: :text, label: "Insira uma descrição:" %>
             <%= form.input :date, as: :date, label: "Data" %>
-            <%= form.input :amount, step: "0.01", label: "Valor total da despesa:" %>
+
+            <div class="group-pattern-lightblue">
+              <div class="group-pattern-darkblue">
+                <%= form.label "R$" %>
+              </div>
+              <div class="mb-0">
+                <%= form.input :amount, step: "0.01", label: false, input_html: {class: "input-new-expense"} %>
+              </div>
+            </div>
+
           </div>
 
           <p>Quem participou da despesa:</p>
@@ -18,7 +27,7 @@
 
               <div class="user-share">
                 <%= check_box_tag "expense_shares[#{user.id}][selected]", 1, false, id: "user_share_#{user.id}", class: "share-checkbox" %>
-                <%= label_tag "user_share_#{user.id}", user.email %>
+                <%= label_tag "user_share_#{user.id}", user.name %>
                 <%= text_field_tag "expense_shares[#{user.id}][amount]", nil, class: "share-amount", placeholder: "R$0,00" %>
               </div>
 
