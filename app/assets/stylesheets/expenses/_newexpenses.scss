@@ -33,12 +33,12 @@ p {
 
 .input-new-expense {
   width: 100%;
-  height: 46px;
+  height: 50px;
   background-color: #DDE7FF;
   color: #0B3234;
   border-radius: 5px;
   &:focus {
-    background-color: transparent;
+    background-color: #DDE7FF;
     border-color: transparent;
     box-shadow: none;
     font-family: "Ubuntu", "sans-serif";
@@ -47,4 +47,39 @@ p {
 
 .expense_amount {
   margin-bottom: 0 !important;
+}
+
+.share-amount {
+  width: 100%;
+  height: 26px;
+  background-color: white;
+  color: #0B3234;
+  border-radius: 5px;
+  border: 0.5px solid #DDE7FF;
+  &:focus {
+    border-color: #DDE7FF;
+    box-shadow: none;
+    font-family: "Ubuntu", "sans-serif";
+  }
+  &::placeholder {
+    padding-left: 10px;
+    font-weight: 600;
+  }
+}
+
+.input-checkbox-form-expense {
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  margin-right: 16px;
+  &:checked {
+    background-color: #2b66f0;
+    }
+}
+
+.name-form-expenses {
+  font-size: 18px;
+  font-weight: 400;
 }
