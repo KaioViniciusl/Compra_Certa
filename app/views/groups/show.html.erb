@@ -53,12 +53,12 @@
                     <div style="display: flex; align-items: center; justify-content: space-around;">
                       <div class="d-flex flex-column align-items-center">
                         <p class="text-group-show">Suas dívidas</p>
-                        <p><strong><%= number_to_currency(@total_debitos) %></strong></p>
+                        <p><strong><%= number_to_currency(@total_debitos, unit: "R$", separator: ",", delimiter: ".") %></strong></p>
                       </div>
                         <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
                       <div class="d-flex flex-column align-items-center">
                         <p class="text-group-show">Devem a você</p>
-                        <p><strong><%= number_to_currency(@total_creditos) %></strong></p>
+                        <p><strong><%= number_to_currency(@total_creditos, unit: "R$", separator: ",", delimiter: ".") %></strong></p>
                       </div>
                     </div>
                     <hr>
@@ -66,25 +66,40 @@
                 <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
                     <div class="modal-content">
                         <span class="close-button" data-action="click->modal#close">&times;</span>
-                        <h4 class="mb-4">Seu Painel de Saldo</h4>
+
+
                         <div>
                             <h5>SUAS DÍVIDAS</h5>
-                            <ul>
-                                <% @group_balances.each do |user, balance| %>
+                           
+                            <% @group_balances.each do |user, balance| %>
                                 <% if balance[:debit] > 0 %>
-                                    <li>Você deve BRL <%= number_to_currency(balance[:debit]) %> para <%= user.name %></li>
+                                    <div class="group-show-campo-lightred">
+                                        <div class="group-show-campo-darkred">
+                                            <p class="text-brl"> R$ <p>
+                                        </div>
+                                        <div class="mb-0">
+                                            <p>Você deve <%= number_to_currency(balance[:debit], unit: "R$", separator: ",", delimiter: ".") %> para <%= user.name %><p>
+                                        </div>
+                                    </div>
                                 <% end %>
-                                <% end %>
-                            </ul>
+                            <% end %>
+                        
 
                             <h5>DEVEM A VOCÊ</h5>
-                            <ul>
-                                <% @group_balances.each do |user, balance| %>
+                           
+                            <% @group_balances.each do |user, balance| %>
                                 <% if balance[:credit] > 0 %>
-                                    <li><%= user.name %> deve BRL <%= number_to_currency(balance[:credit]) %> para você</li>
+                                    <div class="group-show-campo-lightblue">
+                                        <div class="group-show-campo-darkblue">
+                                            <p class="text-brl"> R$ <p>
+                                        </div>
+                                        <div class="mb-0">
+                                            <%= user.name %> deve <%= number_to_currency(balance[:credit], unit: "R$", separator: ",", delimiter: ".") %> para você
+                                        </div>
+                                    </div>
                                 <% end %>
-                                <% end %>
-                            </ul>
+                            <% end %>
+                            
                         </div>
                     </div>
                 </div>
