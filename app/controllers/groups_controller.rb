@@ -9,14 +9,7 @@ class GroupsController < ApplicationController
 
   def show
     @expenses = @group.expenses
-    @user = current_user
-    @group_balances = calculate_group_balances(@user)
-    @total_balance = @user.total_balance
-
-    @total_debitos = @group_balances.values.sum { |balance| [balance[:debit], 0].max }
-    @total_creditos = @group_balances.values.sum { |balance| [balance[:credit], 0].max }
-
-    @total_balance = @user.total_balance
+    @user_balance = @group.calculate_balance_by_user(current_user)
   end
 
   def new
@@ -83,11 +76,16 @@ class GroupsController < ApplicationController
   end
 
   def create_user_group_for_existing_user(user)
-    user_group = UserGroup.find_by(user_id: user.id, group_id: @group.id, user_mail: user.email)
-    return if user_group
+    user_group = UserGroup.find_or_initialize_by(user: user, group: @group, user_mail: user.email)
 
-    UserGroup.create(user: user, group: @group, invite_accepted: user == current_user, user_mail: user.email)
-    UserMailer.invite_email(@group.id, user.email, user).deliver_now if user != current_user
+    if user_group.new_record?
+      user_group.invite_accepted = (user == current_user)
+      user_group.save
+    end
+
+    if user != current_user
+      UserMailer.invite_email(@group.id, user.email, user).deliver_now
+    end
   end
 
   def create_user_group_for_new_email(email)
