@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     email = email
 
     if @user.present?
-      @url = accept_invite_group_url(@group.id)
+      @url = group_url(@group)
     else
       @url = new_user_registration_url
     end
@@ -17,7 +17,15 @@ class UserMailer < ApplicationMailer
 
   private
 
+  def group_url(group)
+    Rails.application.routes.url_helpers.group_url(group, default_url_options)
+  end
+
   def default_url_options
-    { host: "localhost", port: 3000 } # Atualize com o host e a porta corretos
+    if Rails.env == "production"
+      { host: "contacerta-6950efec6923.herokuapp.com" }
+    else
+      { host: "localhost", port: 3000 }
+    end
   end
 end

@@ -9,14 +9,7 @@ class GroupsController < ApplicationController
 
   def show
     @expenses = @group.expenses
-    @user = current_user
-    @group_balances = calculate_group_balances(@user)
-    @total_balance = @user.total_balance
-
-    @total_debitos = @group_balances.values.sum { |balance| [balance[:debit], 0].max }
-    @total_creditos = @group_balances.values.sum { |balance| [balance[:credit], 0].max }
-
-    @total_balance = @user.total_balance
+    @user_balance = @group.calculate_balance_by_user(current_user)
   end
 
   def new
