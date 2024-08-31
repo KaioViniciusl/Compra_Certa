@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-4">
+    <div class="row justify-content-center group-show-modal-invisivel">
+        <div class="col-12 col-lg-6">
 
             <div class="group-show-modal">
 
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="group-show-actions">
-                    <%= link_to "Todas as Despesas", new_group_path, class: "btn btn-group-show-menu" %>
+                    <%= link_to "Editar Grupo", edit_group_path, class: "btn btn-group-show-menu" %>
                     <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
                     <%= link_to "Excluir", group_path(@group),
                                 data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
@@ -38,24 +38,82 @@
                 </div>
 
             </div>
+        </div>
+
+        <div class="col-10 col-lg-4">
+
+
+            <div class="group-show-panel" data-controller="modal">
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <h4 style="flex-grow: 1;" class="mt-2 ps-2">Painel</h4>
+                    <button class="btn btn-group-show-menu" data-action="click->modal#toggle">Ver detalhes</button>
+                </div>
+                <div class="container" my-4>
+                    <hr>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 15px; margin-right: 25px;">Suas dívidas<br><%= number_to_currency(@total_debitos) %></span>
+                        <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
+                        <span style="font-size: 15px; margin-left: 25px;">Devem a você<br><%= number_to_currency(@total_creditos) %></span>
+                    </div>
+                    <hr>
+                </div>
+                <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
+                    <div class="modal-content">
+                        <span class="close-button" data-action="click->modal#close">&times;</span>
+                        <h4 class="mb-4">Seu Painel de Saldo</h4>
+                        <div>
+                            <h5>SUAS DÍVIDAS</h5>
+                            <ul>
+                                <% @group_balances.each do |user, balance| %>
+                                <% if balance[:debit] > 0 %>
+                                    <li>Você deve BRL <%= number_to_currency(balance[:debit]) %> para <%= user.name %></li>
+                                <% end %>
+                                <% end %>
+                            </ul>
+
+                            <h5>DEVEM A VOCÊ</h5>
+                            <ul>
+                                <% @group_balances.each do |user, balance| %>
+                                <% if balance[:credit] > 0 %>
+                                    <li><%= user.name %> deve BRL <%= number_to_currency(balance[:credit]) %> para você</li>
+                                <% end %>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="group-show-expenses">
-         <h4>Despesas do Grupo</h4>
-        <% if @expenses.any? %>
-          <ul>
-            <% @expenses.each do |expense| %>
-              <li>
-                <strong><%= expense.name_expense %></strong><br>
-                Descrição: <%= expense.description %><br>
-                Valor Total: <%= number_to_currency(expense.amount) %><br>
-                Data: <%= expense.date.strftime("%d/%m/%Y") %>
-                <%= link_to "Ver Despesa", group_expense_path(@group, expense) %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>Nenhuma despesa adicionada ainda.</p>
-        <% end %>
+                <% if @expenses.any? %>
+                    <% counter = 0 %>
+                    <% @expenses.group_by { |expense| expense.date.strftime("%B %Y") }.each do |month, expenses| %>
+                        <h5><%= month %></h5> 
+                        <% expenses.each do |expense| %>
+                            
+                            <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
+                                <% counter += 1 %>
+                                <div class="group-show-expense-item">
+                                    <div class="group-show-number-expense">
+                                        <strong><%= "#{counter.to_s.rjust(2, '0')}" %></strong>
+                                    </div>
+
+                                    <div class="group-show-name-expense"
+                                        <strong><%= expense.name_expense %></strong>
+                                    </div>
+                                </div>
+                            <% end %>
+                            
+                        <% end %>
+                        
+                    <% end %>
+            
+                         
+        
+                
+                <% else %>
+                    <p>Nenhuma despesa adicionada ainda.</p>
+                <% end %>
             </div>
 
             <div class="group-show-observations">

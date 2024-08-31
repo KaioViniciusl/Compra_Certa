@@ -1,3 +1,38 @@
-<h1>Despesas</h1>
+<div class="container">
+  <h1>Todas as Despesas</h1>
+  <hr>
 
-<%= link_to "Nova Despesas", new_group_expense_path(@group) %>
+  <% @expenses.group_by { |expense| [expense.date.year, expense.date.month] }.each do |(year, month), expenses| %>
+    <h2><%= "#{Date::MONTHNAMES[month]} #{year}" %></h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Data</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% expenses.each do |expense| %>
+          <tr>
+            <td><%= expense.name_expense %></td>
+            <td><%= expense.description %></td>
+            <td><%= expense.date.strftime("%d/%m/%Y") %></td>
+            <td><%= number_to_currency(expense.amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <h2>Crédito e Débito por Usuário</h2>
+  <% @user_balances.each do |user, balance| %>
+    <h3><%= user.name %></h3>
+    <p>
+      <%= "Você deve #{number_to_currency(balance[:debit])} para #{user.name}" if balance[:debit] > 0 %>
+      <%= "Você tem um crédito de #{number_to_currency(balance[:credit])} com #{user.name}" if balance[:credit] > 0 %>
+    </p>
+  <% end %>
+</div>

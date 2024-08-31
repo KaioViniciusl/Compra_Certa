@@ -9,6 +9,14 @@ class GroupsController < ApplicationController
 
   def show
     @expenses = @group.expenses
+    @user = current_user
+    @group_balances = calculate_group_balances(@user)
+    @total_balance = @user.total_balance
+
+    @total_debitos = @group_balances.values.sum { |balance| [balance[:debit], 0].max }
+    @total_creditos = @group_balances.values.sum { |balance| [balance[:credit], 0].max }
+
+    @total_balance = @user.total_balance
   end
 
   def new
@@ -89,5 +97,24 @@ class GroupsController < ApplicationController
 
   def authorize_group
     authorize @group
+  end
+
+  def calculate_group_balances(user)
+    balances = Hash.new { |hash, key| hash[key] = { credit: 0, debit: 0 } }
+
+    @group.expenses.each do |expense|
+      total_amount = expense.amount
+      total_shares = expense.expense_shares.count
+      per_user_amount = total_amount / total_shares.to_f
+
+      expense.expense_shares.each do |share|
+        user_balance = balances[share.user]
+
+        user_balance[:debit] += (per_user_amount - share.share_amount) || 0
+        user_balance[:credit] += (share.share_amount - per_user_amount) || 0
+      end
+    end
+
+    balances
   end
 end
