@@ -12,14 +12,14 @@
             <%= form.input :amount, step: "0.01", label: "Valor total da despesa:" %>
           </div>
 
-          <h4>Compartilhamento:</h4>
+          <p>Quem participou da despesa:</p>
           <div class="form-inputs">
             <% @users.each do |user| %>
 
               <div class="user-share">
                 <%= check_box_tag "expense_shares[#{user.id}][selected]", 1, false, id: "user_share_#{user.id}", class: "share-checkbox" %>
                 <%= label_tag "user_share_#{user.id}", user.email %>
-                <%= text_field_tag "expense_shares[#{user.id}][amount]", nil, class: "share-amount", placeholder: "R$ adicione quanto seu amigo pagou" %>
+                <%= text_field_tag "expense_shares[#{user.id}][amount]", nil, class: "share-amount", placeholder: "R$0,00" %>
               </div>
 
             <% end %>
