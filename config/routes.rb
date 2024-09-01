@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :expenses
+    resources :expense_payers, only: [:new, :create]
   end
 
   # Outras rotas
