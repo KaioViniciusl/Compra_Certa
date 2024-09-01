@@ -5,6 +5,8 @@ class UserGroup < ApplicationRecord
   validates :invite_accepted, inclusion: { in: [true, false] }
 
   def update_credit_and_debit
+    return unless user
+    
     total_amount = group.expenses.sum(:amount)
     total_users = group.users.count
     per_person_amount = total_amount / total_users.to_f
