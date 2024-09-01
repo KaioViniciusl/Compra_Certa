@@ -5,33 +5,30 @@
 
         <div class="container-show-expense">
           <h1><%= @expense.name_expense %></h1>
-          <p><strong></strong> <%= number_to_currency(@expense.amount, unit: "R$", separator: ",", delimiter: ".") %></p>
+          <p><strong>Valor:</strong> <%= number_to_currency(@expense.amount, unit: "R$", separator: ",", delimiter: ".") %></p>
 
           <p><strong>Descrição:</strong> <%= @expense.description %></p>
-          <p><strong>Adicionado em </strong> <%= @expense.date %></p>
+          <p><strong>Adicionado em:</strong> <%= @expense.date %></p>
 
           <hr>
-          
 
           <h2>Débitos e Créditos</h2>
           <% if @debts.any? %>
-            <ul>
-              <% @debts.each do |user, owed_amount| %>
-                <% if owed_amount > 0 %>
-                  <li><%= number_to_currency(owed_amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a receber</strong> de <%= user.name %></li>
+            <% @debts.each do |user_owing, user_owed_hash| %>
+              <% user_owed_hash.each do |user_owed, amount| %>
+                <% if amount > 0 %>
+                  <li><%= number_to_currency(amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a receber</strong> de <%= user_owed.name %></li>
                 <% else %>
-                  <li><%= number_to_currency(-owed_amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a pagar</strong> para <%= user.name %></li>
+                  <li><%= number_to_currency(-amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a pagar</strong> para <%= user_owed.name %></li>
                 <% end %>
               <% end %>
-            </ul>
+            <% end %>
           <% else %>
             <p>Todos os usuários estão em equilíbrio.</p>
           <% end %>
 
         </div>
       </div>
-
-           
     </div>
   </div>
 </div>

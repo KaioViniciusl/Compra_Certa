@@ -37,7 +37,7 @@ class ExpensesController < ApplicationController
   end
 
   def show
-    @debts = @expense.calculate_debts
+    @debts = @group.calculate_owed_amounts_with_payments
   end
 
   def destroy
