@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_01_193936) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_02_013645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_193936) do
   end
 
   create_table "expense_payers", force: :cascade do |t|
-    t.float "paid_amount"
+    t.decimal "paid_amount", precision: 10, scale: 2, default: "0.0"
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.bigint "receiver_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_193936) do
   end
 
   create_table "expense_shares", force: :cascade do |t|
-    t.float "share_amount"
+    t.decimal "share_amount", precision: 10, scale: 2, default: "0.0"
     t.string "category"
     t.bigint "user_id", null: false
     t.bigint "expense_id", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_193936) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "amount", precision: 10, scale: 2
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0"
     t.index ["group_id"], name: "index_expenses_on_group_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
@@ -96,8 +96,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_01_193936) do
     t.string "user_mail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "credit"
-    t.float "debit"
     t.index ["group_id"], name: "index_user_groups_on_group_id"
     t.index ["user_id"], name: "index_user_groups_on_user_id"
   end

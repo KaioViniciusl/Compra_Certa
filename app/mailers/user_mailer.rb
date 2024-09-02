@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "no-reply@example.com"
+  default from: "contacertawebdev@gmail.com"
 
   def invite_email(group_id, email, user = nil)
     @group = Group.find(group_id)
