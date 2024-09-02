@@ -12,6 +12,10 @@ a {
   text-decoration: none !important;
 }
 
+hr {
+  opacity: unset !important;
+}
+
 .group-list {
     display: flex;
     flex-direction: column;
