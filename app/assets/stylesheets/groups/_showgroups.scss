@@ -47,20 +47,20 @@
 
 .group-show-actions {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 95%;
+  justify-content: center;
+  width: 100%;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 40px;
   border: #007bff, solid, 1px;
   margin-top: 30px;
-  gap: 10px;
+  gap: 22px;
 }
 
 .btn-group-show-menu {
-  width: 130px;
-  padding: 5px;
+  width: auto;
+  height: 21px;
+  padding: 13px;
   background-color: #007bff;
   color: white;
   border-radius: 20px;
@@ -68,6 +68,8 @@
   text-align: center;
   transition: background-color 0.3s;
   font-size: 16px;
+  line-height: 0px;
+  display: inline-block;
 }
 
 .btn-group-show-menu:hover {
@@ -85,7 +87,7 @@
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 2px;
   display: inline-block;
 }
@@ -298,4 +300,10 @@
 .btn-group-show-observation:hover {
   background-color: rgba(0, 123, 255, 0.8);
   color: white;
+}
+
+@media (max-width: 600px) {
+  .group-show-actions {
+    gap: 10px;
+  }
 }
