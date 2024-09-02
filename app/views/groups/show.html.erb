@@ -49,7 +49,7 @@
                     <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver detalhes</button>
                 </div>
                 <div class="container my-1">
-                    <hr>
+                    <hr class="division-panel">
                     <div style="display: flex; align-items: center; justify-content: space-around;">
                       <div class="d-flex flex-column align-items-center">
                         <p class="text-group-show">Suas dívidas</p>
@@ -61,7 +61,7 @@
                         <p><strong><%= number_to_currency(@user_balance[:credit]) %></strong></p>
                       </div>
                     </div>
-                    <hr class="mb-1">
+                    <hr class="division-panel mb-1">
                 </div>
                 <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
                     <div class="modal-content">
