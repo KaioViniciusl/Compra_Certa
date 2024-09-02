@@ -44,11 +44,11 @@
 
 
             <div class="group-show-panel" data-controller="modal">
-                <div style="display: flex; align-items: center; width: 100%;">
-                    <h4 style="flex-grow: 1;" class="mt-2 ps-2">Painel</h4>
+                <div style="display: flex; align-items: center; width: 100%;" class="mb-1">
+                    <h4 style="flex-grow: 1;">Painel</h4>
                     <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver detalhes</button>
                 </div>
-                <div class="container" my-4>
+                <div class="container my-1">
                     <hr>
                     <div style="display: flex; align-items: center; justify-content: space-around;">
                       <div class="d-flex flex-column align-items-center">
@@ -61,7 +61,7 @@
                         <p><strong><%= number_to_currency(@user_balance[:credit]) %></strong></p>
                       </div>
                     </div>
-                    <hr>
+                    <hr class="mb-1">
                 </div>
                 <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
                     <div class="modal-content">
