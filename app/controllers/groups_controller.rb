@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
   def update
     @group = current_user.groups.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group), notice: "Grupo: #{@group.name_group} foi atualizado com sucesso."
+      redirect_to group_path(@group), notice: "Grupo #{@group.name_group} foi atualizado com sucesso."
     else
       render :edit
     end
