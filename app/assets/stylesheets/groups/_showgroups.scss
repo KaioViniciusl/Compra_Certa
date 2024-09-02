@@ -32,8 +32,6 @@
 }
 
 .group-show-members-list {
-  display: flex;
-  flex-direction: space-between;
   justify-content: center;
   align-items: center;
 }
@@ -53,7 +51,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 40px;
   border: #007bff, solid, 1px;
-  margin-top: 30px;
+  margin-top: 16px;
   gap: 22px;
 }
 
@@ -90,6 +88,7 @@
   font-size: 12px;
   line-height: 2px;
   display: inline-block;
+  margin-top: -10px;
 }
 
 .btn-group-show-details:hover {
@@ -148,6 +147,7 @@
 .text-group-show {
   font-size: 12px;
   margin: 0px;
+  margin-top: 16px;
 }
 
 .modal {
