@@ -19,7 +19,6 @@ class ExpensesController < ApplicationController
 
     if @expense.save
       process_expense_shares(params[:expense_shares])
-      @group.user_groups.each(&:update_credit_and_debit)
       redirect_to group_path(@group), notice: "Despesa criada com sucesso."
     else
       render :new
@@ -29,7 +28,6 @@ class ExpensesController < ApplicationController
   def update
     if @expense.update(expense_params)
       handle_expense_shares(params[:expense_shares])
-      @group.user_groups.each(&:update_credit_and_debit)
       redirect_to group_expense_path(@group, @expense), notice: "Despesa atualizada com sucesso."
     else
       render :edit
