@@ -95,33 +95,28 @@
                 </div>
             </div>
 
-            <div class="group-show-expenses">
-                <% if @expenses.any? %>
-                    <% @expenses.group_by { |expense| expense.date.strftime("%B %Y") }.each do |month, expenses| %>
-                        <h4><%= month %></h4>
-                        <% expenses.each do |expense| %>
-
-                          <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
-                            <div class="group-show-expense-item">
-
-                              <div class="group-show-number-expense">
-                                <%= "#{expense.date.strftime("%d").rjust(2, "0")}" %>
-                              </div>
-
-                              <div class="group-show-name-expense">
-                                <%= expense.name_expense %>
-                              </div>
+          <div class="group-show-expenses">
+              <% if @expenses.any? %>
+                  <% grouped_expenses = @expenses.group_by { |expense| l(expense.date, format: :month_and_year) } %>
+                  <% grouped_expenses.each do |month_year, expenses| %>
+                      <h4><%= month_year %></h4>
+                      <% expenses.each do |expense| %>
+                        <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
+                          <div class="group-show-expense-item">
+                            <div class="group-show-number-expense">
+                              <%= l(expense.date, format: :day) %>
                             </div>
-                          <% end %>
-
+                            <div class="group-show-name-expense">
+                              <%= expense.name_expense %>
+                            </div>
+                          </div>
                         <% end %>
-
-                    <% end %>
-
-                <% else %>
-                    <p>Nenhuma despesa adicionada ainda.</p>
-                <% end %>
-            </div>
+                      <% end %>
+                  <% end %>
+              <% else %>
+                  <p>Nenhuma despesa adicionada ainda.</p>
+              <% end %>
+          </div>
 
             <div class="group-show-observations">
                 <h3>Quadro</h3>
