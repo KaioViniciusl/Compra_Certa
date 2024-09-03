@@ -66,7 +66,7 @@ class GroupsController < ApplicationController
 
   def handle_invitations(invite_emails)
     invite_emails.each do |email|
-      user = User.find_by(email: email)
+      user = User.find_by(email: email.downcase)
       if user
         create_user_group_for_existing_user(user)
       else
@@ -76,7 +76,7 @@ class GroupsController < ApplicationController
   end
 
   def create_user_group_for_existing_user(user)
-    user_group = UserGroup.find_or_initialize_by(user: user, group: @group, user_mail: user.email)
+    user_group = UserGroup.find_or_initialize_by(user: user, group: @group, user_mail: user.email.downcase)
 
     if user_group.new_record?
       user_group.invite_accepted = (user == current_user)
@@ -84,13 +84,13 @@ class GroupsController < ApplicationController
     end
 
     if user != current_user
-      UserMailer.invite_email(@group.id, user.email, user).deliver_now
+      UserMailer.invite_email(@group.id, user.email.downcase, user).deliver_now
     end
   end
 
   def create_user_group_for_new_email(email)
-    UserGroup.create(group: @group, user_mail: email)
-    UserMailer.invite_email(@group.id, email).deliver_now
+    UserGroup.create(group: @group, user_mail: email.downcase)
+    UserMailer.invite_email(@group.id, email.downcase).deliver_now
   end
 
   def authorize_group

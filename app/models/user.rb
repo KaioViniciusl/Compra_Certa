@@ -10,10 +10,20 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :payments, class_name: "ExpensePayer", foreign_key: "receiver_id"
   has_one_attached :photo
-  after_create_commit :accept_invitations
+  before_save :downcase_email
 
-  def accept_invitations
-    invitations = UserGroup.where(user_mail: email, invite_accepted: false)
-    invitations.update_all(user_id: id, invite_accepted: true)
+  validates :email, presence: true
+
+  private
+
+  def downcase_email
+    self.email = email.downcase
   end
+
+  # after_create_commit :accept_invitations
+
+  # def accept_invitations
+  #   invitations = UserGroup.where(user_mail: email, invite_accepted: false)
+  #   invitations.update_all(user_id: id, invite_accepted: true)
+  # end
 end
