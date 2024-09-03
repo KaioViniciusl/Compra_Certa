@@ -15,8 +15,8 @@
               <%= f.input :paid_amount, step: 0.01, label: false, input_html: { class: "input-new-expense" } %>
             </div>
           </div>
+          <%= f.input :date_expense_payers, as: :string, label: false, input_html: { data: { controller: "datepicker", datepicker_target: "input" }, placeholder: "Selecione a data..." } %>
           <%= f.input :receiver_id, label: "Recebedor", collection: @users, as: :select, include_blank: false, label_method: :name, value_method: :id %>
-
           <%= f.button :submit, "SALVAR", class: "btn create-button-new"  %>
         <% end %>
 
