@@ -7,13 +7,21 @@
 
         <%= simple_form_for @expense_payer, url: group_expense_payers_path(@group) do |f| %>
           <%= f.input :description, label: "Descrição", input_html: {class: "input-new-expense"} %>
-          <%= f.input :paid_amount, label: "Valor", input_html: { type: "number", step: "0.01", class: "input-new-expense" } %>
+          <div class="expense-pattern-lightblue">
+            <div class="expense-pattern-darkblue">
+              <%= f.label "R$" %>
+            </div>
+            <div class="mb-0 w-100">
+              <%= f.input :paid_amount, step: 0.01, label: false, input_html: { class: "input-new-expense" } %>
+            </div>
+          </div>
           <%= f.input :receiver_id, label: "Recebedor", collection: @users, as: :select, include_blank: false, label_method: :name, value_method: :id %>
 
-          <%= f.button :submit, "Adicionar Pagamento" %>
+          <%= f.button :submit, "SALVAR", class: "btn create-button-new"  %>
         <% end %>
 
-       </div>
+      </div>
+
     </div>
   </div>
 </div>
