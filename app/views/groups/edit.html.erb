@@ -3,10 +3,10 @@
         <div class="col-12 col-lg-4">
             <div class="group-edit-modal">
                 <h3> Personalize o seu grupo adicionando uma Foto, Nome e Descrição </h3>
-                <hr>
+                <hr class="w-100">
 
                 <div>
-                    <%= simple_form_for @group do |f| %>
+                    <%= simple_form_for @group, html: { data: { controller: "invite" } } do |f| %>
                         <%= f.error_notification %>
                         
                         <% if @group.photo.attached? %>
