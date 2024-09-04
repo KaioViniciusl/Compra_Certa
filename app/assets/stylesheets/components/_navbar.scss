@@ -1,7 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #0F4749;
-  margin-bottom: 60px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -42,4 +41,16 @@
 
 .navbar-toggler-icon {
   background-image: url('toggle/diamonds.png') !important;
+}
+
+@media (max-width: 600px) {
+  .navbar-lewagon {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 601px) {
+  .navbar-lewagon {
+    margin-bottom: 60px;
+  }
 }
