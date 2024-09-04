@@ -12,26 +12,28 @@
             <%= f.input :email,
                         required: false,
                         autofocus: true,
-                        label: "Seu email de acesso",
+                        placeholder: "Seu email de acesso",
                         input_html: { class: "custom-input", autocomplete: "email" } %>
             <%= f.input :password,
                         required: false,
-                        label: "Digite sua senha",
+                        placeholder: "Digite sua senha",
                         input_html: { class: "custom-input", autocomplete: "current-password" } %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Entrar", class: "btn-login" %>
+            <%= f.button :submit, "ENTRAR", class: "btn-login-newhtml" %>
           </div>
         <% end %>
 
         <%= render "devise/shared/links" %>
-      
+
       </div>
+
       <div class="image-logo">
-          <%= image_tag("logo.png")%>
+        <%= image_tag("logo.png")%>
       </div>
+
     </div>
   </div>
 </div>
