@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-4">
       <div class="modal-groups">
         <h3>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h3>
-        <br>
+        <hr>
 
         <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite" } } do |f| %>
           <div class="text-center mb-4">
@@ -13,30 +13,44 @@
             <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
           </div>
 
-          <div class="form-group position-relative">
-            <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "group-input" } %>
-            <i class="input-icon">✎</i>
+          <div class="group-pattern-lightblue">
+            <div class="mb-0 w-100">
+              <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "input-new-group" } %>
+            </div>
+            <div class="group-pattern-darkblue">
+              <i>✎</i>
+            </div>
           </div>
 
-          <div class="form-group position-relative">
-            <%= f.input :description_group, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "group-input" } %>
-            <i class="input-icon">✎</i>
+          <div class="group-pattern-lightblue">
+            <div class="mb-0 w-100">
+              <%= f.input :description_group, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "input-new-group" } %>
+            </div>
+            <div class="group-pattern-darkblue">
+              <i>✎</i>
+            </div>
           </div>
+          
+   
+
+          <hr>
 
           <div class="form-group mt-4">
             <label for="member-email">Adicionar membro</label>
-            <input type="email" id="member-email" class="form-control group-input" placeholder="Insira o email do usuário" data-invite-target="email" />
-            <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-2">Adicionar membro</button>
+            <input type="email" id="member-email" class="input-new-group no-border" placeholder="Insira o email do usuário" data-invite-target="email" />
+            <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
           </div>
 
           <div id="added-members" data-invite-target="addedMembers" class="mt-4 mb-3"></div> <!-- Adiciona data-target aqui -->
           <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %> <!-- Adiciona data-target aqui -->
 
-          <%= f.button :submit, "Salvar e Criar", class: "btn btn-secondary w-100" %>
+          <%= f.button :submit, "SALVAR E CRIAR", class: "btn create-button-new w-100" %>
         <% end %>
       </div>
-      <div class="image-logo">
-        <%= image_tag("logo.png")%>
+
+
+      <div class="image-logo-container">
+        <%= image_tag("logo.png", class: "image-logo")%>
       </div>
     </div>
   </div>
