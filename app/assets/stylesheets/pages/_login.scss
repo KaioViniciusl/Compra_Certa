@@ -28,13 +28,16 @@
     background-color: #DDE7FF;
     color: #0B3234;
     border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
   }
 
   .custom-input:focus {
     background-color: #DDE7FF;
     border-color: transparent;
     box-shadow: none;
-    font-family: "Ubuntu", "sans-serif";/* Bordas arredondadas */
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .bg-ballandcactus {
@@ -55,6 +58,11 @@
   padding: 60px;
   transform: scale(0.9);
   justify-content: center;
+}
+
+.form-inputs {
+  font-size: 14px;
+  font-weight: 500;
 }
 
 // bg-login {
