@@ -2,9 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
       <div class="modal-settings">
-        <!-- Formulário de edição de informações e upload de foto -->
         <%= simple_form_for @user, url: settings_path, method: :patch, html: { class: "form-upload", data: { controller: "photo-upload", action: "change->photo-upload#previewImage" } } do |form| %>
-          <!-- Foto do Usuário -->
           <div class="user-info">
             <div class="avatar-container">
               <%= image_tag @user.photo.attached? ? @user.photo : asset_path("avatar/profile.anonymus.png"), width: "518", height: "156", alt: "Avatar", class: "user-avatar", data: { photo_upload_target: "preview" } %>
@@ -17,7 +15,6 @@
             </div>
           </div>
 
-          <!-- Editar Informações -->
           <h4 class="edit-title">Editar Informações</h4>
           <div class="form-group">
             <%= form.input :name, label: "Nome", input_html: { class: "form-input" } %>
