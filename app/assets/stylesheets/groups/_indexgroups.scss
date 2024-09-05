@@ -1,10 +1,10 @@
 body {
     background-color: #f6f3eb;
-    background-image: asset-url('bg/BallAndCactus.png');
+    // background-image: asset-url('bg/BallAndCactus.png');
     // background-size: cover;
     background-position: center top 160px;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     margin: 0;
 }
 
@@ -15,14 +15,14 @@ a {
 .group-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
 }
 
 .group-item {
     display: flex;
     align-items: center;
     background: #dde7ff;
-    border-radius: 8px;
+    border-radius: 5px;
     color: #0B3234;
 }
 
@@ -34,7 +34,7 @@ a {
 .group-image {
     width: 50px;
     height: 50px;
-    border-radius: 20%;
+    border-radius: 5px;
     background-color: #000000;
     object-fit: cover; /* Garante que a imagem se ajuste ao contêiner sem distorção */
     margin-right: 20px;
@@ -42,7 +42,7 @@ a {
 
 .group-details {
     flex-grow: 1; /* Permite que o nome do grupo use o espaço restante */
-
+    font-size: 14px;
 }
 
 .group-details h3 {
@@ -60,7 +60,7 @@ a {
   padding: 10px;
   background-color: #5487FC;
   color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   text-decoration: none;
   transition: background-color 0.3s;
 }
@@ -70,22 +70,21 @@ a {
   color: white;
 }
 
-.title-group h2 {
-    margin-bottom: 20px;
+.title-group h3 {
+    margin-top: 40px;
+    font-size: 24px;
 }
 
 .modal-groups {
     background-color: #ffffff; /* Fundo branco para a caixa */
     border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Espaçamento interno */
-    box-shadow: 0 4px 8px rgba(105, 100, 100, 0.1); /* Sombra para dar profundidade */
-
-}
-
-.image-logo-container {
     padding: 20px;
-    display: flex;
-    justify-content: center;
-
-
+    width: 100%;
+    position: relative;
 }
+
+// .image-logo-container {
+//     padding: 20px;
+//     display: flex;
+//     justify-content: center;
+// }

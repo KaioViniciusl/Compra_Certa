@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row justify-content-center group-show-modal-invisivel">
         <div class="col-12 col-lg-6">
+          <%= image_tag("bg/BallAndCactus2.png", :class => "bg-ballandcactus-group") %>
 
             <div class="group-show-modal-header">
-
+              <%= image_tag("icons/ElementGreen.png", :class => "bg-show-modal") %>
                 <% if @group.photo.attached? %>
                     <%= image_tag @group.photo, class: "group-show-image" %>
                 <% else %>
@@ -121,18 +122,15 @@
             <div class="group-show-observations">
                 <h3>Quadro</h3>
                 <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |form| %>
-                    <%= form.text_area :observation, placeholder: "Use o quadro para lembrar de informações importantes, como o endereço do proprietário do seu imóvel ou informações de contato de emergência.", rows: 5, class: "group-show-observation-area" %>
+                    <%= form.text_area :observation, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, class: "group-show-observation-area" %>
                     <%= form.submit "Salvar mudanças", class: "btn btn-group-show-observation" %>
                 <% end %>
             </div>
 
 
-            <div class="image-logo-container">
-                <%= image_tag("logo.png", class: "image-logo") %>
+            <div class="image-logo logo-footer">
+                <%= image_tag("logo.png") %>
             </div>
-
-
-
 
         </div>
     </div>

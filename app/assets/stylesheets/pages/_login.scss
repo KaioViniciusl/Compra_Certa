@@ -1,8 +1,8 @@
 .btn-login-newhtml {
     width: 50%;
-    padding: 10px;
+    padding: 8px;
     height: 40px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 30px;
     background-color: #5487FC;
     color: white;
@@ -35,6 +35,26 @@
     border-color: transparent;
     box-shadow: none;
     font-family: "Ubuntu", "sans-serif";/* Bordas arredondadas */
+}
+
+.bg-ballandcactus {
+  top: 0;
+  position: absolute;
+  z-index: -5;
+}
+
+.modal-groups-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.logo-footer {
+  padding: 60px;
+  transform: scale(0.9);
+  justify-content: center;
 }
 
 // bg-login {

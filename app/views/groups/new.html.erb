@@ -7,8 +7,8 @@
 
         <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite" } } do |f| %>
           <div class="text-center mb-4">
-            <div class="group-photo-placeholder" id="group-photo-container">
-              <%= image_tag("placeholder-image.png") %>
+            <div class="group-photo-placeholder">
+              <%= image_tag "placeholder-image.png", class: "group-show-image" %>
             </div>
             <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
           </div>
@@ -30,8 +30,8 @@
               <i>✎</i>
             </div>
           </div>
-          
-   
+
+
 
           <hr>
 
