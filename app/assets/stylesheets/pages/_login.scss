@@ -55,9 +55,11 @@
 }
 
 .logo-footer {
-  padding: 60px;
-  transform: scale(0.9);
+  display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 30px;
+  transform: scale(0.9);
 }
 
 .form-inputs {
