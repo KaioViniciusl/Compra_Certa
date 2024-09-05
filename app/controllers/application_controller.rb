@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_user
-    @current_user = current_user
+    @user = current_user
   end
 
   def user_not_authorized(exception)

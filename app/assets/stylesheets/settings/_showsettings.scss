@@ -1,0 +1,108 @@
+.modal-settings {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.user-details {
+  flex: 1;
+  word-break: break-word;
+}
+
+.user-name {
+  font-size: 24px;
+  margin-bottom: 16px;
+  word-break: break-word;
+}
+
+.user-email {
+  margin-bottom: 16px;
+  word-break: break-word;
+}
+
+.btn-save-settings {
+  background-color: #156EF5;
+  color: #ffffff;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 50%;
+  height: 40px;
+  max-width: 518px;
+  transition: background-color 0.3s;
+  line-height: 1px;
+}
+
+.btn-save-settings:hover {
+  background-color: rgba(21, 110, 245, 0.7)
+}
+
+.edit-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  height: 50px;
+  color: #0B3234;
+  background-color: #DDE7FF;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-input:focus {
+  background-color: #DDE7FF;
+  box-shadow: none !important;
+}
+
+.form-input:valid {
+  border-color: #DDE7FF !important;
+  background-image: none !important;
+}
+
+.file-input {
+  display: none;
+}
+
+.preview-image {
+  display: block;
+  width: 518px;
+  height: 156px;
+  object-fit: cover;
+  margin-top: 16px;
+}
+
+.edit-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}

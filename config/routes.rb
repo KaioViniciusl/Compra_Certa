@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  resource :settings, only: [:show, :update]
+
   resources :groups do
     resources :expenses
     resources :expense_payers, only: [:new, :create]

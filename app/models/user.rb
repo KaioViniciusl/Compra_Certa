@@ -13,6 +13,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   validates :email, presence: true
+  validates :password, confirmation: true, if: :password_present?
 
   private
 
@@ -20,10 +21,7 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  # after_create_commit :accept_invitations
-
-  # def accept_invitations
-  #   invitations = UserGroup.where(user_mail: email, invite_accepted: false)
-  #   invitations.update_all(user_id: id, invite_accepted: true)
-  # end
+  def password_present?
+    password.present?
+  end
 end
