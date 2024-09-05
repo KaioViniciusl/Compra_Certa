@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-4">
+    <div class="col-12 col-lg-4 modal-groups-wrapper">
+      <%= image_tag("bg/BallAndCactus.png", :class => "bg-ballandcactus") %>
       <div class="modal-groups">
-        <h2>Entrar</h2>
-        <br>
+        <%= image_tag("icons/ElementDark.png", :class => "bg-show-modal") %>
+
+        <h2 class="padding-40px">Entrar</h2>
+
         <% if alert.present? %>
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
@@ -30,7 +33,7 @@
 
       </div>
 
-      <div class="image-logo">
+      <div class="image-logo logo-footer">
         <%= image_tag("logo.png")%>
       </div>
 
