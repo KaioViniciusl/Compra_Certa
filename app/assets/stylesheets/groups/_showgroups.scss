@@ -1,8 +1,24 @@
+.bg-show-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.bg-ballandcactus-group {
+  top: 0;
+  left: -160px;
+  position: absolute;
+  z-index: -5;
+}
+
 .group-show-modal-invisivel {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 
 hr.division-panel {
@@ -17,6 +33,7 @@ hr.division-panel {
   background-color: white;
   border-radius: 5px;
   padding: 16px;
+  position: relative;
 }
 
 .group-show-modal {
@@ -29,10 +46,11 @@ hr.division-panel {
 }
 
 .group-show-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background-color: black;
+  margin-top: 16px;
 }
 
 .group-show-members-list {
@@ -54,7 +72,7 @@ hr.division-panel {
   padding: 10px;
   background-color: rgb(255, 255, 255);
   border-radius: 40px;
-  border: #007bff, solid, 1px;
+  border: #5487FC, solid, 1px;
   margin-top: 16px;
   gap: 22px;
 }
@@ -63,7 +81,7 @@ hr.division-panel {
   width: auto;
   height: 21px;
   padding: 13px;
-  background-color: #007bff;
+  background-color: #5487FC;
   color: white;
   border-radius: 20px;
   text-decoration: none;
@@ -83,7 +101,7 @@ hr.division-panel {
   width: auto;
   height: 24px;
   padding: 9px;
-  background-color: #007bff;
+  background-color: #5487FC;
   color: white;
   border-radius: 30px;
   text-decoration: none;
@@ -258,7 +276,7 @@ hr.division-panel {
 .group-show-number-expense {
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #ff2f00;
+  background-color: #F1502C;
   color: white;
   font-size: 24px;
 }
@@ -293,9 +311,9 @@ hr.division-panel {
 
 .btn-group-show-observation {
   padding: 10px;
-  background-color: #007bff;
+  background-color: #5487FC;
   color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   transition: background-color 0.3s;
   cursor: pointer;
 }
