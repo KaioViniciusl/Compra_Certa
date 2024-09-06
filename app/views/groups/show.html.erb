@@ -1,137 +1,191 @@
 <div class="container">
-    <div class="row justify-content-center group-show-modal-invisivel">
-        <div class="col-12 col-lg-6">
-          <%= image_tag("bg/BallAndCactus2.png", :class => "bg-ballandcactus-group") %>
+  <div class="row justify-content-center group-show-modal-invisivel">
+    <div class="col-12 col-lg-6">
+      <%= image_tag("bg/BallAndCactus2.png", class: "bg-ballandcactus-group") %>
 
-            <div class="group-show-modal-header">
-              <%= image_tag("icons/ElementGreen.png", :class => "bg-show-modal") %>
-                <% if @group.photo.attached? %>
-                    <%= image_tag @group.photo, class: "group-show-image" %>
-                <% else %>
-                    <%= image_tag "placeholder-image.png", class: "group-show-image" %>
-                <% end %>
+      <div class="group-show-modal-header">
+        <%= image_tag("icons/ElementGreen.png", class: "bg-show-modal") %>
+        <% if @group.photo.attached? %>
+          <%= image_tag @group.photo, class: "group-show-image" %>
+        <% else %>
+          <%= image_tag "placeholder-image.png", class: "group-show-image" %>
+        <% end %>
 
-                <h2><%= @group.name_group %></h2>
-                <p><%= @group.description_group %></p>
+        <h2><%= @group.name_group %></h2>
+        <p><%= @group.description_group %></p>
 
-
-                <div class="group-show-members-list">
-                    <% @group.users.each do |user| %>
-                        <% if user.photo.attached? %>
-                            <%= image_tag user.photo, class: "group-show-member-photo" %>
-                        <% else %>
-                            <%= image_tag "placeholder-image.png", class: "group-show-member-photo" %>
-                        <% end %>
-                    <% end %>
-                </div>
-
-                <div class="group-show-actions">
-                    <%= link_to "Editar Grupo", edit_group_path, class: "btn btn-group-show-menu" %>
-                    <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
-                    <%= link_to "Excluir", group_path(@group),
-                                data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
-                                class: "btn btn-group-show-menu" %>
-                </div>
-
-                <div class="btns-group-show-expenses">
-                    <%= link_to "Adicionar Despesa", new_group_expense_path(@group), class: "btn btn-group-show-add-expense" %>
-                    <%= link_to "Adicionar Pagamento", new_group_expense_payer_path(@group), class: "btn btn-group-show-add-payment" %>
-                </div>
-
-            </div>
+        <div class="group-show-members-list">
+          <% @group.users.each do |user| %>
+            <% if user.photo.attached? %>
+              <%= image_tag user.photo, class: "group-show-member-photo" %>
+            <% else %>
+              <%= image_tag "avatar/profile.anonymus.png", class: "group-show-member-photo" %>
+            <% end %>
+          <% end %>
         </div>
 
-        <div class="col-10 col-lg-4">
-
-
-            <div class="group-show-panel" data-controller="modal">
-                <div style="display: flex; align-items: center; width: 100%;" class="mb-1">
-                    <h4 style="flex-grow: 1;">Painel</h4>
-                    <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver detalhes</button>
-                </div>
-                <div class="container my-1">
-                    <hr class="division-panel">
-                    <div style="display: flex; align-items: center; justify-content: space-around;">
-                      <div class="d-flex flex-column align-items-center">
-                        <p class="text-group-show">Suas dívidas</p>
-                        <p><strong>R<%= number_to_currency(@user_balance[:debit]) %></strong></p>
-                      </div>
-                        <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
-                      <div class="d-flex flex-column align-items-center">
-                        <p class="text-group-show">Devem a você</p>
-                        <p><strong>R<%= number_to_currency(@user_balance[:credit]) %></strong></p>
-                      </div>
-                    </div>
-                    <hr class="division-panel mb-1">
-                </div>
-                <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
-                    <div class="modal-content">
-                        <span class="close-button" data-action="click->modal#close">&times;</span>
-
-
-                        <div>
-                            <h5>SUAS DÍVIDAS</h5>
-                            <ul>
-                              <% @user_balance[:users_owing].each do |hash| %>
-                                <% hash.each do |user, balance| %>
-                                  <% if balance > 0 %>
-                                      <li>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></li>
-                                  <% end %>
-                                <% end %>
-                              <% end %>
-                            </ul>
-
-                            <h5>DEVEM A VOCÊ</h5>
-                            <ul>
-                              <% @user_balance[:users_owed].each do |hash| %>
-                                <% hash.each do |user, balance| %>
-                                  <% if balance > 0 %>
-                                    <li><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</li>
-                                  <% end %>
-                                <% end %>
-                              <% end %>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-          <div class="group-show-expenses">
-              <% if @expenses.any? %>
-                  <% grouped_expenses = @expenses.group_by { |expense| l(expense.date, format: :month_and_year) } %>
-                  <% grouped_expenses.each do |month_year, expenses| %>
-                      <h4><%= month_year %></h4>
-                      <% expenses.each do |expense| %>
-                        <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
-                          <div class="group-show-expense-item">
-                            <div class="group-show-number-expense">
-                              <%= l(expense.date, format: :day) %>
-                            </div>
-                            <div class="group-show-name-expense">
-                              <%= expense.name_expense %>
-                            </div>
-                          </div>
-                        <% end %>
-                      <% end %>
-                  <% end %>
-              <% else %>
-                  <p>Nenhuma despesa adicionada ainda.</p>
-              <% end %>
-          </div>
-
-            <div class="group-show-observations">
-                <h3>Quadro</h3>
-                <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |form| %>
-                    <%= form.text_area :observation, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, class: "group-show-observation-area" %>
-                    <%= form.submit "Salvar mudanças", class: "btn btn-group-show-observation" %>
-                <% end %>
-            </div>
-
-
-            <div class="image-logo logo-footer">
-                <%= image_tag("logo.png") %>
-            </div>
-
+        <div class="group-show-actions">
+          <%= link_to "Editar Grupo", edit_group_path, class: "btn btn-group-show-menu" %>
+          <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
+          <%= link_to "Excluir", group_path(@group),
+                      data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
+                      class: "btn btn-group-show-menu" %>
         </div>
+
+        <div class="btns-group-show-expenses">
+          <%= link_to "Adicionar Despesa", new_group_expense_path(@group), class: "btn btn-group-show-add-expense" %>
+          <%= link_to "Adicionar Pagamento", new_group_expense_payer_path(@group), class: "btn btn-group-show-add-payment" %>
+        </div>
+      </div>
     </div>
+
+    <div class="col-10 col-lg-4">
+      <div class="group-show-panel" data-controller="modal">
+        <div style="display: flex; align-items: center; width: 100%;" class="mb-1">
+          <h4 style="flex-grow: 1;">Painel</h4>
+          <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver Detalhes</button>
+        </div>
+        <div class="container my-1">
+          <hr class="division-panel">
+          <div style="display: flex; align-items: center; justify-content: space-around;">
+            <div class="d-flex flex-column align-items-center">
+              <p class="text-group-show">Suas dívidas</p>
+              <p><strong>R<%= number_to_currency(@user_balance[:debit]) %></strong></p>
+            </div>
+            <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
+            <div class="d-flex flex-column align-items-center">
+              <p class="text-group-show">Devem a você</p>
+              <p><strong>R<%= number_to_currency(@user_balance[:credit]) %></strong></p>
+            </div>
+          </div>
+          <hr class="division-panel mb-1">
+        </div>
+
+        <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
+          <div class="modal-content">
+            <span class="close-button" data-action="click->modal#close">&times;</span>
+            <div>
+              <% if @user_balance[:credit].to_f > 0 && @user_balance[:debit].to_f > 0 %>
+                <h5>SUAS DÍVIDAS</h5>
+                <ul>
+                  <% @user_balance[:users_owing].each do |hash| %>
+                    <% hash.each do |user, balance| %>
+                      <% if balance > 0 %>
+                        <li>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></li>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </ul>
+
+                <h5>DEVEM A VOCÊ</h5>
+                <ul>
+                  <% @user_balance[:users_owed].each do |hash| %>
+                    <% hash.each do |user, balance| %>
+                      <% if balance > 0 %>
+                        <li><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</li>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% elsif @user_balance[:debit].to_f > 0 %>
+                <h5>SUAS DÍVIDAS</h5>
+                <ul>
+                  <% @user_balance[:users_owing].each do |hash| %>
+                    <% hash.each do |user, balance| %>
+                      <% if balance > 0 %>
+                        <li>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></li>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% elsif @user_balance[:credit].to_f > 0 %>
+                <h5>DEVEM A VOCÊ</h5>
+                <ul>
+                  <% @user_balance[:users_owed].each do |hash| %>
+                    <% hash.each do |user, balance| %>
+                      <% if balance > 0 %>
+                        <li><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</li>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p>Você ainda não tem nenhuma despesa registrada.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="group-show-expenses" data-controller="modal">
+          <% if @expenses.any? %>
+            <% grouped_expenses = @expenses.group_by { |expense| l(expense.date, format: :month_and_year) } %>
+
+            <% grouped_expenses.each_with_index do |(month_year, expenses), index| %>
+              <div class="header-with-button" style="display: flex; align-items: center; width: 100%; margin-bottom: 1rem;">
+                <h4 style="flex-grow: 1;"><%= month_year %></h4>
+                <% if index == 0 %>
+                  <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver Pagamentos</button>
+                <% end %>
+              </div>
+
+              <% expenses.each do |expense| %>
+                <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
+                  <div class="group-show-expense-item">
+                    <div class="group-show-number-expense">
+                      <%= l(expense.date, format: :day) %>
+                    </div>
+                    <div class="group-show-name-expense">
+                      <%= expense.name_expense %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>Nenhuma despesa e pagamento adicionado ainda.</p>
+          <% end %>
+
+
+          <div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
+            <div class="modal-content">
+              <span class="close-button" data-action="click->modal#close">&times;</span>
+              <div class="container">
+                <% if @expense_payers.present? %>
+                  <% current_user_name = current_user.try(:name) %>
+
+                  <% @expense_payers.each do |expense_payer| %>
+                    <% payer_name = @users[expense_payer.user_id].try(:name) || "Desconhecido" %>
+                    <% receiver_name = @users[expense_payer.receiver_id].try(:name) || "Desconhecido" %>
+
+                    <% if current_user_name == receiver_name %>
+                      <p>Você recebeu R$ <%= expense_payer.paid_amount %> de <%= payer_name %>.</p>
+                    <% elsif current_user_name == payer_name %>
+                      <p>Você pagou R$ <%= expense_payer.paid_amount %> para <%= receiver_name %>.</p>
+                    <% elsif current_user_name != payer_name && current_user_name != receiver_name %>
+                      <p><%= receiver_name %> recebeu R$ <%= expense_payer.paid_amount %> de <%= payer_name %>.</p>
+                      <p><%= payer_name %> pagou R$ <%= expense_payer.paid_amount %> para <%= receiver_name %>.</p>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <p>Este grupo ainda não tem nenhum pagamento registrado.</p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="group-show-observations">
+        <h4>Quadro</h4>
+        <%= simple_form_for @group, url: group_path(@group), method: :patch, html: { class: "form-horizontal" } do |form| %>
+          <%= form.input :observation, as: :text, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, input_html: { class: "group-show-observation-area" }, label: false %>
+          <%= form.button :submit, "Salvar mudanças", class: "btn btn-group-show-observation" %>
+        <% end %>
+      </div>
+
+      <div class="image-logo logo-footer">
+        <%= image_tag("logo.png") %>
+      </div>
+    </div>
+  </div>
 </div>
