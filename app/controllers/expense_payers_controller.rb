@@ -26,6 +26,6 @@ class ExpensePayersController < ApplicationController
   end
 
   def expense_payer_params
-    params.require(:expense_payer).permit(:paid_amount, :description, :receiver_id)
+    params.require(:expense_payer).permit(:paid_amount, :description, :receiver_id, :date)
   end
 end
