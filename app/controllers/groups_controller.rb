@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
   def show
     @expenses = @group.expenses
     @user_balance = @group.calculate_balance_by_user(current_user)
+    @expense_payers = @group.expense_payers
+    @users = User.where(id: @expense_payers.pluck(:user_id, :receiver_id).flatten.uniq).index_by(&:id)
   end
 
   def new
