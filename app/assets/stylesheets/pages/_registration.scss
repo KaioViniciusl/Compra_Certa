@@ -1,0 +1,59 @@
+.h4-registrations {
+  padding-top: 30px;
+  padding-bottom: 8px;
+}
+
+.bg-registration-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modal-registrations-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+@media (max-width: 540px) {
+  .modal-registrations-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .bg-registration-modal {
+    width: 156%;
+  }
+}
+
+.logo-footer-registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transform: scale(0.9);
+}
+
+.btn-registration {
+  width: 100%;
+  padding: 8px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: #5487FC;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-registration:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .btn-registration {
+    width: 100%; /* Ocupar 100% da largura da tela */
+  }
+}

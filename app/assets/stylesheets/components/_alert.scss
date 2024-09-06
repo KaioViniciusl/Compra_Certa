@@ -3,4 +3,16 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  --bs-alert-padding-x: 1px !important;
+  --bs-alert-padding-y: 1px !important;
+  --bs-alert-margin-bottom: 1rem;
+  --bs-alert-border: var(--bs-border-width) solid var(--bs-alert-border-color) !important;
+  --bs-alert-border-radius: 5px !important;
+  margin-bottom: var(--bs-alert-margin-bottom) !important;
+  font-size: 14px !important;
+  padding: 8px !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 5px;
+  background-color: #E75A35 !important;
 }
