@@ -6,10 +6,10 @@
                 <hr class="w-100">
 
 
-                <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
+                <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
                     <%= f.error_notification %>
 
-                    <div class="mt-4 d-flex justify-content-center mb-5">
+                    <div class="mt-4 d-flex justify-content-center mb-4">
                         <div class="avatar-container" style="border-radius: 50%;">
                             <% if @group.photo.attached? %>
                                 <%= image_tag @group.photo, width: "180", height: "180", data: { photo_upload_target: "preview" } %>
@@ -27,19 +27,15 @@
                         <div class="mb-0 w-100">
                             <%= f.input :name_group, label: false, input_html: { class: "group-edit-input" } %>
                         </div>
-                        <div class="group-pattern-darkblue">
-                            <i>✎</i>
-                        </div>
+                        <%= image_tag "icons/pencil.png" %>
                     </div>
 
                     <%= f.label "Adicione uma descrição para o Grupo" %>
-                    <div class="group-pattern-lightblue">
+                    <div class="group-pattern-lightblue mb-4">
                         <div class="mb-0 w-100">
                             <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
                         </div>
-                        <div class="group-pattern-darkblue">
-                            <i>✎</i>
-                        </div>
+                        <%= image_tag "icons/pencil.png" %>
                     </div>
 
 
