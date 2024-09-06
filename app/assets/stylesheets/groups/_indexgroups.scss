@@ -37,18 +37,21 @@ a {
     border-radius: 5px;
     background-color: #000000;
     object-fit: cover; /* Garante que a imagem se ajuste ao contêiner sem distorção */
-    margin-right: 20px;
+    margin-right: 16px;
+    align-items: center;
 }
 
 .group-details {
-    flex-grow: 1; /* Permite que o nome do grupo use o espaço restante */
-    font-size: 14px;
-}
-
-.group-details h3 {
+    flex-grow: 1;
     margin: 0;
     font-size: 1.2em;
     color:#0B3234;
+}
+
+.group-details-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0B3234;
 }
 
 .without-group h2 {
@@ -56,6 +59,7 @@ a {
 }
 
 .create-group-button {
+  font-size: 16px;
   width: 100%;
   padding: 10px;
   background-color: #5487FC;
@@ -81,6 +85,34 @@ a {
     padding: 20px;
     width: 100%;
     position: relative;
+}
+
+.modal-index-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+
+.hr-create-group {
+  margin-top: 40px;
+}
+
+.bg-cactus {
+  top: 0;
+  position: absolute;
+  z-index: -5;
+}
+
+@media (max-width: 540px) {
+  .modal-index-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .bg-cactus {
+    width: 156%;
+  }
 }
 
 // .image-logo-container {
