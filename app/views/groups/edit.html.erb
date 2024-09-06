@@ -2,49 +2,66 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-4">
             <div class="group-edit-modal">
-                <h3> Personalize o seu grupo adicionando uma Foto, Nome e Descrição </h3>
+                <h4> Personalize o seu grupo adicionando uma Foto, Nome e Descrição </h4>
                 <hr class="w-100">
 
-                <div>
-                    <%= simple_form_for @group, html: { data: { controller: "invite" } } do |f| %>
-                        <%= f.error_notification %>
 
-                        <% if @group.photo.attached? %>
-                            <%= image_tag @group.photo, class: "group-edit-image" %>
-                        <% else %>
-                            <%= image_tag "placeholder-image.png", class: "group-edit-image" %>
-                        <% end %>
+                <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
+                    <%= f.error_notification %>
 
-                        <div class="mt-4">
-                            <%= f.input :photo, as: :file, label: "Envie sua imagem no botão abaixo", input_html: { accept: "image/*", class: "group-edit-input" } %>
+                    <div class="mt-4 d-flex justify-content-center mb-5">
+                        <div class="avatar-container" style="border-radius: 50%;">
+                            <% if @group.photo.attached? %>
+                                <%= image_tag @group.photo, width: "180", height: "180", data: { photo_upload_target: "preview" } %>
+                            <% else %>
+                                <%= image_tag "placeholder-image.png", width: "180", height: "180", data: { photo_upload_target: "preview" } %>
+                            <% end %>
+
+                            <label for="file-upload-input" class="edit-label" data-photo-upload-target="editLabel">Editar Foto</label>
+                            <%= f.file_field :photo, class: "file-input", direct_upload: true, id: "file-upload-input", data: { photo_upload_target: "input" } %>
                         </div>
+                    </div>
 
-                        <div class="mt-4">
-                            <%= f.input :name_group, label: "Digite o nome do Grupo", input_html: { class: "group-edit-input" } %>
+                    <%= f.label "Digite o nome do Grupo" %>
+                    <div class="group-pattern-lightblue">
+                        <div class="mb-0 w-100">
+                            <%= f.input :name_group, label: false, input_html: { class: "group-edit-input" } %>
                         </div>
-
-                        <div class="mt-4 mb-4">
-                            <%= f.input :description_group, label: "Adicione uma descrição para o Grupo", input_html: { class: "group-edit-input" } %>
+                        <div class="group-pattern-darkblue">
+                            <i>✎</i>
                         </div>
+                    </div>
 
-                        <hr>
-
-                        <div class="form-group mt-4">
-                            <label for="member-email">Adicionar membro</label>
-                            <input type="email" id="member-email" class="form-control group-input-edit" placeholder="Insira o email do usuário" data-invite-target="email" />
-                            <button type="button" data-action="click->invite#addMember" class="btn btn-addmember-edit mt-2">Adicionar membro</button>
+                    <%= f.label "Adicione uma descrição para o Grupo" %>
+                    <div class="group-pattern-lightblue">
+                        <div class="mb-0 w-100">
+                            <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
                         </div>
-
-                        <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div>
-                            <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
-
-                            <%= f.button :submit, "Salvar Alterações", class: "btn btn-group-edit-save w-100" %>
+                        <div class="group-pattern-darkblue">
+                            <i>✎</i>
                         </div>
+                    </div>
 
 
-                        
-                    <% end %>
-                </div>
+
+                    <hr>
+
+                    <div class="form-group mt-4">
+                        <label for="member-email">Adicionar membro</label>
+                        <input type="email" id="member-email" class="form-control group-edit-input" placeholder="Insira o email do usuário" data-invite-target="email" />
+                        <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
+                    </div>
+
+                    <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div>
+                        <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
+
+                        <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save w-100 mt-4" %>
+                    </div>
+
+
+
+                <% end %>
+
             </div>
 
             <div class="image-logo-container">
