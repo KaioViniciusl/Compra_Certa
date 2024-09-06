@@ -1,10 +1,51 @@
-<div class="container-home">
-  <h1 class="title">CONTA CERTA</h1>
-  <p class="description">
-    Divida suas despesas de um jeito simplificado.<br>Crie um grupo e adicione seus amigos para organizar<br>as contas da viagem à praia em 1 só lugar.
-  </p>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="XÚA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+  <tittle>Sidebar Menu using HTML and CSS | Codehal</tittle>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="carousel">
+    <div class="img-box">
+      <div class="img-list">
+        <div class="img-slider">
+
+          <div class="img-itenm", style="--i:0;">
+            <%= image_tag(src="bg/cactus.png") %>
+          </div>
+
+          <div class="img-itenm", style="--i:1;">
+            <%= image_tag(src="bg/cactus.png") %>
+          </div>
+
+          <div class="img-itenm", style="--i:2;">
+            <%= image_tag(src="bg/cactus.png") %>
+          </div>
+
+          <div class="img-itenm", style="--i:3;">
+            <%= image_tag(src="bg/cactus.png") %>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+
   <div class="button-group">
     <%= link_to "ACESSAR", new_user_session_path, class: "btn btn-primary" %>
     <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn btn-outline-primary" %>
   </div>
 </div>
+
+</html>
