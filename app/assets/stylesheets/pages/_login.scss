@@ -1,5 +1,5 @@
 .btn-login-newhtml {
-    width: 50%;
+    width: 100%;
     padding: 8px;
     height: 40px;
     font-size: 16px;
@@ -58,13 +58,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 40px;
   transform: scale(0.9);
 }
 
 .form-inputs {
   font-size: 14px;
   font-weight: 500;
+}
+
+@media (max-width: 540px) {
+  .modal-groups-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .bg-ballandcactus {
+    width: 156%;
+  }
 }
 
 // bg-login {

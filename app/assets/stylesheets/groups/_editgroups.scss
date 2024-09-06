@@ -22,23 +22,27 @@
 
 .group-edit-input {
     width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #cccccc;
-    background-color: #dde7ff;
+    height: 50px;
+    color: #0B3234;
+    background-color: #DDE7FF;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+  
 }
 
 .group-edit-input:valid {
-    border-color: #5487fc;
+    border-color: #DDE7FF !important;
+    background-image: none !important;
+}
+
+.group-edit-input:focus {
+    background-color: #DDE7FF;
+    box-shadow: none !important;
 }
 
 
-.group-edit-input-icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-}
+
 
 
 .btn-group-edit-save {
@@ -54,3 +58,24 @@
     background-color: rgba(0, 123, 255, 0.8);
     color: white;
 }
+
+.added-member {
+    background-color: #FBDDD6;
+    padding-left: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.added-member button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F1502C;
+    color: white;
+    font-size: 14px;
+    min-width: 32px;
+  }
