@@ -8,7 +8,7 @@
           <%= link_to "CRIAR GRUPO", new_group_path, class: "btn create-group-button" %>
         <% if @groups.any? %>
           <hr class="hr-create-group">
-          <h4>Seus Grupos</h4>
+          <h4 class="title-group">Seus Grupos</h4>
           <div class="group-list">
             <% @groups.each do |group| %>
                 <%= link_to group_path(group) do %>
