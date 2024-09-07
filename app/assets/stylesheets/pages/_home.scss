@@ -9,7 +9,6 @@
   text-align: center;
   margin: 0;
 }
-
 .background-image {
   position: absolute;
   top: 0;
@@ -21,48 +20,41 @@
   background-repeat: no-repeat;
   opacity: 0.3;
 }
-
 .title, .description, .button-group {
   position: relative;
   z-index: 1;
 }
-
 .title {
   font-size: 70px;
   font-weight: bold;
   color: #333333;
   margin-bottom: 20px;
 }
-
 .description {
   font-size: 23px;
   color: #666666;
   margin-bottom: 40px;
 }
-
 .button-group {
   display: flex;
   gap: 20px;
 }
-
 .btn-primary {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: #007BFF;
+  color: #FFFFFF;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
 }
-
 .btn-outline-primary {
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #007BFF;
+  color: #007BFF;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
 }
-
 .btn-primary:hover, .btn-outline-primary:hover {
   opacity: 0.8;
 }
