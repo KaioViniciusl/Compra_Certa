@@ -20,6 +20,14 @@
           <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag "logo/logo.toggle.png" %>
           <% end %>
+
+          <!-- Botão de Cadastro para desktop -->
+          <div class="d-none d-sm-block ms-auto">
+            <% unless (controller.controller_name == "registrations" && controller.action_name == "new") %>
+              <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn-registration-nav" %>
+            <% end %>
+          </div>
+
           <% if user_signed_in? %>
             <!-- Botão para abrir o offcanvas (visível apenas em mobile) -->
             <button class="navbar-toggler d-sm-none border-0 position-absolute end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +49,7 @@
                   <% else %>
                     <%= image_tag "avatar/profile.anonymus.png", class: "rounded-circle", alt: "Avatar", width: "100", height: "100" %>
                   <% end %>
-                <h5 class="mt-2"><%= current_user.name.capitalize %></h5>
+                  <h5 class="mt-2"><%= current_user.name.capitalize %></h5>
                 </div>
                 <hr>
                 <ul class="nav flex-column">
@@ -70,9 +78,20 @@
               </li>
             </div>
           <% end %>
+
+          <!-- Botão de Cadastro no mobile -->
+          <% if !user_signed_in? %>
+            <div class="d-sm-none ms-auto">
+              <% unless (controller.controller_name == "registrations" && controller.action_name == "new") %>
+                <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn-registration-nav" %>
+              <% end %>
+            </div>
+          <% end %>
+
         </div>
       </nav>
       <p class="notice"><%= notice %></p>
     <% end %>
-      <%= yield %>
+    <%= yield %>
+  </body>
 </html>

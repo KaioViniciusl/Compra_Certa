@@ -52,6 +52,29 @@
   color: white;
 }
 
+.btn-registration-nav {
+  width: 100%;
+  padding: 15px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 30px;
+  background-color: #5487FC;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-registration-nav:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}
+
+.btn-registration-nav:active {
+  background-color: rgba(0, 123, 255, 0.6);
+  transform: translateY(4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .btn-registration {
     width: 100%; /* Ocupar 100% da largura da tela */
