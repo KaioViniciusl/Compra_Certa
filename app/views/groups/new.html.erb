@@ -3,31 +3,36 @@
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="modal-groups">
         <h4>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h4>
+        <hr>
 
-        <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite" } } do |f| %>
-          <div class="text-center mb-4">
-            <div class="group-photo-placeholder">
-              <%= image_tag "placeholder-image.png", class: "group-show-image" %>
+        <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
+          <%= f.error_notification %>
+
+          <div class="mt-4 d-flex justify-content-center mb-4">
+            <div class="avatar-container" style="border-radius: 50%;">
+              <% if @group.photo.attached? %>
+                  <%= image_tag @group.photo, width: "180", height: "180", data: { photo_upload_target: "preview" } %>
+              <% else %>
+                  <%= image_tag "placeholder-image.png", width: "180", height: "180", data: { photo_upload_target: "preview" } %>
+              <% end %>
+
+              <label for="file-upload-input" class="edit-label" data-photo-upload-target="editLabel">Editar Foto</label>
+              <%= f.file_field :photo, class: "file-input", direct_upload: true, id: "file-upload-input", data: { photo_upload_target: "input" } %>
             </div>
-            <%= f.input :photo, as: :file, label: false, input_html: { accept: "image/*" } %>
           </div>
 
           <div class="group-pattern-lightblue">
             <div class="mb-0 w-100">
               <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "input-new-group" } %>
             </div>
-            <div class="group-pattern-darkblue">
-              <i>✎</i>
-            </div>
+            <%= image_tag "icons/pencil.png" %>
           </div>
 
-          <div class="group-pattern-lightblue">
+          <div class="group-pattern-lightblue mb-4">
             <div class="mb-0 w-100">
               <%= f.input :description_group, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "input-new-group" } %>
             </div>
-            <div class="group-pattern-darkblue">
-              <i>✎</i>
-            </div>
+            <%= image_tag "icons/pencil.png" %>
           </div>
 
 

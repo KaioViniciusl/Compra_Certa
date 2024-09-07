@@ -5,6 +5,10 @@
       <div class="modal-groups">
         <%= image_tag("icons/ElementDark.png", :class => "bg-show-modal") %>
 
+        <%= link_to root_path do %>
+            <%= image_tag "icons/seta_buton.png", alt: "Login" %>
+          <% end %>
+
         <h4 class="h4-login">Faça seu login</h4>
 
         <% if alert.present? %>
@@ -28,12 +32,14 @@
           </div>
         <% end %>
 
-        <%= render "devise/shared/links" %>
+        <div style="display: flex; justify-content: center; margin-bottom: 16px; margin-top: 16px;">
+          <%= link_to "Esqueceu sua senha?", new_user_password_path %>
+        </div>
 
       </div>
 
       <div class="image-logo logo-footer">
-        <%= image_tag("logo.png")%>
+        <%= image_tag("logo.png") %>
       </div>
 
     </div>
