@@ -21,9 +21,11 @@
   flex-direction: column;
 }
 
-hr.division-panel {
+.division-panel {
+
   opacity: unset !important;
   margin: -6px -14px !important;
+  margin-bottom: 16px;
 }
 
 .group-show-modal-header {
@@ -59,8 +61,8 @@ hr.division-panel {
 }
 
 .group-show-member-photo {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: black;
 }
@@ -69,18 +71,18 @@ hr.division-panel {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   background-color: rgb(255, 255, 255);
   border-radius: 40px;
   border: #5487FC, solid, 1px;
   margin-top: 16px;
-  gap: 22px;
+  gap: 8px;
 }
 
 .btn-group-show-menu {
   width: auto;
-  height: 21px;
-  padding: 13px;
+  height: 24px;
+  padding: 12px;
   background-color: #5487FC;
   color: white;
   border-radius: 20px;
@@ -90,6 +92,8 @@ hr.division-panel {
   font-size: 16px;
   line-height: 0px;
   display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .btn-group-show-menu:hover {
@@ -100,17 +104,18 @@ hr.division-panel {
 .btn-group-show-details {
   width: auto;
   height: 24px;
-  padding: 9px;
+  padding: 12px;
   background-color: #5487FC;
   color: white;
-  border-radius: 30px;
+  border-radius: 20px;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s;
-  font-size: 14px;
-  line-height: 2px;
+  font-size: 16px;
+  line-height: 0px;
   display: inline-block;
-  margin-top: -10px;
+  margin-top: 0px;
+  margin-bottom: 8px;
 }
 
 .btn-group-show-details:hover {
@@ -118,7 +123,7 @@ hr.division-panel {
   color: white;
 }
 
-.btns-group-show-expenses {
+.btn-group-show-expenses {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -127,13 +132,12 @@ hr.division-panel {
 }
 
 .btn-group-show-add-expense {
-  width: 173px;
-  padding: 8px;
+  width: 50%;
   background-color: #F1502C;
   color: white;
   border-radius: 20px;
   transition: background-color 0.3s;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .btn-group-show-add-expense:hover {
@@ -142,13 +146,12 @@ hr.division-panel {
 }
 
 .btn-group-show-add-payment {
-  width: 173px;
-  padding: 8px;
+  width: 50%;
   background-color: #4FD7B7;
   color: black;
   border-radius: 20px;
   transition: background-color 0.3s;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .btn-group-show-add-payment:hover {
@@ -362,10 +365,13 @@ hr.division-panel {
 .group-show-observation-area:valid {
   border-color: #F6F3EB !important;
   background-image: none !important;
+  font-size: 14px;
 }
 
 .btn-group-show-observation {
-  padding: 10px;
+  font-size: 16px;
+  width: 50%;
+  padding: 8px;
   background-color: #5487FC;
   color: white;
   border-radius: 30px;
@@ -378,9 +384,17 @@ hr.division-panel {
   color: white;
 }
 
+.h4-index-groups {
+  margin-top: 16px;
+}
+
+.h4-groups {
+  font-weight: 500;
+}
+
 @media (max-width: 600px) {
   .group-show-actions {
-    gap: 10px;
+    gap: 8px;
   }
 
   .btns-group-show-expenses {
@@ -392,5 +406,21 @@ hr.division-panel {
 @media (max-width: 423px) {
   .btn-group-show-menu {
     font-size: 12px;
+  }
+}
+
+.bg-ballandcactus {
+  top: 0;
+  position: absolute;
+  z-index: -5;
+}
+
+@media (max-width: 540px) {
+  .modal-groups-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .bg-ballandcactus {
+    width: 156%;
   }
 }
