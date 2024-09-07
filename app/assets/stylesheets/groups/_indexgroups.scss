@@ -49,7 +49,7 @@ a {
 }
 
 .group-details-text {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #0B3234;
 }
@@ -59,9 +59,11 @@ a {
 }
 
 .create-group-button {
+  margin-top: 16px;
+  padding: 10px;
+  height: 50px;
   font-size: 16px;
   width: 100%;
-  padding: 10px;
   background-color: #5487FC;
   color: white;
   border-radius: 30px;
@@ -74,8 +76,8 @@ a {
   color: white;
 }
 
-.title-group h3 {
-    margin-top: 40px;
+.title-group {
+    margin-top: 30px;
     font-size: 24px;
 }
 
@@ -97,6 +99,7 @@ a {
 
 .hr-create-group {
   margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .bg-cactus {
@@ -115,8 +118,10 @@ a {
   }
 }
 
-// .image-logo-container {
-//     padding: 20px;
-//     display: flex;
-//     justify-content: center;
-// }
+.logo-footer-ng {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.9);
+}
