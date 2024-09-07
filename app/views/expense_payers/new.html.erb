@@ -3,10 +3,10 @@
     <div class="col-12 col-lg-4">
       <div class="group-form-modal">
 
-        <h2>Adicionar Pagamento</h2>
+        <h4>Adicionar Pagamento</h4>
 
         <%= simple_form_for @expense_payer, url: group_expense_payers_path(@group) do |f| %>
-          <%= f.input :description, label: "Descrição", input_html: { class: "input-new-expense" } %>
+          <%= f.input :description, label: false, placeholder: "Descrição", input_html: { class: "input-new-expense" } %>
           <div class="expense-pattern-lightblue">
             <div class="expense-pattern-darkblue">
               <%= f.label "R$" %>
@@ -20,6 +20,9 @@
           <%= f.button :submit, "SALVAR", class: "btn create-button-new" %>
         <% end %>
 
+      </div>
+      <div class="image-logo logo-footer">
+        <%= image_tag("logo.png")%>
       </div>
 
     </div>

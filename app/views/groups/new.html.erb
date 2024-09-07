@@ -3,7 +3,7 @@
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="modal-groups">
         <h4>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h4>
-        <hr>
+        <hr class="division-line w-100">
 
         <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
           <%= f.error_notification %>
@@ -37,11 +37,17 @@
 
 
 
-          <hr>
+          <hr class="division-line w-100">
 
           <div class="form-group mt-4">
             <label for="member-email">Adicionar membro</label>
-            <input type="email" id="member-email" class="input-new-group no-border" placeholder="Insira o email do usuário" data-invite-target="email" />
+            <div class="group-pattern-lightblue mb-4">
+              <div class="mb-0 w-100">
+                <input type="email" id="member-email" class="input-new-group no-border" placeholder="  Insira o email do usuário" data-invite-target="email" />
+              </div>
+              <%= image_tag "icons/verific.png" %>
+            </div>
+        
             <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
           </div>
 
@@ -53,8 +59,8 @@
       </div>
 
 
-      <div class="image-logo logo-footer-ng">
-        <%= image_tag("logo.png", class: "image-logo")%>
+      <div class="image-logo logo-footer">
+        <%= image_tag("logo.png")%>
       </div>
     </div>
   </div>
