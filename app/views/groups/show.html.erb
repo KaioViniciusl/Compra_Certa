@@ -230,7 +230,7 @@
         <h4 class="h4-groups">Quadro</h4>
         <%= simple_form_for @group, url: group_path(@group), method: :patch, html: { class: "form-horizontal" } do |form| %>
           <%= form.input :observation, as: :text, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, input_html: { class: "group-show-observation-area" }, label: false %>
-          <%= form.button :submit, "Salvar Mudanças", class: "btn btn-group-show-observation" %>
+          <%= form.button :submit, "SALVAR", class: "btn btn-group-show-observation" %>
         <% end %>
       </div>
 
