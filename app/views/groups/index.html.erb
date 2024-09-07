@@ -7,7 +7,7 @@
         <h4 class="title-group"><%= @groups.any? ? "Toque no botão para criar mais um grupo" : "Toque no botão para criar seu primeiro grupo" %></h4>
           <%= link_to "CRIAR GRUPO", new_group_path, class: "btn create-group-button" %>
         <% if @groups.any? %>
-          <hr class="hr-create-group">
+          <hr class="division-line w-100">
           <h4 class="title-group">Seus Grupos</h4>
           <div class="group-list">
             <% @groups.each do |group| %>
