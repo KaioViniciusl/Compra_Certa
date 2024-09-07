@@ -1,7 +1,6 @@
-<div class="container">
+<div class="container bg-do-ed" style="background-image: url(<%= asset_path("BallAndCactus2.png") %>)">
   <div class="row justify-content-center group-show-modal-invisivel">
     <div class="col-sm-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-      <%= image_tag("bg/BallAndCactus2.png", class: "bg-ballandcactus-group") %>
 
       <div class="group-show-modal-header">
         <%= image_tag("icons/ElementGreen.png", class: "bg-show-modal") %>
@@ -33,7 +32,7 @@
         </div>
 
         <div class="btn-group-show-expenses">
-          <%= link_to "Adicionar Despesa", new_group_expense_path(@group), class: "btn btn-group-show-add-expense" %>
+          <%= link_to "Adicionar Despesa", new_group_expense_path(@group), class: "btn btn-group-show-add-expense me-2" %>
           <%= link_to "Adicionar Pagamento", new_group_expense_payer_path(@group), class: "btn btn-group-show-add-payment" %>
         </div>
       </div>
@@ -230,7 +229,7 @@
         <h4 class="h4-groups">Quadro</h4>
         <%= simple_form_for @group, url: group_path(@group), method: :patch, html: { class: "form-horizontal" } do |form| %>
           <%= form.input :observation, as: :text, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, input_html: { class: "group-show-observation-area" }, label: false %>
-          <%= form.button :submit, "Salvar Mudanças", class: "btn btn-group-show-observation" %>
+          <%= form.button :submit, "SALVAR", class: "btn btn-group-show-observation" %>
         <% end %>
       </div>
 
