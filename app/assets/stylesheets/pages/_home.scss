@@ -70,6 +70,17 @@
   margin-bottom: 6px;
 }
 
+.navigation {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
 
 
 
