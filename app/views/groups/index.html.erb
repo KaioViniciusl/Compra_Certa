@@ -4,9 +4,9 @@
       <%= image_tag("bg/cactus.png", :class => "bg-cactus") %>
       <div class="modal-groups">
 
-        <% if @groups.any? %>
-          <h4 class="title-group">Toque no botão para criar seu primeiro grupo</h4>
+        <h4 class="title-group"><%= @groups.any? ? "Toque no botão para criar mais um grupo" : "Toque no botão para criar seu primeiro grupo" %></h4>
           <%= link_to "CRIAR GRUPO", new_group_path, class: "btn create-group-button" %>
+        <% if @groups.any? %>
           <hr class="hr-create-group">
           <h4>Seus Grupos</h4>
           <div class="group-list">
@@ -26,16 +26,9 @@
                     </div>
                   </div>
                 <% end %>
-
             <% end %>
           </div>
-
-        <% else %>
-          <div class="without-group">
-            <%= link_to "Criar Grupo", new_group_path, class: "btn create-group-button" %>
-          </div>
         <% end %>
-
 
       </div>
       <div class="image-logo logo-footer">
