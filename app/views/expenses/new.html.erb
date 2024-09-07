@@ -7,7 +7,7 @@
         <%= simple_form_for([@group, @expense]) do |form| %>
           <div class="form-inputs">
             <%= form.input :name_expense, label: false, placeholder: "Nome da despesa", input_html: { class: "input-new-expense" } %>
-            <%= form.input :description, as: :text, label: "Insira uma descrição:", input_html: { class: "input-new-expense" } %>
+            <%= form.input :description, as: :text, label: false, placeholder: "Insira uma descrição", input_html: { class: "input-new-expense" } %>
             <%= form.input :date, as: :string, label: false, input_html: { data: { controller: "datepicker", datepicker_target: "input" }, placeholder: "Selecione a data..." } %>
 
             <div class="group-pattern-lightblue">
@@ -41,6 +41,14 @@
         <% end %>
 
       </div>
+
+
+      
+      <div class="image-logo logo-footer">
+        <%= image_tag("logo.png")%>
+      </div>
+
+      
     </div>
   </div>
 </div>
