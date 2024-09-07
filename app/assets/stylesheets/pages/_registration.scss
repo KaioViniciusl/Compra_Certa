@@ -3,11 +3,6 @@
   padding-bottom: 8px;
 }
 
-.bg-registration-modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
 .modal-registrations-wrapper {
   display: flex;
@@ -17,12 +12,18 @@
   flex-direction: column;
 }
 
+.bg-registration-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 @media (max-width: 540px) {
   .modal-registrations-wrapper {
     width: 100%;
     overflow-x: hidden;
   }
-  .modal-registrations-wrapper {
+  .bg-registration-modal {
     width: 156%;
   }
 }
