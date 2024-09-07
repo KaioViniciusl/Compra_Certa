@@ -3,7 +3,7 @@
         <div class="col-12 col-lg-4">
             <div class="group-edit-modal">
                 <h4> Personalize o seu grupo adicionando uma Foto, Nome e Descrição </h4>
-                <hr class="w-100">
+                <hr class="division-line w-100">
 
 
                 <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
@@ -40,19 +40,28 @@
 
 
 
-                    <hr>
+                    <hr class="division-line w-100">
 
-                    <div class="form-group mt-4">
+                    <div class="mt-4">
                         <label for="member-email">Adicionar membro</label>
-                        <input type="email" id="member-email" class="form-control group-edit-input" placeholder="Insira o email do usuário" data-invite-target="email" />
-                        <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
+                        <div class="group-pattern-lightblue mb-4">
+                            <div class="mb-0 w-100">
+                                <input type="email" id="member-email" class="form-control group-edit-input" placeholder="Insira o email do usuário" data-invite-target="email" />
+                            </div>
+                            <%= image_tag "icons/pencil.png" %>
+                        </div>
+            
+
+
+                            
+                        <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-2 w-100">ADICIONAR MEMBRO</button>
                     </div>
 
                     <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div>
-                        <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
+                    <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
 
-                        <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save w-100 mt-4" %>
-                    </div>
+                    <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save w-100 mt-2" %>
+                 
 
 
 
