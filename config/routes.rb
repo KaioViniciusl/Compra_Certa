@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :groups do
     resources :expenses
     resources :expense_payers, only: [:new, :create]
+    member do
+      get "accept_invite/:token", to: "groups#accept_invite", as: :accept_invite
+    end
   end
 
   # Outras rotas

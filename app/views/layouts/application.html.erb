@@ -10,88 +10,10 @@
   <%= javascript_importmap_tags %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/material_blue.css">
+  <%= favicon_link_tag "logo/logo.toggle.png", type: "image/png" %>
 </head>
 <body>
-  <% unless controller.controller_name == "pages" && controller.action_name == "home" %>
-    <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <div class="container">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "logo/logo.toggle.png" %>
-        <% end %>
-
-        <!-- Botão de Cadastro para desktop -->
-        <% if !user_signed_in? %>
-          <div class="d-none d-sm-block ms-auto">
-            <% unless (controller.controller_name == "registrations" && controller.action_name == "new") %>
-              <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn-registration-nav" %>
-            <% end %>
-          </div>
-        <% end %>
-
-        <% if user_signed_in? %>
-          <!-- Botão para abrir o offcanvas (visível apenas em mobile) -->
-          <button class="navbar-toggler d-sm-none border-0 position-absolute end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <!-- Offcanvas Menu (visível apenas em mobile) -->
-          <div class="offcanvas offcanvas-end d-sm-none" id="offcanvasMenu" tabindex="-1" aria-labelledby="offcanvasMenuLabel">
-            <div class="offcanvas-header">
-              <%= image_tag "logo/logo.toggle.png", width: "60", height: "60" %>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <!-- Avatar e Menu -->
-              <div class="text-center mb-3">
-                <!-- Avatar -->
-                <% if @user %>
-                  <%= image_tag @user.photo.attached? ? url_for(@user.photo) : "avatar/profile.anonymus.png", class: "rounded-circle", alt: "Avatar", width: "100", height: "100" %>
-                <% else %>
-                  <%= image_tag "avatar/profile.anonymus.png", class: "rounded-circle", alt: "Avatar", width: "100", height: "100" %>
-                <% end %>
-                <h5 class="mt-2"><%= current_user.name.capitalize %></h5>
-              </div>
-              <hr>
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <%= link_to "Configurações", settings_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Navbar content (visível na versão desktop) -->
-          <div class="d-none d-sm-block ms-auto">
-            <li class="nav-item dropdown">
-              <% if @user&.photo&.attached? %>
-                <%= image_tag url_for(@user.photo), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }, alt: current_user.name.capitalize, title: current_user.name.capitalize %>
-              <% else %>
-                <%= image_tag "avatar/profile.anonymus.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" }, alt: current_user.name.capitalize, title: current_user.name.capitalize %>
-              <% end %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Configurações", settings_path, class: "dropdown-item" %>
-                <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
-              </div>
-            </li>
-          </div>
-        <% end %>
-
-        <!-- Botão de Cadastro no mobile -->
-        <% if !user_signed_in? %>
-          <div class="d-sm-none ms-auto">
-            <% unless (controller.controller_name == "registrations" && controller.action_name == "new") %>
-              <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn-registration-nav" %>
-            <% end %>
-          </div>
-        <% end %>
-
-      </div>
-    </nav>
-  <% end %>
-
+  <%= render "shared/navbar" %>
   <div class="container">
     <div class="row justify-content-center">
       <% if controller.controller_name == "groups" && controller.action_name == "show" %>
@@ -108,6 +30,11 @@
         </div>
       <% end %>
 
+      <% if flash[:token].present? %>
+        <div class="alert-token">
+          <%= flash[:token] %>
+        </div>
+      <% end %>
       <!-- Outros conteúdos -->
       </div>
     </div>

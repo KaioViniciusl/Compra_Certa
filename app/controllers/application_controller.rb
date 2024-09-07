@@ -2,8 +2,21 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   before_action :set_current_user
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :add_user_to_group, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def add_user_to_group
+    return unless session[:invite_token].present? && current_user.present?
+
+    group = Group.find_by(last_token: session[:invite_token])
+    return unless group.present?
+
+    group.add_user(current_user)
+    session.delete(:invite_token)
+    group.generate_token
+    flash[:notice] = "Você foi adicionado ao grupo!"
+  end
 
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path

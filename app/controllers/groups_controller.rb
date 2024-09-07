@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_group, only: [:edit, :update, :destroy, :show]
+  before_action :authenticate_user!, except: [:accept_invite]
+  before_action :set_group, only: [:edit, :update, :destroy, :show, :accept_invite]
   before_action :authorize_group, only: [:edit, :update, :destroy, :show]
 
   def index
@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
     authorize @group
 
     if @group.save
+      @group.generate_token
       @group.user_groups.find_or_create_by(user: current_user, user_mail: current_user.email, invite_accepted: true)
       handle_invitations(params[:invite_emails].to_s.split(",").map(&:strip))
       redirect_to group_path(@group), notice: "Grupo criado com sucesso e convites enviados."
@@ -39,12 +40,42 @@ class GroupsController < ApplicationController
   def update
     @group = current_user.groups.find(params[:id])
     if @group.update(group_params)
+      @group.generate_token
       @group.user_groups.find_or_create_by(user: current_user, user_mail: current_user.email, invite_accepted: true)
       handle_invitations(params[:invite_emails].to_s.split(",").map(&:strip))
       redirect_to group_path(@group), notice: "Grupo atualizado com sucesso e convites enviados."
     else
       render :edit
     end
+  end
+
+  def accept_invite
+    skip_authorization
+    unless @group.last_token == params[:token]
+      flash[:token] = "Token de convite expirado ou inválido."
+      if current_user
+        redirect_to groups_path and return
+      else
+        redirect_to new_user_session_path and return
+      end
+    end
+
+    if user_signed_in?
+      user_group = @group.user_groups.find_by(user: current_user, user_mail: current_user.email,
+                                              invite_accepted: true)
+      flash[:notice] = user_group ? "Você já faz parte deste grupo." : "Você foi adicionado ao grupo!"
+      @group.add_user(current_user) unless user_group
+      @group.generate_token
+      redirect_to @group
+    else
+      session[:invite_token] = params[:token]
+      redirect_to new_user_session_path, notice: "Faça login ou cadastre-se para aceitar o convite."
+    end
+  end
+
+  def generate_invite_link
+    @group.update(last_token: SecureRandom.urlsafe_base64)
+    redirect_to group_path(@group), notice: "Link de convite gerado com sucesso."
   end
 
   def destroy
@@ -65,7 +96,10 @@ class GroupsController < ApplicationController
   end
 
   def set_group
-    @group = Group.find(params[:group_id] || params[:id])
+    @group = Group.find_by(id: params[:id])
+    return if @group
+
+    redirect_to root_path, notice: "Grupo não encontrado."
   end
 
   def handle_invitations(invite_emails)

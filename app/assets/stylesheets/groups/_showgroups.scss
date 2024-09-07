@@ -55,15 +55,22 @@
 }
 
 .group-show-members-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
   justify-content: center;
   align-items: center;
 }
 
 .group-show-member-photo {
+  position: relative;
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: black;
+}
+
+.group-show-member-photo:hover + .group-show-member-name {
+  display: block;
 }
 
 .group-show-actions {
@@ -390,6 +397,21 @@
 
 .h4-groups {
   font-weight: 500;
+}
+
+.group-show-member-name {
+  position: absolute;
+  bottom: 389px;
+  margin-bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  display: none;
+  border-radius: 5px 5px 0px 0px;
 }
 
 @media (max-width: 600px) {
