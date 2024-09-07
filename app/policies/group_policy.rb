@@ -11,6 +11,10 @@ class GroupPolicy < ApplicationPolicy
     user.present?
   end
 
+  def accept_invite?
+    true
+  end
+
   def update?
     user.present? && user_is_owner?
   end
