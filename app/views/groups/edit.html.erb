@@ -6,7 +6,7 @@
                 <hr class="w-100">
 
 
-                <%= simple_form_for @group, url: groups_path, method: :post, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
+                <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
                     <%= f.error_notification %>
 
                     <div class="mt-4 d-flex justify-content-center mb-4">

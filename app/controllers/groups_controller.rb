@@ -39,7 +39,9 @@ class GroupsController < ApplicationController
   def update
     @group = current_user.groups.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group), notice: "Grupo #{@group.name_group} foi atualizado com sucesso."
+      @group.user_groups.find_or_create_by(user: current_user, user_mail: current_user.email, invite_accepted: true)
+      handle_invitations(params[:invite_emails].to_s.split(",").map(&:strip))
+      redirect_to group_path(@group), notice: "Grupo atualizado com sucesso e convites enviados."
     else
       render :edit
     end
