@@ -30,6 +30,7 @@
 }
 
 .btn-save-settings {
+  font-size: 14px;
   background-color: #156EF5;
   color: #ffffff;
   letter-spacing: 1px;
@@ -37,7 +38,7 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  width: 50%;
+  width: 35%;
   height: 40px;
   max-width: 518px;
   transition: background-color 0.3s;
@@ -58,8 +59,15 @@
 }
 
 .form-label {
+  font-size: 14px;
   display: block;
-  margin-left: 12px;
+  margin-left: 8px;
+  color: #0B3234;
+  margin-bottom: 0rem;
+}
+
+.label.form-label.email.required {
+  margin-bottom: 0rem;
 }
 
 .form-input {
@@ -78,6 +86,7 @@
 }
 
 .form-input:valid {
+  font-size: 14px;
   border-color: #DDE7FF !important;
   background-image: none !important;
 }

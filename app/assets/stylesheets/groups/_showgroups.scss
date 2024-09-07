@@ -1,3 +1,10 @@
+.header-with-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
 .bg-show-modal {
   position: absolute;
   top: 0;
@@ -117,7 +124,7 @@
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 0px;
   display: inline-block;
   margin-top: 0px;
@@ -177,9 +184,13 @@
 }
 
 .text-group-show {
-  font-size: 12px;
-  margin: 0px;
+  font-size: 14px;
+  margin: -4px;
   margin-top: 16px;
+}
+
+.p-devemavoce {
+  font-size: 16px;
 }
 
 .modal {
@@ -326,7 +337,8 @@
 }
 
 .group-show-name-expense {
-  padding: 10px;
+  font-size: 14px;
+  padding: 12px;
   border-radius: 5px;
   color: black;
 }
@@ -376,12 +388,13 @@
 }
 
 .btn-group-show-observation {
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   width: 35%;
   padding: 8px;
   color: #5487FC;
   border-radius: 30px;
-  border: 2px solid #5487FC;
+  border: 1px solid #5487FC;
   transition: background-color 0.3s;
   cursor: pointer;
 }
