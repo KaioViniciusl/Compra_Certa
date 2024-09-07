@@ -46,12 +46,19 @@
 .notice {
   background-color: #28a745;
   border-radius: 5px;
-  padding: 12px; /* Aumente o padding para melhor visibilidade */
+  padding: 12px;
   margin-bottom: 16px;
   color: white;
-  width: 100%; /* Garante que a .notice ocupe toda a largura do contêiner pai */
+  width: 100%;
 }
 
+.alert-token {
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 16px;
+  color: white;
+  width: 100%;
+}
 
 @media (max-width: 600px) {
   .navbar-lewagon {

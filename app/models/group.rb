@@ -12,6 +12,15 @@ class Group < ApplicationRecord
   validates :name_group, presence: true
   validates :description_group, presence: true
 
+  def add_user(user)
+    user_groups.create_or_find_by(user:, user_mail: user.email, invite_accepted: true)
+  end
+
+  def generate_token
+    self.last_token = SecureRandom.urlsafe_base64
+    save
+  end
+
   def calculate_balance_by_user(user)
     total_balance = calculate_owed_amounts_with_payments
     users_owed = []
