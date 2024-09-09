@@ -32,7 +32,13 @@ class GroupsController < ApplicationController
       handle_invitations(params[:invite_emails].to_s.split(",").map(&:strip))
       redirect_to group_path(@group), notice: "Grupo criado com sucesso e convites enviados."
     else
-      render :new
+      @errors = @group.errors.full_messages.map do |msg|
+        msg = msg.sub(/.*?O/, 'O')
+        msg = msg.gsub(/\band\b/, '').strip
+      end
+      formatted_errors = @errors.to_sentence(words_connector: ', ', two_words_connector: ' ')
+      flash[:alertgroup] = formatted_errors
+      redirect_to new_group_path
     end
   end
 
@@ -42,13 +48,21 @@ class GroupsController < ApplicationController
 
   def update
     @group = current_user.groups.find(params[:id])
+
     if @group.update(group_params)
       @group.generate_token
       @group.user_groups.find_or_create_by(user: current_user, user_mail: current_user.email, invite_accepted: true)
       handle_invitations(params[:invite_emails].to_s.split(",").map(&:strip))
       redirect_to group_path(@group), notice: "Grupo atualizado com sucesso e convites enviados."
     else
-      render :edit
+      @errors = @group.errors.full_messages.map do |msg|
+        msg = msg.sub(/.*?O/, 'O')
+        msg = msg.gsub(/\band\b/, '').strip
+      end
+      formatted_errors = @errors.present? ? @errors.to_sentence(words_connector: ', ', two_words_connector: ' e ') : "Ocorreu um erro ao atualizar o grupo."
+
+      flash[:alertgroup] = formatted_errors
+      redirect_to edit_group_path and return
     end
   end
 

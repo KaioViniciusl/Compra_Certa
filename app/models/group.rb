@@ -10,8 +10,8 @@ class Group < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :name_group, presence: true
-  validates :description_group, presence: true
+  validates :name_group, presence: { message: "O campo 'nome do grupo' não pode ficar em branco." }
+  validates :description_group, presence: { message: "O campo 'descrição do grupo' não pode ficar em branco." }
 
   def add_user(user)
     user_groups.create_or_find_by(user:, user_mail: user.email, invite_accepted: true)
