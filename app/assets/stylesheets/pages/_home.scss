@@ -36,6 +36,10 @@
   transform-origin: 800px;
 }
 
+.img-slider {
+  transition: transform 0.5s ease;
+}
+
 .img-item img {
   transform: rotate(-90deg);
   filter: drop-shadow(0 0 10px rgba(18, 49, 52, 100));
@@ -79,6 +83,19 @@
   display: flex;
   justify-content: space-between;
   z-index: 100;
+}
+
+.navigation span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, .2);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 54px;
+  color: white;
 }
 
 
