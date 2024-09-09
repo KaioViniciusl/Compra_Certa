@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="modal-groups">
-        <h4>Personalize o seu grupo adicionando uma Foto, Nome e Descrição.</h4>
+        <h4>Personalize o seu grupo adicionando uma Foto, Nome, Descrição e Convide Amigos</h4>
         <hr class="division-line w-100">
 
         <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
@@ -47,7 +47,7 @@
               </div>
               <%= image_tag "icons/verific.png" %>
             </div>
-        
+
             <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
           </div>
 
