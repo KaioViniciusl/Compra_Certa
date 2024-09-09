@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["input"];
 
   connect() {
-    console.log("Initializing flatpickr with Portuguese localization");
 
     flatpickr(this.inputTarget, {
       locale: {

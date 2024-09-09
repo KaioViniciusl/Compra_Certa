@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-4">
             <div class="group-edit-modal">
-                <h4>Edite o seu grupo adicionando uma Foto, Nome e Descrição </h4>
+                <h4>Atualize as informações do seu grupo: adicione uma foto, nome, descrição e convide novos amigos</h4>
                 <hr class="division-line w-100">
 
 
@@ -50,10 +50,10 @@
                             </div>
                             <%= image_tag "icons/verific.png" %>
                         </div>
-            
 
 
-                            
+
+
                         <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-2 w-100">ADICIONAR MEMBRO</button>
                     </div>
 
@@ -61,7 +61,7 @@
                     <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
 
                     <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save w-100 mt-2" %>
-                 
+
 
 
 

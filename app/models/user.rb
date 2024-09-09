@@ -15,6 +15,17 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, confirmation: true, if: :password_present?
 
+  def accept_pending_invites
+    pending_invites = UserGroup.where(user_mail: email.downcase, invite_accepted: false)
+
+    pending_invites.each do |user_group|
+      user_group.update(invite_accepted: true)
+
+      group = user_group.group
+      group.add_user(self) unless group.users.include?(self)
+    end
+  end
+
   private
 
   def downcase_email

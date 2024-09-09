@@ -4,8 +4,7 @@ export default class extends Controller {
   static targets = ["modal"];
 
   connect() {
-    console.log('Modal controller connected');
-    console.log('Modal target:', this.modalTarget);
+
   }
 
   toggle() {

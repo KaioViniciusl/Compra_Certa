@@ -56,8 +56,8 @@
 .group-show-image {
   width: 120px;
   height: 120px;
+  border: black 1px solid;
   border-radius: 50%;
-  background-color: black;
   margin-top: 16px;
 }
 
@@ -415,7 +415,7 @@
 .group-show-member-name {
   position: absolute;
   bottom: 389px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.6);

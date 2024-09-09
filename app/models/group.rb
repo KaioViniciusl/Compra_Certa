@@ -6,6 +6,7 @@ class Group < ApplicationRecord
   has_many :user_groups
   has_many :users, through: :user_groups
   has_many :user_groups, dependent: :destroy
+  before_destroy :check_for_expenses
 
   has_one_attached :photo
 
@@ -59,7 +60,6 @@ class Group < ApplicationRecord
       receiver = payment.receiver
       amount_paid = payment.paid_amount
 
-      # Adjust the debts
       if debts[payer] && debts[receiver]
         debts[payer] -= amount_paid
         debts[receiver] += amount_paid
@@ -94,5 +94,14 @@ class Group < ApplicationRecord
 
   def users
     user_groups.map(&:user).compact
+  end
+
+  private
+
+  def check_for_expenses
+    if expenses.exists?
+      errors.add(:base, "Não é possível excluir o grupo porque ele já tem despesas associadas.")
+      throw :abort
+    end
   end
 end
