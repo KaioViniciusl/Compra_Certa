@@ -3,7 +3,10 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update, :destroy, :show, :accept_invite]
   before_action :authorize_group, only: [:edit, :update, :destroy, :show]
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   def index
+    accept_pending_invites_for_current_user
     @groups = policy_scope(Group)
   end
 
@@ -49,6 +52,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def accept_pending_invites_for_current_user
+    if user_signed_in?
+      current_user.accept_pending_invites
+    end
+  end
+
   def accept_invite
     skip_authorization
     unless @group.last_token == params[:token]
@@ -81,12 +90,19 @@ class GroupsController < ApplicationController
   def destroy
     authorize @group
 
-    @group.user_groups.destroy_all
-    @group.destroy
-    redirect_to groups_path, notice: "Grupo: #{@group.name_group} foi deletado com sucesso."
-  rescue Pundit::NotAuthorizedError
-    flash[:alert] = "Você não tem permissão para deletar este grupo."
-    redirect_to groups_path
+     if @group.expenses.any?
+      flash[:alertgroup] = "Não é possível excluir o grupo porque ele já tem despesas associadas."
+     else
+      @group.user_groups.destroy_all
+      @group.destroy
+      redirect_to groups_path, notice: "Grupo #{@group.name_group} foi deletado com sucesso."
+     end
+    redirect_to @group
+  end
+
+  def user_not_authorized
+    flash[:alertgroup] = "Desculpe, mas apenas o usuário que criou o grupo pode deletá-lo."
+    redirect_to @group
   end
 
   private

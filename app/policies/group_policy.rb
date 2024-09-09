@@ -16,7 +16,7 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user_is_owner?
+    true
   end
 
   def destroy?

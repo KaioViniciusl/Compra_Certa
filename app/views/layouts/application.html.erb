@@ -18,7 +18,7 @@
     <div class="row justify-content-center">
       <% if controller.controller_name == "groups" && controller.action_name == "show" %>
         <!-- Aplica classes específicas para a página de groups -->
-        <div class="col-12 col-lg-6 modal-index-wrapper">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 modal-index-wrapper">
       <% else %>
         <!-- Aplica classes padrão para outras páginas -->
         <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 modal-index-wrapper">
@@ -27,6 +27,12 @@
       <% if notice.present? %>
         <div class="notice">
           <%= notice %>
+        </div>
+      <% end %>
+
+     <% if flash[:alertgroup] %>
+        <div class="alert-token">
+          <%= flash[:alertgroup] %>
         </div>
       <% end %>
 

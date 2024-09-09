@@ -25,10 +25,18 @@
         </div>
 
         <div class="group-show-actions">
-          <%= link_to "Editar Grupo", edit_group_path, class: "btn btn-group-show-menu" %>
-          <button id="copy-link-btn" class="btn btn-group-show-menu">Link do Grupo</button>
+          <%= link_to "Editar", edit_group_path, class: "btn btn-group-show-menu" %>
+        <button
+          data-controller="clipboard"
+          data-clipboard-group-id="<%= @group.id %>"
+          data-clipboard-token="<%= @group.last_token %>"
+          data-action="click->clipboard#copyToClipboard"
+          class="btn btn-group-show-menu"
+        >
+          Compartilhar
+        </button>
           <%= link_to "Excluir", group_path(@group),
-                      data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este produto?" },
+                      data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este grupo?" },
                       class: "btn btn-group-show-menu" %>
         </div>
 
