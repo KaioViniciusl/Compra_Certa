@@ -35,8 +35,9 @@ a {
     width: 50px;
     height: 50px;
     border-radius: 5px;
-    background-color: #000000;
-    object-fit: cover; /* Garante que a imagem se ajuste ao contêiner sem distorção */
+    background-color: white;
+    border: black solid 1px;
+    object-fit: cover;
     margin-right: 16px;
     align-items: center;
 }
@@ -82,8 +83,8 @@ a {
 }
 
 .modal-groups {
-    background-color: #ffffff; /* Fundo branco para a caixa */
-    border-radius: 10px; /* Bordas arredondadas */
+    background-color: #ffffff;
+    border-radius: 10px;
     padding: 20px;
     width: 100%;
     position: relative;

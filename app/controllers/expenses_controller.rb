@@ -18,17 +18,29 @@ class ExpensesController < ApplicationController
     @expense.user = current_user
 
     if @expense.save
-      process_expense_shares(params[:expense_shares])
-      redirect_to group_path(@group), notice: "Sua despesa foi criada."
+      if valid_shares?(params[:expense_shares])
+        process_expense_shares(params[:expense_shares])
+        redirect_to group_path(@group), notice: "Sua despesa foi criada."
+      else
+        @expense.destroy
+        flash[:alertgroup] = "Os valores inseridos não correspondem ao valor total da despesa."
+        redirect_to new_group_expense_path(@group)
+      end
     else
-      render :new
+      flash[:alertgroup] = "Houve algum erro. Por favor, preencha os campos abaixo e não se esqueça de selecionar os usuários."
+      redirect_to new_group_expense_path(@group)
     end
   end
 
   def update
     if @expense.update(expense_params)
-      handle_expense_shares(params[:expense_shares])
-      redirect_to group_expense_path(@group, @expense), notice: "Sua despesa foi atualizada."
+      if valid_shares?(params[:expense_shares])
+        handle_expense_shares(params[:expense_shares])
+        redirect_to group_expense_path(@group, @expense), notice: "Sua despesa foi atualizada."
+      else
+        flash[:alertgroup] = "Os valores inseridos não correspondem ao valor total da despesa."
+        render :edit
+      end
     else
       render :edit
     end
@@ -66,6 +78,12 @@ class ExpensesController < ApplicationController
     expense_shares_params.each do |user_id, share_amount|
       ExpenseShare.create(expense: @expense, user_id: user_id.to_i, share_amount: share_amount.to_f)
     end
+  end
+
+  def valid_shares?(expense_shares_params)
+    total_amount = expense_params[:amount].to_f
+    total_shares = expense_shares_params.values.sum { |data| data["amount"].to_f if data["selected"] == "1" }
+    total_amount == total_shares
   end
 
   def process_expense_shares(expense_shares_params)

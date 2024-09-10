@@ -3,7 +3,8 @@ class ExpensePayersController < ApplicationController
 
   def new
     @expense_payer = ExpensePayer.new
-    @users = @group.users
+    @group = Group.find(params[:group_id])
+    @users = @group.users.to_a.reject { |user| user.id == current_user.id }
   end
 
   def create
@@ -14,8 +15,9 @@ class ExpensePayersController < ApplicationController
     if @expense_payer.save
       redirect_to @group, notice: "Pagamento adicionado com sucesso."
     else
-      @users = @group.users
-      render :new
+      # @users = @group.users
+      flash[:alertgroup] = "Houve algum erro. Por favor, preencha os campos abaixo e não se esqueça de selecionar uma data."
+      redirect_to new_group_expense_payer_path(@group)
     end
   end
 

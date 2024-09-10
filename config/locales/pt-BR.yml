@@ -122,20 +122,24 @@ pt-BR:
           attributes:
             email:
               blank: "não pode ficar em branco"
+              taken: "já está em uso"
             password:
               blank: "não pode ficar em branco"
 
       messages:
         blank: "não pode ficar em branco"
+        taken: "já está em uso"
 
     attributes:
       user:
         email: "E-mail"
         password: "Senha"
 
+
   errors:
     messages:
       blank: "não pode ficar em branco"
+
 
 
   simple_form:
