@@ -1,33 +1,44 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-4">
-      <div class="group-edit-modal">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+      <div class="group-expense-show-modal">
 
-        <div class="container-show-expense">
-          <h1><%= @expense.name_expense %></h1>
-          <p><strong>Valor:</strong> <%= number_to_currency(@expense.amount, unit: "R$", separator: ",", delimiter: ".") %></p>
+        
+        <h4><%= @expense.name_expense %></h4>
+        <h3 class="mt-3"><%= number_to_currency(@expense.amount, unit: "R$", separator: ",", delimiter: ".") %></h3>
+        <p class="mt-3"><strong>Descrição:</strong> <%= @expense.description %></p>
+        <p>Adicionado por <%= @expense.user.name %> em <%= l(@expense.date, format: :long) %></p>
+       
 
-          <p><strong>Descrição:</strong> <%= @expense.description %></p>
-          <p><strong>Adicionado em:</strong> <%= @expense.date %></p>
+        <hr class="division-line w-100">
 
-          <hr>
-
-          <h2>Débitos e Créditos</h2>
-          <% if @debts.any? %>
-            <% @debts.each do |user_owing, user_owed_hash| %>
-              <% user_owed_hash.each do |user_owed, amount| %>
-                <% if amount > 0 %>
-                  <li><%= number_to_currency(amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a receber</strong> de <%= user_owed.name %></li>
-                <% else %>
-                  <li><%= number_to_currency(-amount, unit: "R$", separator: ",", delimiter: ".") %> <strong>a pagar</strong> para <%= user_owed.name %></li>
-                <% end %>
-              <% end %>
+        <% @expense.expense_shares.each do |share| %>
+          <div class="expense-item">
+          
+           
+            <% if share.user.photo.attached? %>
+              <%= image_tag share.user.photo, class: "expense-image" %>
+            <% else %>
+              <%= image_tag "avatar/profile.anonymus.png", class: "expense-image" %>
             <% end %>
-          <% else %>
-            <p>Todos os usuários estão em equilíbrio.</p>
-          <% end %>
+           
+            <div class="group-details group-details-text">
+              <p class="mb-0"><strong><%= share.user.name %></strong> pagou <%= number_to_currency(share.share_amount, unit: "R$", separator: ",", delimiter: ".") %></p>
+            </div>
+          </div>
+        <% end %>
 
-        </div>
+
+
+
+
+
+        <hr class="division-line w-100">
+
+
+
+          
+      
       </div>
     </div>
   </div>
