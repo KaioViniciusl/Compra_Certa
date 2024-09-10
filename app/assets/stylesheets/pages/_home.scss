@@ -49,11 +49,26 @@
   transform: rotate(-90deg) translateY(-30%);
   scale: 0;
   transition: .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation: float-fruits 4s ease-in-out infinite;
 }
 
 .img-item.fruit.active img {
   scale: 1;
   transition-delay: .1s;
+}
+
+@keyframes float-fruits {
+  0% {
+    translate: 0;
+  }
+
+  50% {
+    translate: -20px;
+  }
+
+  100% {
+    translate: 0;
+  }
 }
 
 .info-box {
