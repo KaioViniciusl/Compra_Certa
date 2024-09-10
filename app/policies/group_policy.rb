@@ -16,7 +16,7 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user.present? && (user_is_owner? || user_is_member?)
   end
 
   def destroy?
@@ -27,6 +27,10 @@ class GroupPolicy < ApplicationPolicy
 
   def user_is_owner?
     record.user == user
+  end
+
+  def user_is_member?
+    record.user_groups.exists?(user: user)
   end
 
   class Scope < ApplicationPolicy::Scope
