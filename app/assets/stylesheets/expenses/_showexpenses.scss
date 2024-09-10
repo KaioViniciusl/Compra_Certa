@@ -1,0 +1,30 @@
+.group-expense-show-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #C9E9E1;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+.expense-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 5px;
+    color: #0B3234;
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 15px;
+
+}
+
+.expense-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover; 
+    margin-right: 16px;
+    align-items: center;
+}
