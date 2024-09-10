@@ -21,7 +21,8 @@ class ExpensesController < ApplicationController
       process_expense_shares(params[:expense_shares])
       redirect_to group_path(@group), notice: "Sua despesa foi criada."
     else
-      render :new
+      flash[:alertgroup] = "Houve algum erro. Por favor, preencha os campos abaixo e não se esqueça de selecionar os usuários."
+      redirect_to new_group_expense_path(@group)
     end
   end
 

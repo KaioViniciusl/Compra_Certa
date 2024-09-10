@@ -1,0 +1,55 @@
+<div id="balance-details-modal" class="modal hidden" data-modal-target="modal">
+  <div class="modal-content">
+    <span class="close-button" data-action="click->modal#close">&times;</span>
+    <div>
+      <% if @user_balance[:credit].to_f > 0 && @user_balance[:debit].to_f > 0 %>
+        <h5>SUAS DÍVIDAS</h5>
+        <ul>
+          <% @user_balance[:users_owing].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance > 0 %>
+                <li>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <h5>DEVEM A VOCÊ</h5>
+        <ul>
+          <% @user_balance[:users_owed].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance > 0 %>
+                <li><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% elsif @user_balance[:debit].to_f > 0 %>
+        <h5>SUAS DÍVIDAS</h5>
+        <ul>
+          <% @user_balance[:users_owing].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance > 0 %>
+                <li>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% elsif @user_balance[:credit].to_f > 0 %>
+        <h5>DEVEM A VOCÊ</h5>
+        <ul>
+          <% @user_balance[:users_owed].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance > 0 %>
+                <li><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Você ainda não tem nenhuma despesa registrada.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
