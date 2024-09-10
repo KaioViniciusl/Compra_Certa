@@ -85,9 +85,10 @@
               </div>
 
               <% expenses.each do |expense| %>
+                <% status = determine_user_status(expense) %>
                 <%= link_to group_expense_path(@group, expense), class: "expense-link" do %>
-                  <div class="group-show-expense-item">
-                    <div class="group-show-number-expense">
+                  <div class="group-show-expense-item background-<%= status %>">
+                    <div class="group-show-number-expense color-<%= status %>">
                       <%= l(expense.date, format: :day) %>
                     </div>
                     <div class="group-show-name-expense">
@@ -100,7 +101,6 @@
           <% else %>
             <p>Nenhuma despesa e pagamento adicionado ainda.</p>
           <% end %>
-
           <!---- Modal de Pagamentos (botão Ver pagamentos) ----->
           <%= render "shared/modalpayers" %>
         </div>

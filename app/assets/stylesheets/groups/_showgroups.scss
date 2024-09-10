@@ -246,15 +246,6 @@
   border-radius: 5px;
 }
 
-.group-show-expense-item {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background-color: #FBDDD6;
-  border-radius: 5px;
-  margin-bottom: 16px;
-}
 
 .group-show-expenses-payer {
   margin-top: 16px;
@@ -321,9 +312,41 @@
 .group-show-number-expense {
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #F1502C;
   color: white;
   font-size: 24px;
+}
+
+.group-show-number-expense.color-debt {
+  background-color: #F1502C; /* Cor para débito */
+}
+
+.group-show-number-expense.color-not_involved {
+  background-color:  #5487FC; /* Cor para não envolvido */
+}
+
+.group-show-number-expense.color-credit {
+  background-color: #4FD7B7; /* Cor para crédito */
+}
+
+.group-show-expense-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+.group-show-expense-item.background-debt {
+  background-color: #FBDDD6; /* Fundo para débito */
+}
+
+.group-show-expense-item.background-not_involved {
+  background-color: #DDE7FF; /* Fundo para não envolvido */
+}
+
+.group-show-expense-item.background-credit {
+  background-color: #C9E9E1; /* Fundo para crédito */
 }
 
 .group-show-number-expense-payer {

@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!, except: [:accept_invite]
   before_action :set_group, only: [:edit, :update, :destroy, :show, :accept_invite]
   before_action :authorize_group, only: [:edit, :update, :destroy, :show]
+  include GroupsHelper
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -15,6 +16,11 @@ class GroupsController < ApplicationController
     @user_balance = @group.calculate_balance_by_user(current_user)
     @expense_payers = @group.expense_payers
     @users = User.where(id: @expense_payers.pluck(:user_id, :receiver_id).flatten.uniq).index_by(&:id)
+
+    @expenses_with_status = @expenses.map do |expense|
+      status = determine_user_status(expense)
+      { expense: expense, status: status }
+    end
   end
 
   def new
@@ -182,5 +188,26 @@ class GroupsController < ApplicationController
     end
 
     balances
+  end
+
+  def determine_user_status(expense)
+    share = expense.expense_shares.find_by(user: current_user)
+
+    return 'not_involved' unless share
+
+    user_share_amount = share.share_amount
+    total_amount = expense.amount
+    total_shares = expense.expense_shares.sum(:share_amount)
+    per_user_amount = total_amount / total_shares
+
+    balance = user_share_amount - per_user_amount
+
+    if balance < 0
+      'debt'
+    elsif balance > 0
+      'credit'
+    else
+      'not_involved'
+    end
   end
 end

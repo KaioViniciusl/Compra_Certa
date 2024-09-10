@@ -82,8 +82,8 @@ class ExpensesController < ApplicationController
 
   def valid_shares?(expense_shares_params)
     total_amount = expense_params[:amount].to_f
-    total_shares = expense_shares_params.values.sum { |data| data["amount"].to_f if data["selected"] == "1" }
-    total_amount == total_shares
+    total_shares = expense_shares_params.values.map { |data| data["amount"].to_f if data["selected"] == "1" &&data["amount"].present? }
+    total_amount == total_shares.compact.sum
   end
 
   def process_expense_shares(expense_shares_params)
