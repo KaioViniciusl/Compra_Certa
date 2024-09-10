@@ -2,9 +2,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #C9E9E1;
     border-radius: 20px;
     padding: 20px;
+}
+
+.expense-items-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
 
