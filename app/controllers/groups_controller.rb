@@ -106,12 +106,12 @@ class GroupsController < ApplicationController
 
      if @group.expenses.any?
       flash[:alertgroup] = "Não é possível excluir o grupo porque ele já tem despesas associadas."
+      redirect_to @group
      else
       @group.user_groups.destroy_all
       @group.destroy
       redirect_to groups_path, notice: "Grupo #{@group.name_group} foi deletado com sucesso."
      end
-    redirect_to @group
   end
 
   def user_not_authorized
