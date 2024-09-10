@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = current_user.groups.find(params[:id])
+    authorize @group
 
     if @group.update(group_params)
       @group.generate_token
