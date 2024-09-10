@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+body .body-home {
+  overflow: hidden !important;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 .carousel {
   height: 100vh;
 }
