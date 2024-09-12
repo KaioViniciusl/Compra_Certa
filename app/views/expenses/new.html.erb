@@ -30,7 +30,7 @@
           <div class="form-inputs mt-0">
             <div class="user-share">
               <% @users.each do |user| %>
-                <div class="group-pattern-lightblue px-2 py-3 d-flex justify-content-between align-items-center">
+                <div class="group-pattern-lightblue px-2 d-flex justify-content-between align-items-center">
                   <%= label_tag "user_share_#{user.id}", user.name, class: "name-form-expenses" %>
                   <%= check_box_tag "expense_shares[#{user.id}][selected]", 1, false, id: "user_share_#{user.id}", class: "input-checkbox-form-expense" %>
                 </div>
@@ -42,7 +42,7 @@
           </div>
 
           <div class="form-actions">
-            <%= form.submit "SALVAR", class: "btn create-button-new" %>
+            <%= form.submit "SALVAR", class: "btn expense-button-new" %>
           </div>
         <% end %>
 

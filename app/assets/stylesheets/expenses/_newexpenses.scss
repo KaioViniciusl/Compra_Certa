@@ -7,7 +7,7 @@
 }
 
 .create-button-new {
-  width: 35%;
+  width: 50%;
   height: 40px;
   font-size: 14px;
   font-weight: 500;
@@ -23,7 +23,7 @@
 }
 
 .btn-addmember {
-  width: 55%;
+  width: 50%;
   height: 40px;
   font-size: 14px;
   font-weight: 500;
@@ -37,6 +37,23 @@
 .btn-addmember:hover {
   background-color: #5487FC;
   color: white;
+}
+
+.expense-button-new {
+  width: 50%;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background-color: #5487FC;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+  margin-top: 16px;
+}
+
+.expense-button-new:hover {
+  background-color: #2b66f0;
+  color: white;
 }
 
 h1 {
@@ -81,6 +98,18 @@ select#expense_payer_receiver_id {
   border: 2px solid #DDE7FF;
 }
 
+input#expense_date {
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #DDE7FF;
+  background: #DDE7FF;
+  padding: 11px;
+}
+
+.group-pattern-lightblue.px-2.d-flex.justify-content-between.align-items-center {
+  margin-bottom: 8px;
+}
+
 .h4-add-expense {
   margin-top: 32px;
   margin-bottom: 16px;
@@ -112,7 +141,7 @@ select#expense_payer_receiver_id {
   color: #0B3234;
   border-radius: 5px;
   border: 0.5px solid #DDE7FF;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   &:focus {
     border-color: #DDE7FF;
     box-shadow: none;
@@ -139,6 +168,7 @@ select#expense_payer_receiver_id {
 .name-form-expenses {
   font-size: 16px;
   font-weight: 600;
+  padding: 4px;
 }
 
 .p-expense {

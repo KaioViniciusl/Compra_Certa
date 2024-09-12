@@ -19,8 +19,8 @@
 }
 
 .user-name {
-  font-size: 24px;
-  margin-bottom: 16px;
+  padding: 8px;
+  margin-bottom: -16px;
   word-break: break-word;
 }
 
@@ -52,6 +52,10 @@
 .edit-title {
   font-size: 24px;
   margin-bottom: 16px;
+}
+
+p.user-email {
+  padding: 8px;
 }
 
 .form-group {
