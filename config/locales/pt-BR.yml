@@ -117,28 +117,27 @@ pt-BR:
 
   activerecord:
     errors:
-     models:
-      user:
+      models:
+        user:
           attributes:
             email:
               blank: "não pode ficar em branco"
               taken: "já está em uso"
             password:
               blank: "não pode ficar em branco"
-
+              too_short: "é muito curta (mínimo: %{count} caracteres)"  # Tradução adicionada para senha curta
+            password_confirmation:
+              confirmation: "A confirmação da senha não confere"  # Adiciona a tradução para a confirmação de senha
       messages:
         blank: "não pode ficar em branco"
         taken: "já está em uso"
+        too_short: "é muito curta (mínimo: %{count} caracteres)"  # Tradução adicionada para senha curta
 
     attributes:
       user:
         email: "E-mail"
         password: "Senha"
-
-
-  errors:
-    messages:
-      blank: "não pode ficar em branco"
+        password_confirmation: "Confirmação de senha"
 
 
 
