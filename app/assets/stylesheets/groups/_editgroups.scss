@@ -45,9 +45,9 @@
     box-shadow: none !important;
 }
 
-
-
-
+input.btn.btn.btn-group-edit-save {
+  margin-top: 8px;
+}
 
 .btn-group-edit-save {
   width: 100%;
@@ -56,7 +56,7 @@
   height: 40px;
   background-color: #5487FC;
   color: white;
-  border-radius: 5px;
+  border-radius: 25px;
   transition: background-color 0.3s;
   cursor: pointer;
 }
@@ -67,6 +67,7 @@
 }
 
 .added-member {
+  font-size: 14px;
     background-color: #FBDDD6;
     padding-left: 10px;
     border-radius: 5px;
@@ -78,13 +79,14 @@
 
 
 .added-member button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #F1502C;
-    color: white;
-    font-size: 14px;
-    min-width: 32px;
+  height: 32px;
+  min-width: 32px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F1502C;
+  color: white;
+  font-size: 14px;
 }
 
 hr {
@@ -94,6 +96,7 @@ hr {
 
 .h4-create-group {
   margin-top: 16px;
+  margin-bottom: -32px;
 }
 
 .division-line {
