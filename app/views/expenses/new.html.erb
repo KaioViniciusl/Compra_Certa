@@ -2,10 +2,13 @@
   <div class="row justify-content-center">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="group-form-modal">
-        <%= link_to @group do %>
-          <%= image_tag "icons/seta_buton.png", alt: "Voltar ao Grupo", class: "mb-3 mt-2" %>
+        <%= image_tag("icons/risk-red.png", :class => "bg-show-modal") %>
+
+        <%= link_to root_path do %>
+          <%= image_tag "icons/seta_buton.png", alt: "Login" %>
         <% end %>
-        <h4 class="text-start mb-3">Adicionar despesas</h4>
+
+        <h4 class="h4-add-expense">Adicionar despesa</h4>
 
         <%= simple_form_for([@group, @expense]) do |form| %>
           <div class="form-inputs">
@@ -23,7 +26,7 @@
             </div>
           </div>
 
-          <p>Quem participou da despesa:</p>
+          <p class="p-expense">Quem participou dessa despesa:</p>
           <div class="form-inputs mt-0">
             <div class="user-share">
               <% @users.each do |user| %>

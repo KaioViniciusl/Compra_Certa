@@ -2,13 +2,13 @@
   <div class="row justify-content-center">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="modal-groups">
-        <h4>Personalize o seu grupo adicionando uma Foto, Nome, Descrição e Convide Amigos</h4>
-        <hr class="division-line w-100">
+        <h4>Personalize o seu grupo adicionando uma Foto, Nome e Descrição</h4>
+        <hr class="division-line">
 
-        <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
+        <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }} do |f| %>
           <%= f.error_notification %>
 
-          <div class="mt-4 d-flex justify-content-center mb-4">
+          <div class="d-flex justify-content-center">
             <div class="avatar-container" style="border-radius: 50%;">
               <% if @group.photo.attached? %>
                   <%= image_tag @group.photo, width: "180", height: "180", data: { photo_upload_target: "preview" } %>
@@ -22,46 +22,46 @@
           </div>
 
           <div class="group-pattern-lightblue">
-            <div class="mb-0 w-100">
+            <div class="">
               <%= f.input :name_group, label: false, input_html: { placeholder: "Digite o nome do Grupo", class: "input-new-group" } %>
             </div>
             <%= image_tag "icons/pencil.png" %>
           </div>
 
-          <div class="group-pattern-lightblue mb-4">
-            <div class="mb-0 w-100">
-              <%= f.input :description_group, label: false, input_html: { placeholder: "Adicione uma descrição para o Grupo", class: "input-new-group" } %>
+          <div class="group-pattern-lightblue">
+            <div class="">
+              <%= f.input :description_group, label: false, input_html: { placeholder: "Adicione uma descrição", class: "input-new-group" } %>
             </div>
             <%= image_tag "icons/pencil.png" %>
           </div>
 
 
 
-          <hr class="division-line w-100">
-
-          <div class="form-group mt-4">
-            <label for="member-email">Adicionar membro</label>
-            <div class="group-pattern-lightblue mb-4">
-              <div class="mb-0 w-100">
+          <hr class="division-line">
+          <h4 class="h4-create-group">Adicionar membro</h4>
+          <div class="form-group">
+            <label for="member-email"></label>
+            <div class="group-pattern-lightblue">
+              <div class="">
                 <input type="email" id="member-email" class="input-new-group no-border" placeholder="  Insira o email do usuário" data-invite-target="email" />
               </div>
               <%= image_tag "icons/verific.png" %>
             </div>
 
-            <button type="button" data-action="click->invite#addMember" class="btn btn-addmember mt-4 w-100">ADICIONAR MEMBRO</button>
+            <button type="button" data-action="click->invite#addMember" class="btn btn-addmember">ADICIONAR MEMBRO</button>
           </div>
 
-          <div id="added-members" data-invite-target="addedMembers" class="mt-4 mb-3"></div> <!-- Adiciona data-target aqui -->
-          <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %> <!-- Adiciona data-target aqui -->
+          <div id="added-members" data-invite-target="addedMembers"></div>
+          <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
 
-          <%= f.button :submit, "SALVAR E CRIAR", class: "btn create-button-new w-100" %>
+          <%= f.button :submit, "SALVAR E CRIAR", class: "btn create-button-new" %>
         <% end %>
       </div>
-
 
       <div class="image-logo logo-footer">
         <%= image_tag("logo.png")%>
       </div>
+
     </div>
   </div>
 </div>

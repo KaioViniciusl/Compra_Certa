@@ -6,8 +6,8 @@
         <%= image_tag("icons/ElementDark.png", :class => "bg-show-modal") %>
 
         <%= link_to root_path do %>
-            <%= image_tag "icons/seta_buton.png", alt: "Login" %>
-          <% end %>
+          <%= image_tag "icons/seta_buton.png", alt: "Login" %>
+        <% end %>
 
         <h4 class="h4-login">Faça seu login</h4>
 
@@ -28,11 +28,11 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "ENTRAR", class: "btn-login-newhtml" %>
+            <%= f.button :submit, "ACESSAR", class: "btn-login-newhtml" %>
           </div>
         <% end %>
 
-        <div style="display: flex; justify-content: center; margin-bottom: 16px; margin-top: 16px;">
+        <div class="btn-forgot-password">
           <%= link_to "Esqueceu sua senha?", new_user_password_path %>
         </div>
 

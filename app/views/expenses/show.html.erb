@@ -9,9 +9,9 @@
           <p class="mt-3"><strong>Descrição:</strong> <%= @expense.description %></p>
           <p>Adicionado por <%= @expense.user.name %> em <%= l(@expense.date, format: :long) %></p>
         </div>
-        
 
-        <hr class="division-line w-100">
+
+        <hr class="division-line">
 
         <% @expense.expense_shares.each do |share| %>
           <div class="expense-item">
@@ -20,9 +20,9 @@
             <% else %>
               <%= image_tag "avatar/profile.anonymus.png", class: "expense-image" %>
             <% end %>
-        
+
             <div class="group-details group-details-text">
-              <p class="mb-0"><strong><%= share.user.name %></strong> 
+              <p class="mb-0"><strong><%= share.user.name %></strong>
                 <% if share.share_amount.zero? %>
                   não pagou nada
                 <% else %>
@@ -33,9 +33,9 @@
           </div>
         <% end %>
 
-        <hr class="division-line w-100">
+        <hr class="division-line">
 
-          
+
       </div>
       <div class="image-logo logo-footer">
         <%= image_tag("logo.png") %>
