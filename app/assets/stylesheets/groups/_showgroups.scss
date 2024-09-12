@@ -28,8 +28,8 @@
 }
 
 .division-panel {
-
-  opacity: unset !important;
+  color: #104749 !important;
+  opacity: 0.25;
   margin: -6px -14px !important;
   margin-bottom: 16px;
 }
@@ -99,7 +99,7 @@
   padding: 12px;
   background-color: #5487FC;
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s;
@@ -121,7 +121,7 @@
   padding: 12px;
   background-color: #5487FC;
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.3s;
@@ -148,7 +148,7 @@
   width: 50%;
   background-color: #F1502C;
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   transition: background-color 0.3s;
   font-size: 16px;
   text-wrap: nowrap;
@@ -163,7 +163,7 @@
   width: 50%;
   background-color: #4FD7B7;
   color: black;
-  border-radius: 20px;
+  border-radius: 25px;
   transition: background-color 0.3s;
   font-size: 16px;
   text-wrap: nowrap;
@@ -413,11 +413,11 @@
 
 .btn-group-show-observation {
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   width: 35%;
   padding: 8px;
   color: #5487FC;
-  border-radius: 30px;
+  border-radius: 25px;
   border: 1px solid #5487FC;
   transition: background-color 0.3s;
   cursor: pointer;
@@ -434,6 +434,7 @@
 
 .h4-groups {
   font-weight: 500;
+  margin-bottom: -2px;
 }
 
 .group-show-member-name {
@@ -483,4 +484,12 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
+}
+
+.span-style-groups {
+  display: inline-block;
+  width: 0.5px;
+  background-color: #104749;
+  height: 40px;
+  opacity: 0.25;
 }

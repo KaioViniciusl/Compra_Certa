@@ -2,14 +2,15 @@
     <div class="row justify-content-center">
         <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
             <div class="group-edit-modal">
-                <h4>Atualize as informações do seu grupo: adicione uma foto, nome, descrição e convide novos amigos</h4>
+
+                <h4>Atualize as informações do Grupo</h4>
                 <hr class="division-line w-100">
 
 
                 <%= simple_form_for @group, html: { data: { controller: "invite photo-upload", action: "change->photo-upload#previewImage" }, class:"w-100" } do |f| %>
                     <%= f.error_notification %>
 
-                    <div class="mt-4 d-flex justify-content-center mb-4">
+                    <div class="mt-4 d-flex justify-content-center">
                         <div class="avatar-container" style="border-radius: 50%;">
                             <% if @group.photo.attached? %>
                                 <%= image_tag @group.photo, width: "180", height: "180", data: { photo_upload_target: "preview" } %>
@@ -31,19 +32,15 @@
                     </div>
 
                     <%= f.label "Adicione uma descrição para o Grupo" %>
-                    <div class="group-pattern-lightblue mb-4">
-                        <div class="mb-0 w-100">
-                            <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
-                        </div>
-                        <%= image_tag "icons/pencil.png" %>
+                    <div class="group-pattern-lightblue">
+                      <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
+                      <%= image_tag "icons/pencil.png" %>
                     </div>
 
+                    <hr class="division-line">
 
-
-                    <hr class="division-line w-100">
-
-                    <div class="mt-4">
-                        <label for="member-email">Adicionar membro</label>
+                    <div class="">
+                        <h4>Adicionar membro</h4>
                         <div class="group-pattern-lightblue mb-4">
                             <div class="mb-0 w-100">
                                 <input type="email" id="member-email" class="form-control group-edit-input" placeholder="Insira o email do usuário" data-invite-target="email" />
@@ -60,7 +57,7 @@
                     <div id="added-members" data-invite-target="addedMembers" class="mt-4"></div>
                     <%= hidden_field_tag :invite_emails, "", id: "hidden-invite-emails", data: { invite_target: "hiddenInviteEmails" } %>
 
-                    <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save w-100 mt-2" %>
+                    <%= f.button :submit, "SALVAR ALTERAÇÕES", class: "btn btn-group-edit-save" %>
 
 
 

@@ -36,7 +36,6 @@ a {
     height: 50px;
     border-radius: 5px;
     background-color: white;
-    border: black solid 1px;
     object-fit: cover;
     margin-right: 16px;
     align-items: center;
@@ -50,9 +49,9 @@ a {
 }
 
 .group-details-text {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  color: #0B3234;
+  color: #0b3234cf !important;
 }
 
 .without-group h2 {
@@ -60,14 +59,15 @@ a {
 }
 
 .create-group-button {
+  padding: 14px;
+  font-weight: 500;
   margin-top: 16px;
-  padding: 10px;
   height: 50px;
-  font-size: 16px;
+  font-size: 14px;
   width: 100%;
   background-color: #5487FC;
   color: white;
-  border-radius: 30px;
+  border-radius: 25px;
   text-decoration: none;
   transition: background-color 0.3s;
 }
@@ -84,8 +84,8 @@ a {
 
 .modal-groups {
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 5px;
+    padding: 16px;
     width: 100%;
     position: relative;
 }

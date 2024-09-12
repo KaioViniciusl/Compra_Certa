@@ -50,7 +50,7 @@
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
       <div class="group-show-panel" data-controller="modal">
         <div style="display: flex; align-items: center; width: 100%;" class="mb-1">
-          <h4 style="flex-grow: 1;" class="h4-groups">Painel</h4>
+          <h4 style="flex-grow: 1;">Painel</h4>
           <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver Detalhes</button>
         </div>
         <div class="container my-1">
@@ -60,13 +60,13 @@
               <p class="text-group-show">Suas dívidas</p>
               <p><strong>R<%= number_to_currency(@user_balance[:debit]) %></strong></p>
             </div>
-            <span style="display: inline-block; width: 0.5px; background-color: black; height: 40px; margin: 0 15px;"></span>
+            <span class="span-style-groups"></span>
             <div class="d-flex flex-column align-items-center">
               <p class="text-group-show">Devem a você</p>
               <p class="p-devemavoce"><strong>R<%= number_to_currency(@user_balance[:credit]) %></strong></p>
             </div>
           </div>
-          <hr class="division-panel mb-1">
+          <hr class="division-panel">
         </div>
 
         <!--- Modal de Dívidas (botão Ver detalhes) ---->
@@ -78,7 +78,7 @@
 
             <% grouped_expenses.each_with_index do |(month_year, expenses), index| %>
               <div class="header-with-button">
-                <h4 class="h4-groups" style="flex-grow: 1;"><%= month_year %></h4>
+                <h4 style="flex-grow: 1;"><%= month_year %></h4>
                 <% if index == 0 %>
                   <button class="btn btn-group-show-details" data-action="click->modal#toggle">Ver Pagamentos</button>
                 <% end %>
@@ -99,14 +99,14 @@
               <% end %>
             <% end %>
           <% else %>
-            <p>Nenhuma despesa e pagamento adicionado ainda.</p>
+            <p>Adicione sua primeira despesa ou pagamento.</p>
           <% end %>
           <!---- Modal de Pagamentos (botão Ver pagamentos) ----->
           <%= render "shared/modalpayers" %>
         </div>
 
       <div class="group-show-observations">
-        <h4 class="h4-groups">Quadro</h4>
+        <h4>Quadro</h4>
         <%= simple_form_for @group, url: group_path(@group), method: :patch, html: { class: "form-horizontal" } do |form| %>
           <%= form.input :observation, as: :text, placeholder: "Use este quadro para adicionar informações importantes.", rows: 5, input_html: { class: "group-show-observation-area" }, label: false %>
           <%= form.button :submit, "SALVAR", class: "btn btn-group-show-observation" %>

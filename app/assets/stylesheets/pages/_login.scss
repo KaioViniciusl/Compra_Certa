@@ -1,9 +1,16 @@
+.btn-forgot-password {
+  display: flex;
+  margin-top: 8px;
+  justify-content: center;
+}
+
 .btn-login-newhtml {
     width: 100%;
-    padding: 8px;
+    padding: 7px;
     height: 40px;
     font-size: 16px;
-    border-radius: 30px;
+    font-weight: 500;
+    border-radius: 5px;
     background-color: #5487FC;
     color: white;
     text-decoration: none;
@@ -30,6 +37,7 @@
     border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
+    border: var(--bs-border-width) solid #DDE7FF !important;
   }
 
   .custom-input:focus {
