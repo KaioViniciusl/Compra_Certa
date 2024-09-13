@@ -1,11 +1,12 @@
 body {
     background-color: #f6f3eb;
-    // background-image: asset-url('bg/BallAndCactus.png');
+    background-image: asset-url('bg/bg-all.png');
     // background-size: cover;
     background-position: center top 160px;
     background-attachment: fixed;
     background-repeat: repeat;
     margin: 0;
+    justify-content: center;
 }
 
 a {
