@@ -43,7 +43,6 @@ body .body-home {
 
 .img-item img {
   transform: rotate(-90deg);
-  filter: drop-shadow(0 0 10px rgba(18, 49, 52, 100));
 }
 
 .img-item.fruit img {
@@ -120,7 +119,7 @@ body .body-home {
   align-items: center;
   width: 80px;
   height: 80px;
-  background: #B0B9B4;
+  background: #f6f3eb63;
   border-radius: 50%;
   cursor: pointer;
   font-size: 54px;
@@ -133,7 +132,6 @@ body .body-home {
   top: 50%;
   transform: translateY(-50%);
   height: 700px;
-  // border: 2px solid #0B3234;
   display: flex;
   justify-content: center;
   margin-top: -10px;
