@@ -8,15 +8,15 @@
         <% current_user_name = current_user.try(:name) %>
 
         <% grouped_expense_payers.each_with_index do |(month_year, expense_payers), index| %>
-          <h4><%= month_year %></h4>
+          <h4 class="title-payer"><%= month_year %></h4>
 
           <% expense_payers.each do |expense_payer| %>
             <% payer_name = @users[expense_payer.user_id].try(:name) || "Desconhecido" %>
             <% receiver_name = @users[expense_payer.receiver_id].try(:name) || "Desconhecido" %>
 
             <% if current_user_name == receiver_name %>
-              <div class="group-show-expense-payer-item">
-                <div class="group-show-number-expense-payer">
+              <div class="group-show-expense-payer-item background-debt">
+                <div class="group-show-number-expense-payer color-debt">
                   <%= l(expense_payer.date, format: :day) %>
                 </div>
                 <div class="group-show-name-expense-payer">
@@ -26,8 +26,8 @@
             <% end %>
 
             <% if current_user_name == payer_name %>
-              <div class="group-show-expense-payer-item">
-                <div class="group-show-number-expense-payer">
+              <div class="group-show-expense-payer-item background-debt">
+                <div class="group-show-number-expense-payer color-debt">
                   <%= l(expense_payer.date, format: :day) %>
                 </div>
                 <div class="group-show-name-expense-payer">
@@ -37,8 +37,8 @@
             <% end %>
 
             <% if current_user_name != payer_name && current_user_name == receiver_name %>
-              <div class="group-show-expense-payer-item">
-                <div class="group-show-number-expense-payer">
+              <div class="group-show-expense-payer-item background-credit">
+                <div class="group-show-number-expense-payer color-credit">
                   <%= l(expense_payer.date, format: :day) %>
                 </div>
                 <div class="group-show-name-expense-payer">
@@ -48,16 +48,16 @@
             <% end %>
 
             <% if current_user_name != payer_name && current_user_name != receiver_name %>
-              <div class="group-show-expense-payer-item">
-                <div class="group-show-number-expense-payer">
+              <div class="group-show-expense-payer-item background-not_involved">
+                <div class="group-show-number-expense-payer color-not_involved">
                   <%= l(expense_payer.date, format: :day) %>
                 </div>
                 <div class="group-show-name-expense-payer">
                   <p><%= receiver_name %> recebeu R<%= number_to_currency(expense_payer.paid_amount) %> de <%= payer_name %>.</p>
                 </div>
               </div>
-              <div class="group-show-expense-payer-item">
-                <div class="group-show-number-expense-payer">
+              <div class="group-show-expense-payer-item background-not_involved">
+                <div class="group-show-number-expense-payer color-not_involved">
                   <%= l(expense_payer.date, format: :day) %>
                 </div>
                 <div class="group-show-name-expense-payer">
