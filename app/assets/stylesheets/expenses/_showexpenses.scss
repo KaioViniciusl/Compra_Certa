@@ -1,8 +1,8 @@
 .group-expense-show-modal {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+   
+
     background-color: #C9E9E1;
     border-radius: 20px;
     padding: 20px;
@@ -25,8 +25,8 @@
     border-radius: 5px;
     color: #0B3234;
     width: 100%;
-    margin-bottom: 16px;
-    margin-top: 15px;
+    margin-bottom: 8px;
+    margin-top: 8px;
 
 }
 
@@ -37,4 +37,8 @@
     object-fit: cover; 
     margin-right: 16px;
     align-items: center;
+}
+
+.division-expenses {
+    margin: 32px;
 }
