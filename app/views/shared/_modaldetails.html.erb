@@ -12,7 +12,7 @@
                   <label>R$</label>
                 </div>
                 <div class="group-show-name-expense-payer">
-                  <p>Você deve BRL <%= number_to_currency(balance) %> para <%= user.name %></p>
+                  <p>Você deve R<%= number_to_currency(balance) %> para <%= user.name %></p>
                 </div>
               </div>
               <% has_debt = true %>
@@ -34,7 +34,7 @@
                   <label>R$</label>
                 </div>
                 <div class="group-show-name-expense-payer">
-                  <p><%= user.name %> deve BRL <%= number_to_currency(balance) %> para você</p>
+                  <p><%= user.name %> deve R<%= number_to_currency(balance) %> para você</p>
                 </div>
               </div>
               <% has_credit = true %>
