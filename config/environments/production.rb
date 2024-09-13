@@ -91,12 +91,18 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "contacerta-6950efec6923.herokuapp.com",
+    domain: "contacerta.site",
     user_name: ENV["GMAIL_ADDRESS"],
     password: ENV["GMAIL_APP_PASSWORD"],
     authentication: :login,
     enable_starttls_auto: true,
   }
+
+  config.middleware.insert_before 0, Rack::Rewrite do
+    r301 %r{.*}, 'https://contacerta.site$&', if: Proc.new { |rack_env|
+      rack_env['SERVER_NAME'] != 'contacerta.site'
+    }
+  end
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
