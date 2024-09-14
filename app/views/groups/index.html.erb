@@ -6,28 +6,30 @@
       <div class="modal-groups">
         <h4 class="title-group"><%= @groups.any? ? "Toque no botão para criar mais um grupo" : "Toque no botão para criar seu primeiro grupo" %></h4>
           <%= link_to "CRIAR GRUPO", new_group_path, class: "btn create-group-button" %>
-        <% if @groups.any? %>
           <hr class="division-line">
           <h4 class="title-group">Seus Grupos</h4>
-          <div class="group-list">
-            <% @groups.each do |group| %>
-                <%= link_to group_path(group) do %>
-                  <div class="group-item">
-                    <div class="group-foto">
-                      <% if group.photo.attached? %>
-                        <%= image_tag group.photo, class: "group-image" %>
+            <% if @groups.any? %>
+              <div class="group-list">
+                <% @groups.each do |group| %>
+                    <%= link_to group_path(group) do %>
+                      <div class="group-item">
+                        <div class="group-foto">
+                          <% if group.photo.attached? %>
+                            <%= image_tag group.photo, class: "group-image" %>
 
-                      <% else %>
-                        <%= image_tag "placeholder-image.png", class: "group-image" %>
-                      <% end %>
-                    </div>
-                    <div class="group-details group-details-text">
-                      <%= group.name_group.capitalize %>
-                    </div>
-                  </div>
+                          <% else %>
+                            <%= image_tag "placeholder-image.png", class: "group-image" %>
+                          <% end %>
+                        </div>
+                        <div class="group-details group-details-text">
+                          <%= group.name_group.capitalize %>
+                        </div>
+                      </div>
                 <% end %>
             <% end %>
           </div>
+        <% else %>
+          <p>Você ainda não possui nenhum grupo.</p>
         <% end %>
       </div>
 
