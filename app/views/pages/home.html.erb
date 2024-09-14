@@ -1,8 +1,10 @@
 <div class="carousel body-home" data-controller="carousel">
 
-  <div class="button-group">
-    <%= link_to "ACESSAR", new_user_session_path, class: "btn btn-primary" %>
-    <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn btn-outline-primary" %>
+  <div class="btn-navigation">
+    <div class="button-group">
+      <%= link_to "ACESSAR", new_user_session_path, class: "btn btn-acess" %>
+      <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn btn-register" %>
+    </div>
   </div>
 
   <div class="bg-box">
@@ -17,23 +19,23 @@
       <div class="img-slider" data-carousel-target="imgSlider">
 
         <div class="img-item fruit active", style="--i:0;">
-          <%= image_tag "bg/cactus.png" %>
+          <%= image_tag "home/ob1.png" %>
         </div>
         <div class="img-item fruit", style="--i:1;">
-          <%= image_tag "bg/cactus.png" %>
+          <%= image_tag "home/ob2.png" %>
         </div>
         <div class="img-item fruit", style="--i:2;">
-          <%= image_tag "bg/cactus.png" %>
+          <%= image_tag "home/ob3.png" %>
         </div>
         <div class="img-item fruit", style="--i:3;">
-          <%= image_tag "bg/cactus.png" %>
+          <%= image_tag "home/ob4.png" %>
         </div>
 
         <div class="img-item", style="--i:0;">
           <%= image_tag "home/can1.png" %>
         </div>
         <div class="img-item", style="--i:1;">
-          <%= image_tag "home/can1.png" %>
+          <%= image_tag "home/can2.png" %>
         </div>
         <div class="img-item", style="--i:2;">
           <%= image_tag "home/can3.png" %>
@@ -83,12 +85,4 @@
       <i class='bx bx-chevron-right' ></i>
     </span>
   </div>
-
-</div>
-
-
-
-<div class="button-group">
-  <%= link_to "ACESSAR", new_user_session_path, class: "btn btn-primary" %>
-  <%= link_to "CADASTRAR-SE", new_user_registration_path, class: "btn btn-outline-primary" %>
 </div>

@@ -126,6 +126,19 @@ body .body-home {
   color: white;
 }
 
+
+.btn-navigation {
+  position: absolute;
+  right: 8%;
+  bottom: 5%;
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
 .large-text {
   position: absolute;
   left: 15%;
@@ -140,9 +153,9 @@ body .body-home {
 .large-text h1 {
   font-size: 140px;
   writing-mode: vertical-rl;
-  letter-spacing: -8px;
+  letter-spacing: -10px;
   user-select: none;
-  opacity: 30%;
+  opacity: 100%;
 }
 
 .bg-box .bg-carousel {
@@ -225,28 +238,54 @@ body .body-home {
   margin-bottom: 40px;
 }
 
-.button-group {
-  display: flex;
+.button-navigation {
+  position: relative;
   gap: 20px;
+  justify-content: center;
 }
 
-.btn-primary {
+// .btn-acess {
+//   font-size: 16px;
+//   margin-right: 10px;
+//   background-color: #007BFF;
+//   color: white;
+//   padding: 10px 20px;
+//   border-radius: 25px !important;
+//   text-decoration: none;
+//   font-weight: 500;
+// }
+
+.btn-acess {
+  height: 50px;
+  font-size: 16px;
+  margin-right: 10px;
   background-color: #007BFF;
-  color: #FFFFFF;
+  color: white;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 25px !important;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.btn-outline-primary {
+.btn-acess:hover {
+  background-color: #DDE7FF;
+  color: white;
+  opacity: 0.8;
+}
+
+.btn-register {
+  height: 50px;
+  font-size: 16px;
   border: 2px solid #007BFF;
   color: #007BFF;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 25px !important;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
-.btn-primary:hover, .btn-outline-primary:hover {
+
+.btn-acess:hover, .btn-register:hover {
+  background-color: #007BFF;
+  color: white;
   opacity: 0.8;
 }
