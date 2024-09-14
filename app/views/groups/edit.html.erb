@@ -33,7 +33,9 @@
 
                     <%= f.label "Adicione uma descrição para o Grupo" %>
                     <div class="group-pattern-lightblue">
-                      <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
+                      <div class="mb-0 w-100">
+                        <%= f.input :description_group, label: false, input_html: { class: "group-edit-input" } %>
+                      </div>
                       <%= image_tag "icons/pencil.png" %>
                     </div>
 
