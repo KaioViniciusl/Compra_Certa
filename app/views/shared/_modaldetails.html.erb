@@ -4,18 +4,20 @@
     <div class="container">
         <h4 class="title-details">Suas dívidas</h4>
         <% has_debt = false %>
-        <% @user_balance[:users_owing].each do |hash| %>
-          <% hash.each do |user, balance| %>
-            <% if balance > 0 %>
-              <div class="group-show-expense-payer-item background-debt">
-                <div class="group-show-number-expense-payer color-debt">
-                  <label>R$</label>
+        <% if @user_balance[:users_owing].present? %>
+          <% @user_balance[:users_owing].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance.present? && balance > 0 %>
+                <div class="group-show-expense-payer-item background-debt">
+                  <div class="group-show-number-expense-payer color-debt">
+                    <label>R$</label>
+                  </div>
+                  <div class="group-show-name-expense-payer">
+                    <p>Você deve R<%= number_to_currency(balance) %> para <%= user.name %></p>
+                  </div>
                 </div>
-                <div class="group-show-name-expense-payer">
-                  <p>Você deve R<%= number_to_currency(balance) %> para <%= user.name %></p>
-                </div>
-              </div>
-              <% has_debt = true %>
+                <% has_debt = true %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -26,18 +28,20 @@
 
         <h4 class="title-details">Devem a você</h4>
         <% has_credit = false %>
-        <% @user_balance[:users_owed].each do |hash| %>
-          <% hash.each do |user, balance| %>
-            <% if balance > 0 %>
-              <div class="group-show-expense-payer-item background-not_involved">
-                <div class="group-show-number-expense-payer color-not_involved">
-                  <label>R$</label>
+        <% if @user_balance[:users_owed].present? %>
+          <% @user_balance[:users_owed].each do |hash| %>
+            <% hash.each do |user, balance| %>
+              <% if balance.present? && balance > 0 %>
+                <div class="group-show-expense-payer-item background-not_involved">
+                  <div class="group-show-number-expense-payer color-not_involved">
+                    <label>R$</label>
+                  </div>
+                  <div class="group-show-name-expense-payer">
+                    <p><%= user.name %> deve R<%= number_to_currency(balance) %> para você</p>
+                  </div>
                 </div>
-                <div class="group-show-name-expense-payer">
-                  <p><%= user.name %> deve R<%= number_to_currency(balance) %> para você</p>
-                </div>
-              </div>
-              <% has_credit = true %>
+                <% has_credit = true %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

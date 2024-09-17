@@ -24,54 +24,64 @@ class Group < ApplicationRecord
 
   def calculate_balance_by_user(user)
     total_balance = calculate_owed_amounts_with_payments
+
     users_owed = []
     users_owing = total_balance[user]&.map { |k, v| { k => v } } || []
+
     credit = 0
+    debit = 0
+
     total_balance.each do |debtor, creditors|
       if creditors[user]
         credit += creditors[user]
         users_owed << { debtor => creditors[user] }
       end
     end
+
     debit = total_balance[user]&.values&.sum || 0
-    { credit: credit, debit: debit, users_owed: users_owed, users_owing: users_owing }
+
+    {
+      credit: credit,
+      debit: debit,
+      users_owed: users_owed,
+      users_owing: users_owing
+    }
   end
 
   def calculate_owed_amounts_with_payments
-    total_amount = expense_shares.sum(&:share_amount)
-    shares = expense_shares.includes(:user).each_with_object({}) do |share, hash|
-      hash[share.user] = 0 unless hash[share.user]
+    expected_amounts = expense_shares.includes(:user).each_with_object(Hash.new(0)) do |share, hash|
+      hash[share.user] += share.per_person_amount.to_f
+    end
+
+    paid_amounts = expense_shares.includes(:user).each_with_object(Hash.new(0)) do |share, hash|
       hash[share.user] += share.share_amount.to_f
     end
 
-    total_users = shares.size
-    return {} if total_users.zero?
+    debts ||= Hash.new(0)
 
-    per_person_amount = total_amount.to_f / total_users
-    debts = {}
-
-    shares.each do |user, share_amount|
-      owed_amount = per_person_amount - share_amount
+    expected_amounts.each do |user, expected_amount|
+      total_paid = paid_amounts[user] || 0
+      owed_amount = total_paid - expected_amount
       debts[user] = owed_amount.round(2) if owed_amount != 0
     end
+
+    processed_pairs = Set.new
 
     expense_payers.each do |payment|
       payer = payment.user
       receiver = payment.receiver
-      amount_paid = payment.paid_amount
+      amount_paid = payment.paid_amount.to_f.round(2)
+      pair_id = [payer.id, receiver.id].sort
 
-      if debts[payer] && debts[receiver]
-        debts[payer] -= amount_paid
-        debts[receiver] += amount_paid
-      elsif debts[payer]
-        debts[payer] -= amount_paid
-      elsif debts[receiver]
-        debts[receiver] += amount_paid
-      end
+        unless processed_pairs.include?(pair_id)
+          debts[payer] -= -amount_paid
+          debts[receiver] += amount_paid
+          processed_pairs.add(pair_id)
+        end
     end
 
-    positive_debts = debts.select { |_, amount| amount.negative? }
-    negative_debts = debts.select { |_, amount| amount.positive? }
+    positive_debts = debts.select { |_, amount| amount.positive? }
+    negative_debts = debts.select { |_, amount| amount.negative? }
 
     result = {}
 
@@ -79,16 +89,15 @@ class Group < ApplicationRecord
       result[user_owing] = {}
 
       positive_debts.each do |user_owed, amount_owed|
-        break if amount_owing <= 0
+        break if amount_owing >= 0
 
-        payment = [amount_owing, -amount_owed].min
+        payment = [amount_owing.abs, amount_owed].min
         result[user_owing][user_owed] = payment
 
         debts[user_owed] += payment
         debts[user_owing] -= payment
       end
     end
-
     result
   end
 

@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
 
   def default_url_options
     if Rails.env == "production"
-      { host: "contacerta-6950efec6923.herokuapp.com" }
+      { host: "contacerta.site" }
     else
       { host: "localhost", port: 3000 }
     end
