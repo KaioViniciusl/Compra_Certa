@@ -11,7 +11,7 @@
           <p class="p-note"><%= @expense.name_expense %></p>
           <h3><%= number_to_currency(@expense.amount, unit: "R$", separator: ",", delimiter: ".") %></h3>
           <p><strong>Descrição:</strong> <%= @expense.description %></p>
-          <p>dicionado por <%= @expense.user.name %> em <%= l(@expense.date, format: :long) %></p>
+          <p>Adicionado por <%= @expense.user.name %> em <%= l(@expense.date, format: :long) %></p>
         </div>
 
 
