@@ -10,6 +10,8 @@ Para clonar este projeto e aprimorá-lo tenha em mente que será necessário:
 
 4 - Para dúvidas e mais informações entre em contato no linkedin https://www.linkedin.com/in/kaio-viniciusl/;
 
+5 - O projeto roda no heroku em https://contacerta.site (Não é certeza que estará online 24hrs)
+
 Divirta-se! xD
 
 Por favor, nos notifique qualquer situação. o projeto ainda tem muita coisa a ser fazer :)
