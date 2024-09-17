@@ -21,6 +21,13 @@ class GroupsController < ApplicationController
       status = determine_user_status(expense)
       { expense: expense, status: status }
     end
+
+    @user_balance[:users_owing] ||= {}
+    @user_balance[:users_owed] ||= {}
+    @user_balance[:credit] ||= 0
+    @user_balance[:debit] ||= 0
+    puts "User balance: #{@user_balance.inspect}"
+
   end
 
   def new
